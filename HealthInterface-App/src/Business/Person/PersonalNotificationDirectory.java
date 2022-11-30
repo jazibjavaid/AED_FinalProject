@@ -6,11 +6,9 @@
 package Business.Person;
 
 import java.util.ArrayList;
-import javax.management.Notification;
-
 /**
  *
- * @author amishagupta
+ * @author shantanutyagi
  */
 public class PersonalNotificationDirectory {
     ArrayList<PersonalNotification> notificationList = new ArrayList<>();

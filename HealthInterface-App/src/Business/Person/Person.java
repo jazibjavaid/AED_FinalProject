@@ -9,32 +9,17 @@ import Business.Role.Role;
 
 /**
  *
- * @author amishagupta
+ * @author shantanutyagi
  */
-public class Person extends Business.UserAccount.UserAccount{
-    
-private String fullName;
-private String dob;
-private String gender;
-private String address;
-private String zipcode;
-private String contactNumber;
-private String email;
+public class Person extends Business.UserAccount.UserAccount {
 
-    public Person(String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email, String username, String password, Role role) {
-        super(username, password, fullName, role);
-        this.fullName = fullName;
-        this.dob = dob;
-        this.gender = gender;
-        this.address = address;
-        this.zipcode = zipcode;
-        this.contactNumber = contactNumber;
-        this.email = email;
-        setUsername(username);
-        setPassword(password);
-        setRole(role);
-        setName(fullName);
-    }
+    private String fullName;
+    private String dob;
+    private String gender;
+    private String address;
+    private String zipcode;
+    private String contactNumber;
+    private String email;
 
     public Person(String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email, String string, String string1, String string2, Role role) {
         super(string, string1, string2, role);
@@ -46,7 +31,6 @@ private String email;
         this.contactNumber = contactNumber;
         this.email = email;
     }
-
 
     public String getFullName() {
         return fullName;
@@ -103,7 +87,5 @@ private String email;
     public void setEmail(String email) {
         this.email = email;
     }
-
-
 
 }

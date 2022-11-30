@@ -6,11 +6,13 @@
 package Business.Person;
 
 import Business.Nurse.Nurse;
+
 /**
  *
  * @author shantanutyagi
  */
 public class PersonalNotification {
+
     private String message;
     private String date;
     private String status;
