@@ -1,2 +1,4 @@
 .DS_STORE
 /HealthInterface-App/nbproject/private/
+/HealthInterface-App/build/
+/HealthInterface-App/dist/
