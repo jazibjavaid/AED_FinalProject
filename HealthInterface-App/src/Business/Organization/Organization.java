@@ -50,6 +50,10 @@ public class Organization {
         orgID = counter;
         ++counter;
     }
+    
+    public Organization(String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;
