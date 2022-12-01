@@ -4,11 +4,17 @@
  */
 package Business.Role;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author jazibjavaid
  */
-public class Role {
+public abstract class Role {
     
     public enum RoleType{
         DoctorRole("Doctor"),
@@ -37,4 +43,10 @@ public class Role {
             return value;
         }
     }
+    
+    public abstract JPanel createWorkArea(JPanel userProcessContainer, 
+        UserAccount useraccount, 
+        Organization org, 
+        Enterprise enterprise, 
+        EcoSystem system);
 }
