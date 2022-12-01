@@ -250,7 +250,72 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        String userName = txtUsername.getText();
+        String welcomemsg = "Hello, ";
+        // Get Password
+        char[] passwordCharArray = txtPassword.getPassword();
+        String password = String.valueOf(passwordCharArray);
+       
+        if(userName.equals("")||password.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter username and password", "Warning", JOptionPane.WARNING_MESSAGE);
+             return;
+        }
         
+        UserAccount userAccount = system.getUserAccountDir().authenticateUser(userName, password);
+        Enterprise inEnterprise = null;
+        Organization inOrganization = null;
+        if (userAccount == null) {
+            //Step2: Go inside each network to check each enterprise
+            for (City city : system.getCityList()) {
+                //Step 2-a: Check against each enterprise
+                for (Enterprise enterprise : city.getEnterpriseDir().getEnterpriseList()) {
+                    userAccount = enterprise.getUserAccountDir().authenticateUser(userName, password);
+                    if (userAccount == null) {
+                        //Step3: Check against each organization inside that enterprise
+                        for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
+                            userAccount = organization.getUserAccountDir().authenticateUser(userName, password);
+                            if (userAccount != null) {
+                                inEnterprise = enterprise;
+                                inOrganization = organization;
+                                break;
+                            }
+                        }
+                    } else {
+                        inEnterprise = enterprise;
+                        break;
+                    }
+                    if (inOrganization != null) {
+                        break;
+                    }
+                }
+                if (inEnterprise != null) {
+                    break;
+                }
+            }
+        }
+
+        if (userAccount == null) {
+            JOptionPane.showMessageDialog(null, "Invalid Credentails!");
+            return;
+        } else {
+            mainScreenJPanel.setVisible(false);
+            containerJPanel.setVisible(true);
+            exitJPanel.setVisible(true);
+            if(userAccount.getName()==null){
+                welcomemsg=welcomemsg+ " " + userAccount.getEmployee().getName();
+            }
+            else{
+            welcomemsg=welcomemsg+ " " + userAccount.getName();
+            }
+            CardLayout layout = (CardLayout) containerJPanel.getLayout();
+            containerJPanel.add("workArea", userAccount.getRole().createWorkArea(containerJPanel, userAccount, inOrganization, inEnterprise, system));
+            lblWelcome.setText(welcomemsg);
+            layout.next(containerJPanel);
+        }
+      
+        txtPassword.setText("");
+        txtUsername.setText("");
+       
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
