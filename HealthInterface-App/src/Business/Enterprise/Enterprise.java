@@ -4,16 +4,27 @@
  */
 package Business.Enterprise;
 
+import Business.Organization.Organization;
+import Business.Organization.OrganizationDirectory;
+
 /**
  *
  * @author jazibjavaid
  */
-public class Enterprise {
+public class Enterprise extends Organization {
     private EnterpriseCategory enterpriseCategory;
+    private OrganizationDirectory orgDir = new OrganizationDirectory();
     
-    public Enterprise(EnterpriseCategory enterpriseCategory)
-    {
+    public Enterprise(EnterpriseCategory enterpriseCategory, String name, String contactNumber, String email, String address, String zipcode) {
+        super(name, contactNumber, email, address, zipcode);
         this.enterpriseCategory = enterpriseCategory;
+    }
+    
+    public OrganizationDirectory getOrganizationDirectory() {
+        if(orgDir == null){
+            orgDir = new OrganizationDirectory();
+        }
+        return orgDir;
     }
     
     public enum EnterpriseCategory{

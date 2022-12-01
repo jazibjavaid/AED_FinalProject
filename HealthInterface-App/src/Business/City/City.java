@@ -23,6 +23,10 @@ public class City {
     public String getName() {
         return name;
     }
+    
+    public EnterpriseDirectory getEnterpriseDir() {
+        return enterpriseDir;
+    }
 
     public void setName(String name) {
         this.name = name;
