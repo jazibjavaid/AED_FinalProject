@@ -124,7 +124,7 @@
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="33" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnNetwork" min="-2" pref="135" max="-2" attributes="0"/>
+                      <Component id="btnNetwork" min="-2" pref="104" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -147,7 +147,7 @@
                   <Font name=".SF NS Text" size="14" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Manage Network"/>
+                <Property name="text" type="java.lang.String" value="Manage City"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnNetworkMousePressed"/>

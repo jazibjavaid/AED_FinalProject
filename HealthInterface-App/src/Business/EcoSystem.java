@@ -24,6 +24,10 @@ public class EcoSystem extends Organization{
         return ecoSystem;
     }
     
+    public static void setInstance(EcoSystem system) {
+        ecoSystem = system;
+    }
+    
     private EcoSystem(){
         super(null);
         cityList=new ArrayList<>();

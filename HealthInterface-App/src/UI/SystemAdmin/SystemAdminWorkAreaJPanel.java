@@ -28,15 +28,19 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=system;
+        ManageCityJPanel cityJPanel=new ManageCityJPanel(workAreaJPanel,ecosystem);
+        workAreaJPanel.add("ManageCityJPanel", cityJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
         
     }
 
     void setColor(JPanel panel){
-        panel.setBackground(new Color(130,175,203));
+        panel.setBackground(new Color(253,135,124));
     }
     
     void resetColor(JPanel panel){
-         panel.setBackground(new Color(18,102,153));
+         panel.setBackground(new Color(253,218,207));
     }
     
     /**
@@ -108,7 +112,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         btnNetwork.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnNetwork.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnNetwork.setText("Manage Network");
+        btnNetwork.setText("Manage City");
         btnNetwork.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnNetworkMousePressed(evt);
@@ -125,7 +129,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btnNetwork_PanelLayout.setVerticalGroup(
@@ -205,7 +209,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         setColor(btnEnterprisePanel);
         resetColor(btnNetwork_Panel);
         resetColor(btnEnterPriseAdmin_JPanel);
-
     }//GEN-LAST:event_btnManageEntMousePressed
 
     private void btnEnterprisePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnterprisePanelMousePressed
@@ -218,6 +221,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         setColor(btnNetwork_Panel);
         resetColor(btnEnterprisePanel);
         resetColor(btnEnterPriseAdmin_JPanel);
+        ManageCityJPanel cityJPanel=new ManageCityJPanel(workAreaJPanel,ecosystem);
+        workAreaJPanel.add("ManageCityJPanel", cityJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnNetworkMousePressed
 
     private void btnEntAdminMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntAdminMousePressed

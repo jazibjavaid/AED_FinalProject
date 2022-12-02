@@ -6,6 +6,7 @@
 package healthinterface.app;
 
 import Business.City.City;
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -25,12 +26,15 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     
     private EcoSystem system;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     Organization inOrg;
     UserAccount ua;
     Enterprise inEnterprise;   
     City city;
     public MainJFrame() {
         initComponents();
+        system = dB4OUtil.retrieveSystem();
+        EcoSystem.setInstance(system);
         this.setSize(1132,594);
         this.containerJPanel.setVisible(false);
         this.exitJPanel.setVisible(false);
