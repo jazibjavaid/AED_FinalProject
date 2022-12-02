@@ -124,4 +124,9 @@ public class Organization {
         this.orgType = orgType;
     }
     
+    @Override
+    public String toString() {
+        return name;
+    }
+    
 }
