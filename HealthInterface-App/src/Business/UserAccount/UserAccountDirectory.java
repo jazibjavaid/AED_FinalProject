@@ -12,10 +12,18 @@ import java.util.ArrayList;
  * @author shantanutyagi
  */
 public class UserAccountDirectory {
-      private ArrayList<UserAccount> uaList = new ArrayList<>();
+    
+    private ArrayList<UserAccount> uaList = new ArrayList<>();
 
     public UserAccountDirectory() {
         
+    }
+    
+    public ArrayList<UserAccount> getUserAccountList() {
+        if(uaList==null){
+        uaList = new ArrayList<>();
+        }
+        return uaList;
     }
     
     public UserAccount authenticateUser(String username, String password){
