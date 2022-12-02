@@ -26,4 +26,12 @@ public class UserAccountDirectory {
         return null;
     }
     
+    public UserAccount addUserAccount(UserAccount userAccount) {
+        if(uaList==null){
+        uaList = new ArrayList<>();
+        }
+        uaList.add(userAccount);
+        return userAccount;
+    }
+    
 }
