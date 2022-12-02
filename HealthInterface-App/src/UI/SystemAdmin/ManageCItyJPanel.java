@@ -1,28 +1,49 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package UI.SystemAdmin;
+package ui.SystemAdmin;
 
 import Business.City.City;
 import Business.EcoSystem;
+import java.awt.Component;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author shantanutyagi
+ * @author jazibjavaid
  */
-public class ManageCItyJPanel extends javax.swing.JPanel {
+public class ManageCityJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ManageCItyJPanel
+     * Creates new form ManageNetworkJPanel
      */
-    
     private EcoSystem system;
-    public ManageCItyJPanel() {
+    private JPanel userProcessContainer;
+    public ManageCityJPanel(JPanel userProcessContainer,EcoSystem system) {
         initComponents();
+        this.system = system;
+        this.userProcessContainer=userProcessContainer;
+        populateNetworkTable();
+        networkJTable.setRowHeight(25);
+        networkJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
     }
 
+       public class HeaderColor extends DefaultTableCellRenderer {
+        public HeaderColor() {
+            setOpaque(true);
+        }
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
+            setBackground(new java.awt.Color(253,218,207));
+            return this;
+        }
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,25 +53,45 @@ public class ManageCItyJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblheadingNetwork = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        cityJTable = new javax.swing.JTable();
         lblName = new javax.swing.JLabel();
-        txtNetworkName = new javax.swing.JTextField();
         btnSubmit = new javax.swing.JButton();
+        txtNetworkName = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        networkJTable = new javax.swing.JTable();
+        lblheadingNetwork = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setAlignmentX(0.0F);
-        setAlignmentY(0.0F);
-        setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        setMinimumSize(new java.awt.Dimension(835, 379));
-        setPreferredSize(new java.awt.Dimension(835, 379));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblheadingNetwork.setBackground(new java.awt.Color(255, 255, 255));
-        lblheadingNetwork.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
-        lblheadingNetwork.setText("       Manage City");
+        lblName.setText("     City Name");
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 273, 103, 30));
 
-        cityJTable.setModel(new javax.swing.table.DefaultTableModel(
+        btnSubmit.setBackground(new java.awt.Color(18, 102, 153));
+        btnSubmit.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
+        btnSubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
+        btnSubmit.setText("Add New City");
+        btnSubmit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnSubmit.setContentAreaFilled(false);
+        btnSubmit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSubmitMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSubmitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSubmitMouseExited(evt);
+            }
+        });
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 190, 39));
+        add(txtNetworkName, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 273, 181, 30));
+
+        networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -58,7 +99,7 @@ public class ManageCItyJPanel extends javax.swing.JPanel {
                 {null}
             },
             new String [] {
-                "City Available"
+                "Cities Available"
             }
         ) {
             Class[] types = new Class [] {
@@ -76,75 +117,26 @@ public class ManageCItyJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        cityJTable.setSelectionBackground(new java.awt.Color(153, 153, 153));
-        jScrollPane1.setViewportView(cityJTable);
+        networkJTable.setSelectionBackground(new java.awt.Color(153, 153, 153));
+        jScrollPane1.setViewportView(networkJTable);
 
-        lblName.setText("City Name");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 85, 672, 148));
 
-        btnSubmit.setBackground(new java.awt.Color(18, 102, 153));
-        btnSubmit.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnSubmit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnSubmit.setContentAreaFilled(false);
-        btnSubmit.setLabel("Add New City");
-        btnSubmit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSubmitMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSubmitMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSubmitMouseExited(evt);
-            }
-        });
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSubmitActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(152, 152, 152)
-                                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(247, 247, 247)
-                                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(418, 418, 418)
-                        .addComponent(lblheadingNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(229, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(lblheadingNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNetworkName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(370, Short.MAX_VALUE))
-        );
-
-        lblName.getAccessibleContext().setAccessibleName("City Name");
-        btnSubmit.getAccessibleContext().setAccessibleName("Add New City");
+        lblheadingNetwork.setBackground(new java.awt.Color(255, 255, 255));
+        lblheadingNetwork.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
+        lblheadingNetwork.setText("          Manage City");
+        add(lblheadingNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 44, 244, 35));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+
+        String name = txtNetworkName.getText();
+
+        City city = system.createAndAddCity(name);
+        city.setName(name);
+
+        populateNetworkTable();
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnSubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseClicked
         // TODO add your handling code here:
@@ -165,19 +157,8 @@ public class ManageCItyJPanel extends javax.swing.JPanel {
         btnSubmit.setFocusPainted(false);
         btnSubmit.setBorderPainted(true);
     }//GEN-LAST:event_btnSubmitMouseExited
-
-    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-
-        String name = txtNetworkName.getText();
-
-        City network = system.createAndAddCity(name);
-        network.setName(name);
-
-        populateNetworkTable();
-    }//GEN-LAST:event_btnSubmitActionPerformed
-
-    private void populateNetworkTable() {
-        DefaultTableModel model = (DefaultTableModel) cityJTable.getModel();
+  private void populateNetworkTable() {
+        DefaultTableModel model = (DefaultTableModel) networkJTable.getModel();
 
         model.setRowCount(0);
         for (City city : system.getCityList()) {
@@ -187,12 +168,13 @@ public class ManageCItyJPanel extends javax.swing.JPanel {
         }
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubmit;
-    private javax.swing.JTable cityJTable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblheadingNetwork;
+    private javax.swing.JTable networkJTable;
     private javax.swing.JTextField txtNetworkName;
     // End of variables declaration//GEN-END:variables
 }

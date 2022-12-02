@@ -14,7 +14,19 @@ import java.util.ArrayList;
  */
 public class EcoSystem extends Organization{
     
+    private static EcoSystem ecoSystem;
     private ArrayList<City> cityList;
+    
+    public static EcoSystem getInstance(){
+        if(ecoSystem==null){
+            ecoSystem=new EcoSystem();
+        }
+        return ecoSystem;
+    }
+    
+    public static void setInstance(EcoSystem system) {
+        ecoSystem = system;
+    }
     
     private EcoSystem(){
         super(null);

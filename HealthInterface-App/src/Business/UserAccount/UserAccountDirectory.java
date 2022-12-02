@@ -18,4 +18,20 @@ public class UserAccountDirectory {
         
     }
     
+    public UserAccount authenticateUser(String username, String password){
+        for (UserAccount ua : uaList)
+            if (ua.getUsername().equals(username) && ua.getPassword().equals(password)){
+                return ua;
+            }
+        return null;
+    }
+    
+    public UserAccount addUserAccount(UserAccount userAccount) {
+        if(uaList==null){
+        uaList = new ArrayList<>();
+        }
+        uaList.add(userAccount);
+        return userAccount;
+    }
+    
 }

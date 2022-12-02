@@ -2,38 +2,39 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Business.City;
-
-import Business.Enterprise.EnterpriseDirectory;
+package Business.Employee;
 
 /**
  *
  * @author jazibjavaid
  */
-public class City {
-
-    private String name;
-    private EnterpriseDirectory enterpriseDir;
-
-    public City(String name) {
-        enterpriseDir = new EnterpriseDirectory();
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
+public class Employee {
     
-    public EnterpriseDirectory getEnterpriseDir() {
-        return enterpriseDir;
+    private String name;
+    private int id;
+
+    private static int count = 1;
+
+    public Employee() {
+        id = count;
+        count++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+     
+    public String getName() {
+        return name;
     }
 
     @Override
     public String toString() {
         return name;
     }
+    
 }

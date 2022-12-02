@@ -4,6 +4,8 @@
  */
 package Business.Organization;
 
+import Business.UserAccount.UserAccountDirectory;
+
 /**
  *
  * @author jazibjavaid
@@ -15,6 +17,7 @@ public class Organization {
     private String contactNumber;
     private String email;
     
+    private UserAccountDirectory accountDirectory;
     private int orgID;
     private static int counter=0;
     private OrgType orgType;
@@ -54,7 +57,13 @@ public class Organization {
     public Organization(String name) {
         this.name = name;
     }
-
+    
+    public UserAccountDirectory getUserAccountDir() {
+        if(accountDirectory==null){
+        accountDirectory = new UserAccountDirectory();
+        }
+        return accountDirectory;
+    }
     public String getName() {
         return name;
     }
