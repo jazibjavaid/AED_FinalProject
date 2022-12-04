@@ -8,6 +8,9 @@ package Business.Enterprise;
  *
  * @author jazibjavaid
  */
-public class TransportationEnterprise {
+public class TransportationEnterprise extends Enterprise {
     
+    public TransportationEnterprise(String name, String contactNumber, String email, String address, String zipcode) {
+        super(EnterpriseCategory.Transportation, name, contactNumber, email, address, zipcode);
+    }
 }

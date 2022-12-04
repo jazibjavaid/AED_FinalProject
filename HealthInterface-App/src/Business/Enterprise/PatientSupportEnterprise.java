@@ -8,6 +8,10 @@ package Business.Enterprise;
  *
  * @author jazibjavaid
  */
-public class PatientSupportEnterprise {
+public class PatientSupportEnterprise extends Enterprise {
+    
+    public PatientSupportEnterprise(String name, String contactNumber, String email, String address, String zipcode) {
+        super(EnterpriseCategory.PatientSupportServices, name, contactNumber, email, address, zipcode);
+    }
     
 }

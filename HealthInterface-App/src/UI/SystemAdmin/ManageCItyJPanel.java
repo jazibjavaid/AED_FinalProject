@@ -8,6 +8,7 @@ package ui.SystemAdmin;
 import Business.City.City;
 import Business.EcoSystem;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -55,7 +56,7 @@ public class ManageCityJPanel extends javax.swing.JPanel {
 
         lblName = new javax.swing.JLabel();
         btnSubmit = new javax.swing.JButton();
-        txtNetworkName = new javax.swing.JTextField();
+        txtCityName = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         networkJTable = new javax.swing.JTable();
         lblheadingNetwork = new javax.swing.JLabel();
@@ -66,7 +67,7 @@ public class ManageCityJPanel extends javax.swing.JPanel {
         lblName.setText("     City Name");
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 273, 103, 30));
 
-        btnSubmit.setBackground(new java.awt.Color(18, 102, 153));
+        btnSubmit.setBackground(new java.awt.Color(253, 135, 124));
         btnSubmit.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnSubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
         btnSubmit.setText("Add New City");
@@ -89,7 +90,7 @@ public class ManageCityJPanel extends javax.swing.JPanel {
             }
         });
         add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 190, 39));
-        add(txtNetworkName, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 273, 181, 30));
+        add(txtCityName, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 273, 181, 30));
 
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,13 +130,21 @@ public class ManageCityJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        
+        String name = txtCityName.getText();
+        
+        if(name.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "City missing. Please enter city name", "Validation Error !",
+                    JOptionPane.ERROR_MESSAGE); 
+        }
+        else{
+            City city = system.createAndAddCity(name);
+            city.setName(name);
 
-        String name = txtNetworkName.getText();
-
-        City city = system.createAndAddCity(name);
-        city.setName(name);
-
-        populateNetworkTable();
+            populateNetworkTable();
+            txtCityName.setText("");
+        }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnSubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseClicked
@@ -144,7 +153,7 @@ public class ManageCityJPanel extends javax.swing.JPanel {
 
     private void btnSubmitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseEntered
         // TODO add your handling code here:
-        btnSubmit.setBackground(new java.awt.Color(18,102,153));
+        btnSubmit.setBackground(new java.awt.Color(253,135,124));
         btnSubmit.setContentAreaFilled(true);
         btnSubmit.setFocusPainted(true);
         btnSubmit.setBorderPainted(false);
@@ -175,6 +184,6 @@ public class ManageCityJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblheadingNetwork;
     private javax.swing.JTable networkJTable;
-    private javax.swing.JTextField txtNetworkName;
+    private javax.swing.JTextField txtCityName;
     // End of variables declaration//GEN-END:variables
 }

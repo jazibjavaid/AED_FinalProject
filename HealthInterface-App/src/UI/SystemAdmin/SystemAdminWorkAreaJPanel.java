@@ -205,10 +205,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageEntMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManageEntMousePressed
         // TODO add your handling code here:
-        
+    
         setColor(btnEnterprisePanel);
         resetColor(btnNetwork_Panel);
         resetColor(btnEnterPriseAdmin_JPanel);
+        ManageEnterpriseJPanel enterpriseJPanel=new ManageEnterpriseJPanel(workAreaJPanel,ecosystem);
+        workAreaJPanel.add("ManageEnterpriseJPanel", enterpriseJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnManageEntMousePressed
 
     private void btnEnterprisePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnterprisePanelMousePressed
@@ -232,6 +236,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         setColor(btnEnterPriseAdmin_JPanel);
         resetColor(btnNetwork_Panel);
         resetColor(btnEnterprisePanel);
+        ManageEnterpriseAdminJPanel enterpriseAdminJPanel=new ManageEnterpriseAdminJPanel(workAreaJPanel,ecosystem);
+        workAreaJPanel.add("ManageEnterpriseAdminJPanel", enterpriseAdminJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnEntAdminMousePressed
 
 

@@ -13,10 +13,6 @@ import java.util.ArrayList;
 public class EnterpriseDirectory {
     private ArrayList<Enterprise> enterpriseList;
     
-    public EnterpriseDirectory(){
-        enterpriseList=new ArrayList<Enterprise>();
-    }
-
     public ArrayList<Enterprise> getEnterpriseList() {
         return enterpriseList;
     }
@@ -25,4 +21,28 @@ public class EnterpriseDirectory {
         this.enterpriseList = enterpriseList;
     }
     
+    public EnterpriseDirectory(){
+        enterpriseList=new ArrayList<Enterprise>();
+    }
+    
+    public Enterprise createAndAddEnterprise(String numOfBeds,String name,String contactNumber, String email, String address, String zipcode,Enterprise.EnterpriseCategory type){
+        Enterprise enterprise=null;
+        if(type==Enterprise.EnterpriseCategory.Hospital){
+            enterprise=new HospitalEnterprise(numOfBeds, name, contactNumber, email, address, zipcode);
+            enterpriseList.add(enterprise);
+        }
+        else if(type==Enterprise.EnterpriseCategory.PatientSupportServices){
+            enterprise=new PatientSupportEnterprise(name, contactNumber, email, address, zipcode);
+            enterpriseList.add(enterprise);
+        }
+        else if(type==Enterprise.EnterpriseCategory.TestingCenters){
+            enterprise=new TestingEnterprise(name, contactNumber, email, address, zipcode);
+            enterpriseList.add(enterprise);
+        }
+        else if(type==Enterprise.EnterpriseCategory.Transportation){
+            enterprise=new TransportationEnterprise(name, contactNumber, email, address, zipcode);
+            enterpriseList.add(enterprise);
+        }
+        return enterprise;
+    }
 }

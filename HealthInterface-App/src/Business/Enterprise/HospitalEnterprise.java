@@ -4,24 +4,26 @@
  */
 package Business.Enterprise;
 
+import Business.Role.Role;
+import java.util.ArrayList;
+
 /**
  *
  * @author jazibjavaid
  */
-public class HospitalEnterprise {
+public class HospitalEnterprise extends Enterprise {
     private String bedCount;
-
-    public HospitalEnterprise(String bedCount) {
+    
+    public HospitalEnterprise(String numberOfBeds, String name, String contactNumber, String email, String address, String zipcode) {
+        super(EnterpriseCategory.Hospital, name, contactNumber, email, address, zipcode);
         this.bedCount = bedCount;
     }
 
-    public String getBedCount() {
+    public String getNumberOfBeds() {
         return bedCount;
     }
 
-    public void setBedCount(String bedCount) {
+    public void setNumberOfBeds(String numberOfBeds) {
         this.bedCount = bedCount;
     }
-    
-    
 }
