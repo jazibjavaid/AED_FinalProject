@@ -8,8 +8,10 @@ package ui.SystemAdmin;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.City.City;
+import Business.Role.HospitalEntAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -273,8 +275,16 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
         String name = nameJTextField.getText();
-       
-//        
+        
+        if(enterprise.getEnterpriseCategory()!=null){
+            if(enterprise.getEnterpriseCategory().toString().equals("Hospital"))
+            {
+                UserAccount account=new UserAccount(username, password, name, new HospitalEntAdminRole());
+                enterprise.getUserAccountDir().addUserAccount(account);
+                JOptionPane.showMessageDialog(null, "User Account created successfully");
+                
+            }
+        }    
         populateTable();
 
     }//GEN-LAST:event_submitJButtonActionPerformed
