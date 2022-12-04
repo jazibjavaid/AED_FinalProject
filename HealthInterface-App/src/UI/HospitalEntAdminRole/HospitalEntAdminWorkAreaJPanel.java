@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
 
@@ -34,8 +35,12 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.useraccount=useraccount;
         this.org=org;
         this.system=system;
+        ManageHospEntOrgJPanel profileJPanel = new ManageHospEntOrgJPanel(workAreaJPanel,enterprise.getOrganizationDirectory());
+        workAreaJPanel.add("cabServiceDashboard", profileJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }
-          void setColor(JPanel panel){
+    void setColor(JPanel panel){
         panel.setBackground(new Color(253,135,124));
     }
     
@@ -149,9 +154,10 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnPatients_JPanelLayout.setVerticalGroup(
             btnPatients_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnPatients_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(btnPatients_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(btnPatients_JPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnManagePatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -172,10 +178,10 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
             btnEmployee_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnEmployee_PanelLayout.createSequentialGroup()
                 .addGroup(btnEmployee_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                     .addGroup(btnEmployee_PanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnManageEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+                        .addComponent(btnManageEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPatients_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -210,11 +216,14 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
         setColor(btnOrganization_Panel);
         resetColor(btnEmployee_Panel);
         resetColor(btnPatients_JPanel);
+        ManageHospEntOrgJPanel manageOrgJPanel=new ManageHospEntOrgJPanel(workAreaJPanel,enterprise.getOrganizationDirectory());
+        workAreaJPanel.add("ManageOrgJPanel", manageOrgJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnmgOrgMousePressed
 
     private void btnManageEmployeeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManageEmployeeMousePressed
         // TODO add your handling code here:
-
         setColor(btnEmployee_Panel);
         resetColor(btnOrganization_Panel);
         resetColor(btnPatients_JPanel);
