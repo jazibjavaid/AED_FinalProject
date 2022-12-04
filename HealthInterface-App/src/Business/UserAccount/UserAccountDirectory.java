@@ -42,4 +42,7 @@ public class UserAccountDirectory {
         return userAccount;
     }
     
+    public void removeUserAccount(UserAccount user) {
+        uaList.remove(user);
+    }
 }

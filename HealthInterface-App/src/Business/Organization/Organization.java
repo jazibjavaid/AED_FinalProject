@@ -4,6 +4,8 @@
  */
 package Business.Organization;
 
+import Business.Doctor.DoctorDirectory;
+import Business.Nurse.NurseDirectory;
 import Business.UserAccount.UserAccountDirectory;
 
 /**
@@ -18,6 +20,8 @@ public class Organization {
     private String email;
     
     private UserAccountDirectory accountDirectory;
+    private DoctorDirectory docDir;
+    private NurseDirectory nurDir;
     private int orgID;
     private static int counter=0;
     private OrgType orgType;
@@ -64,6 +68,25 @@ public class Organization {
         }
         return accountDirectory;
     }
+    
+    public DoctorDirectory getDocDir() {
+        if(docDir == null){
+            docDir=new DoctorDirectory();
+        }
+        return docDir;
+    }
+    
+    public NurseDirectory getNurDir() {
+        if(nurDir == null){
+            nurDir=new NurseDirectory();
+        }
+        return nurDir;
+    }
+
+    public void setNurDir(NurseDirectory nurDir) {
+        this.nurDir = nurDir;
+    }
+    
     public String getName() {
         return name;
     }

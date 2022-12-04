@@ -224,6 +224,10 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageEmployeeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManageEmployeeMousePressed
         // TODO add your handling code here:
+        ManageHospEntEmpJPanel manageEmpJPanel=new ManageHospEntEmpJPanel(system,workAreaJPanel,enterprise.getOrganizationDirectory(),enterprise);
+        workAreaJPanel.add("ManageEmpJPanel", manageEmpJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
         setColor(btnEmployee_Panel);
         resetColor(btnOrganization_Panel);
         resetColor(btnPatients_JPanel);
