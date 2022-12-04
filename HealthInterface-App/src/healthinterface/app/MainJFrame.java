@@ -323,7 +323,10 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-   
+        containerJPanel.removeAll();
+        containerJPanel.setVisible(false);
+        mainScreenJPanel.setVisible(true);     
+        exitJPanel.setVisible(false);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
@@ -331,7 +334,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
-        btnLogin.setBackground(new java.awt.Color(16,177,246));
+        btnLogin.setBackground(new java.awt.Color(253,135,124));
         btnLogin.setContentAreaFilled(true);
         btnLogin.setFocusPainted(true);
         btnLogin.setBorderPainted(false);
@@ -346,7 +349,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnRegisterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisterMouseEntered
         // TODO add your handling code here:
-        btnRegister.setBackground(new java.awt.Color(16,177,246));
+        btnRegister.setBackground(new java.awt.Color(253,135,124));
         btnRegister.setContentAreaFilled(true);
         btnRegister.setFocusPainted(true);
         btnRegister.setBorderPainted(false);
