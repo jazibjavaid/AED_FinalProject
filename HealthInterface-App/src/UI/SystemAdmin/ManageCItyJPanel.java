@@ -67,7 +67,7 @@ public class ManageCityJPanel extends javax.swing.JPanel {
         lblName.setText("     City Name");
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 273, 103, 30));
 
-        btnSubmit.setBackground(new java.awt.Color(18, 102, 153));
+        btnSubmit.setBackground(new java.awt.Color(253, 135, 124));
         btnSubmit.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnSubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
         btnSubmit.setText("Add New City");

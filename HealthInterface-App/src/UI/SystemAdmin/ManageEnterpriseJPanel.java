@@ -129,7 +129,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             }
         });
 
-        submitJButton.setBackground(new java.awt.Color(18, 102, 153));
+        submitJButton.setBackground(new java.awt.Color(253, 135, 124));
         submitJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/submit.png"))); // NOI18N
         submitJButton.setText("Submit");

@@ -129,7 +129,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        submitJButton.setBackground(new java.awt.Color(18, 102, 153));
+        submitJButton.setBackground(new java.awt.Color(253, 135, 124));
         submitJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/submit.png"))); // NOI18N
         submitJButton.setText("Submit");
@@ -184,7 +184,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                                     .addComponent(passwordJPasswordField)
                                     .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(submitJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(179, 179, 179))))
                     .addGroup(layout.createSequentialGroup()

@@ -96,7 +96,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         txtPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
-        btnLogin.setBackground(new java.awt.Color(18, 102, 153));
+        btnLogin.setBackground(new java.awt.Color(253, 135, 124));
         btnLogin.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnLogin.setText("LOGIN");
         btnLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -118,7 +118,7 @@ public class MainJFrame extends javax.swing.JFrame {
         lblUsername.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         lblUsername.setText("USERNAME");
 
-        btnRegister.setBackground(new java.awt.Color(18, 102, 153));
+        btnRegister.setBackground(new java.awt.Color(253, 135, 124));
         btnRegister.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnRegister.setText("REGISTER");
         btnRegister.setBorder(javax.swing.BorderFactory.createEtchedBorder());
