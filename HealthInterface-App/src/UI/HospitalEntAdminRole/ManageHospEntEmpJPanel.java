@@ -55,7 +55,7 @@ public class ManageHospEntEmpJPanel extends javax.swing.JPanel {
         }
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-           setBackground(new java.awt.Color(253,218,207));
+            setBackground(new java.awt.Color(253,218,207));
             return this;
         }
 
@@ -240,7 +240,7 @@ public class ManageHospEntEmpJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         jLabel2.setText("Name");
 
-        addJButton.setBackground(new java.awt.Color(253, 135, 207));
+        addJButton.setBackground(new java.awt.Color(253, 135, 124));
         addJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
         addJButton.setText("Create");
@@ -476,13 +476,27 @@ public class ManageHospEntEmpJPanel extends javax.swing.JPanel {
         }
         
         if(organization.getOrgType().getValue().equals("Doctor Organization")){
-            
+            Doctor doc=new Doctor(degree, ent.getName(), null, yearsExp, name, null, gender, address, zipcode, contactNumber, email,username,password, new DoctorRole(), organization);
+            organization.getDocDir().addDoctor(doc);
+            organization.getUserAccountDir().addUserAccount(doc);
+            populateDoctorTable();
         }
         if(organization.getOrgType().getValue().equals("Nurse Organization")){
-           
+            Nurse nur=new Nurse(degree, ent.getName(), null, yearsExp, null, null, name, null, gender, address, zipcode, contactNumber, email,username,password, new NurseRole(), organization);
+            organization.getNurDir().addNurse(nur);
+            organization.getUserAccountDir().addUserAccount(nur);
+            populateDoctorTable();
         }
        
-        
+        nameJTextField.setText("");
+        txtDegree.setText("");
+        txtExperience.setText("");
+        txtAddress.setText("");
+        txtZipCode.setText("");
+        txtContactNo.setText("");
+        txtEmail.setText("");
+        txtuserName.setText("");
+        txtpassword.setText("");
 
     }//GEN-LAST:event_addJButtonActionPerformed
 
@@ -525,7 +539,7 @@ public class ManageHospEntEmpJPanel extends javax.swing.JPanel {
         
         Organization org = (Organization)organizationDoctorJTable.getValueAt(row, 6);
         if(org.toString().equalsIgnoreCase("Doctor Organization")){
-             Doctor d=(Doctor)organizationDoctorJTable.getValueAt(row, 0);
+            Doctor d=(Doctor)organizationDoctorJTable.getValueAt(row, 0);
             org.getDocDir().removeDoctor(d);
             org.getUserAccountDir().removeUserAccount(d);
         }else {
@@ -538,7 +552,7 @@ public class ManageHospEntEmpJPanel extends javax.swing.JPanel {
 
     private void btnRemoveDoctorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveDoctorMouseEntered
         // TODO add your handling code here:
-        btnRemoveDoctor.setBackground(new java.awt.Color(18,102,153));
+        btnRemoveDoctor.setBackground(new java.awt.Color(253,135,124));
         btnRemoveDoctor.setContentAreaFilled(true);
         btnRemoveDoctor.setFocusPainted(true);
         btnRemoveDoctor.setBorderPainted(false);
@@ -554,7 +568,7 @@ public class ManageHospEntEmpJPanel extends javax.swing.JPanel {
 
     private void addJButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addJButtonMouseEntered
         // TODO add your handling code here:
-        addJButton.setBackground(new java.awt.Color(18,102,153));
+        addJButton.setBackground(new java.awt.Color(253,135,124));
         addJButton.setContentAreaFilled(true);
         addJButton.setFocusPainted(true);
         addJButton.setBorderPainted(false);
