@@ -6,6 +6,7 @@ package Business;
 
 import Business.City.City;
 import Business.Organization.Organization;
+import Business.RegisteredUser.RegisteredUserDirectory;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +17,7 @@ public class EcoSystem extends Organization{
     
     private static EcoSystem ecoSystem;
     private ArrayList<City> cityList;
+    private RegisteredUserDirectory registeredUserDirectory;
     
     public static EcoSystem getInstance(){
         if(ecoSystem==null){
@@ -47,5 +49,11 @@ public class EcoSystem extends Organization{
         this.cityList = cityList;
     }
     
-    
+    public RegisteredUserDirectory getRegisteredUserDirectory() {
+        if(registeredUserDirectory==null){
+            registeredUserDirectory=new RegisteredUserDirectory();
+        }
+       
+        return registeredUserDirectory;
+    }
 }
