@@ -23,7 +23,7 @@ public class Doctor extends Business.Person.Person{
     private int id;
     private static final AtomicInteger count = new AtomicInteger(0);
     
-     public Doctor(String degree, String hospital, String designation, String yearsExperience, String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username,String password, Role role, Organization orgType) {
+     public Doctor(String degree, String hospital, String designation, String yearsExperience, String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username,String password, Role role, Organization orgCategory) {
         super(fullName, dob, gender, address, zipcode, contactNumber, email,username,password, role);
         this.degree = degree;
         this.hospital = hospital;

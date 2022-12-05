@@ -100,7 +100,7 @@ public class Nurse extends Business.Person.Person{
         this.patientAssigned = patientAssigned;
     }
     
-    public Nurse(String degree, String hospital, String designation, String yearsExperience, Boolean availability, ArrayList<RegisteredUser> patientAssigned, String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username,String password, Role role,Organization orgType) {
+    public Nurse(String degree, String hospital, String designation, String yearsExperience, Boolean availability, ArrayList<RegisteredUser> patientAssigned, String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username,String password, Role role,Organization orgCategory) {
         super(fullName, dob, gender, address, zipcode, contactNumber, email,username,password, role);
         this.degree = degree;
         this.hospital = hospital;
