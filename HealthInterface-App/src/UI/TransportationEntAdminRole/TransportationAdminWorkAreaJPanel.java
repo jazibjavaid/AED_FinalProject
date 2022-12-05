@@ -4,6 +4,10 @@
  */
 package UI.TransportationEntAdminRole;
 
+import java.awt.CardLayout;
+import java.awt.Color;
+import javax.swing.JPanel;
+
 /**
  *
  * @author yuktachikate
@@ -15,6 +19,14 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     public TransportationAdminWorkAreaJPanel() {
         initComponents();
+    }
+    
+     void setColor(JPanel panel){
+        panel.setBackground(new Color(130,175,203));
+    }
+    
+    void resetColor(JPanel panel){
+         panel.setBackground(new Color(18,102,153));
     }
 
     /**
@@ -37,13 +49,12 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(18, 102, 153));
+        jPanel1.setBackground(new java.awt.Color(253, 218, 207));
 
-        btnOrganization_Panel.setBackground(new java.awt.Color(130, 175, 203));
+        btnOrganization_Panel.setBackground(new java.awt.Color(253, 135, 124));
         btnOrganization_Panel.setToolTipText("");
 
         btnmgOrg.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnmgOrg.setForeground(new java.awt.Color(255, 255, 255));
         btnmgOrg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnmgOrg.setText("Manage Organization");
         btnmgOrg.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -51,6 +62,8 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnmgOrgMousePressed(evt);
             }
         });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/org.png"))); // NOI18N
 
         javax.swing.GroupLayout btnOrganization_PanelLayout = new javax.swing.GroupLayout(btnOrganization_Panel);
         btnOrganization_Panel.setLayout(btnOrganization_PanelLayout);
@@ -72,7 +85,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        btnEmployee_Panel.setBackground(new java.awt.Color(18, 102, 153));
+        btnEmployee_Panel.setBackground(new java.awt.Color(253, 135, 124));
         btnEmployee_Panel.setToolTipText("");
         btnEmployee_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -81,7 +94,6 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnManageEmployee.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnManageEmployee.setForeground(new java.awt.Color(255, 255, 255));
         btnManageEmployee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnManageEmployee.setText("Manage Employee");
         btnManageEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,6 +101,8 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageEmployeeMousePressed(evt);
             }
         });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/userp.png"))); // NOI18N
 
         javax.swing.GroupLayout btnEmployee_PanelLayout = new javax.swing.GroupLayout(btnEmployee_Panel);
         btnEmployee_Panel.setLayout(btnEmployee_PanelLayout);
@@ -136,10 +150,18 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnmgOrgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmgOrgMousePressed
         // TODO add your handling code here
+        setColor(btnOrganization_Panel);
+        resetColor(btnEmployee_Panel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnmgOrgMousePressed
 
     private void btnManageEmployeeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManageEmployeeMousePressed
         // TODO add your handling code here:
+         setColor(btnEmployee_Panel);
+        resetColor(btnOrganization_Panel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnManageEmployeeMousePressed
 
     private void btnEmployee_PanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployee_PanelMousePressed
