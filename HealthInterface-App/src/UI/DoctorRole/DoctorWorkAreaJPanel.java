@@ -33,12 +33,22 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     EcoSystem system;
     public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
        
+        try{
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.enterprise=enterprise;
         this.useraccount=useraccount;
         this.org=org;
         this.system=system;
+        
+        ManageDoctorProfileJPanel profileJPanel = new ManageDoctorProfileJPanel(workAreaJPanel,enterprise,useraccount,system);
+        workAreaJPanel.add("deliveryManDashboard", profileJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
+        } 
+        catch (ParseException ex) {
+            Logger.getLogger(DoctorWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
@@ -179,6 +189,16 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         setColor(btnProfile_Panel);
         resetColor(btnAssignedReq_JPanel);
+        try {
+            // TODO add your handling code here:
+            ManageDoctorProfileJPanel managedoctorProfileJPanel=new ManageDoctorProfileJPanel(workAreaJPanel,enterprise,useraccount,system);
+            workAreaJPanel.add("UserProfileJPanel", managedoctorProfileJPanel);
+            CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+            layout.next(workAreaJPanel);
+        } 
+        catch (ParseException ex) {
+            Logger.getLogger(DoctorWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
     }//GEN-LAST:event_btnProfileMousePressed
 
