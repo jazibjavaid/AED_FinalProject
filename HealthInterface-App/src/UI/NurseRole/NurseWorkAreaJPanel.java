@@ -34,12 +34,22 @@ public class NurseWorkAreaJPanel extends javax.swing.JPanel {
     EcoSystem system;
     public NurseWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
         
+        try{
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.enterprise=enterprise;
         this.useraccount=useraccount;
         this.org=org;
         this.system=system;
+        
+        ManageNurseProfile profileJPanel = new ManageNurseProfile(workAreaJPanel,enterprise,useraccount,system);
+        workAreaJPanel.add("cabServiceDashboard", profileJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
+        } 
+        catch (ParseException ex) {
+            Logger.getLogger(NurseWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
@@ -282,11 +292,18 @@ public class NurseWorkAreaJPanel extends javax.swing.JPanel {
     private void btnProfileMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfileMousePressed
         // TODO add your handling code here:
         setColor(btnProfile_Panel);
-   
         resetColor(btnAmbulance_JPanel);
-   
         resetColor(btnAssignedRequest_JPanel);
         resetColor(btnCabService_JPanel);
+        try {
+            ManageNurseProfile managenurseProfileJPanel=new ManageNurseProfile(workAreaJPanel,enterprise,useraccount,system);
+            workAreaJPanel.add("NurseProfileJPanel", managenurseProfileJPanel);
+            CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+            layout.next(workAreaJPanel);
+        } 
+        catch (ParseException ex) {
+            Logger.getLogger(NurseWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
          
     }//GEN-LAST:event_btnProfileMousePressed
 
