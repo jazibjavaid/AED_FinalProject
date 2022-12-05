@@ -4,6 +4,10 @@
  */
 package UI.TransportationEntAdminRole;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
@@ -17,8 +21,20 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form TransportationAdminWorkAreaJPanel
      */
-    public TransportationAdminWorkAreaJPanel() {
+    JPanel userProcessContainer;
+    Enterprise enterprise;
+    UserAccount useraccount;
+    Organization org;
+    EcoSystem system;
+    public TransportationAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.enterprise=enterprise;
+        this.useraccount=useraccount;
+        this.org=org;
+        this.system=system;
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }
     
      void setColor(JPanel panel){
