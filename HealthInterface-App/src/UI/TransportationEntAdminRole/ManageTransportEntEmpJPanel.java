@@ -4,8 +4,10 @@
  */
 package UI.TransportationEntAdminRole;
 
+import Business.AmbulanceDriver.AmbulanceDriver;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,6 +39,41 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
         
         for (Organization organization : organizationDir.getOrgList()){
             organizationEmpJComboBox.addItem(organization);
+        }
+    }
+    
+    private void populateCabServiceTable(){
+        DefaultTableModel model = (DefaultTableModel) organizationCabJTable.getModel();
+        
+        model.setRowCount(0);
+        for(Organization org:organizationDir.getOrgList()){
+        for (CabDriver cd : org.getCabDriverDir().getCabDriverDirectory()){
+            Object[] row = new Object[6];
+            row[0] = cd;         
+            row[1] = cd.getAddress();
+            row[2] = cd.getZipcode();
+            row[3] = cd.getContactNumber();
+            row[4] = cd.getEmail();
+            row[5] = cd.getLicenseNumber();
+            model.addRow(row);
+        }
+        }
+    }
+     private void populateAmbulanceServiceTable(){
+        DefaultTableModel model = (DefaultTableModel) organizationAmbulanceJTable.getModel();
+        
+        model.setRowCount(0);
+        for(Organization org:organizationDir.getOrgList()){
+        for (AmbulanceDriver amb : org.getAmbulanceDriverDir().getambulanceDriverDirectory()){
+            Object[] row = new Object[6];
+            row[0] = amb;          
+            row[1] = amb.getAddress();
+            row[2] = amb.getZipcode();
+            row[3] = amb.getContactNumber();
+            row[4] = amb.getEmail();
+            row[5] = amb.getLicenseNumber();
+            model.addRow(row);
+        }
         }
     }
 
