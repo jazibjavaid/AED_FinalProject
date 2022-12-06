@@ -33,12 +33,22 @@ public class UserWorkAreaJPanel extends javax.swing.JPanel {
     EcoSystem system;
     public UserWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
         
+        try{
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.enterprise=enterprise;
         this.useraccount=useraccount;
         this.org=org;
         this.system=system;
+        
+        ManageProfileJPanel profileJPanel = new ManageProfileJPanel(workAreaJPanel,enterprise,useraccount,system);
+        workAreaJPanel.add("cabServiceDashboard", profileJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
+        }
+        catch (ParseException ex) {
+            Logger.getLogger(UserWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
@@ -201,32 +211,36 @@ public class UserWorkAreaJPanel extends javax.swing.JPanel {
     private void btnProfileMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfileMousePressed
         // TODO add your handling code here:
         setColor(btnProfile_Panel);
-
         resetColor(btnAmbulance_JPanel);
-
         resetColor(btnCosultDoc_JPanel);
-        
+        try {
+            ManageProfileJPanel manageuserProfileJPanel=new ManageProfileJPanel(workAreaJPanel,enterprise,useraccount,system);
+            workAreaJPanel.add("UserProfileJPanel", manageuserProfileJPanel);
+            CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+            layout.next(workAreaJPanel);
+        } 
+        catch (ParseException ex) {
+            Logger.getLogger(UserWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnProfileMousePressed
 
     private void btnConsultDocMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultDocMousePressed
         // TODO add your handling code here:
         setColor(btnCosultDoc_JPanel);
- 
         resetColor(btnAmbulance_JPanel);
-
         resetColor(btnProfile_Panel);
-        
+        RequestDoctorAppointmentJPanel requestDoctorAppointmentJPanel=new RequestDoctorAppointmentJPanel(workAreaJPanel,enterprise,useraccount,system);
+        workAreaJPanel.add("DoctorAppointmentJPanel", requestDoctorAppointmentJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
         
     }//GEN-LAST:event_btnConsultDocMousePressed
 
     private void btnAmbulanceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAmbulanceMousePressed
         // TODO add your handling code here:
         setColor(btnAmbulance_JPanel);
-       
         resetColor(btnCosultDoc_JPanel);
-     
         resetColor(btnProfile_Panel);
-        
     }//GEN-LAST:event_btnAmbulanceMousePressed
 
     private void btnCosultDoc_JPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCosultDoc_JPanelMousePressed

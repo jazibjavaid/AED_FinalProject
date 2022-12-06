@@ -3,56 +3,76 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.HospitalEntAdminRole;
+package ui.NurseRole;
 
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Nurse.Nurse;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkProcess.HealthRequest;
+import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author amishagupta
  */
-public class HospitalAssignedRequests extends javax.swing.JPanel {
+public class NurseAssignedRequest extends javax.swing.JPanel {
 
     /**
      * Creates new form PatientManagerAssignDocJPanel
      */
     private UserAccount useraccount;
     private EcoSystem system;
+    private Nurse nurse;
     private Enterprise enterprise;
     private Organization organization;
     private JPanel userProcessContainer;
-    
-    public HospitalAssignedRequests(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, Organization organization) {
+    private HealthRequest req;
+    public NurseAssignedRequest(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, Organization organization) {
         initComponents();
         this.useraccount=account;
         this.system=system;
         this.enterprise = enterprise;
         this.organization = organization;
         this.userProcessContainer = userProcessContainer;
+        String username = useraccount.getUsername();
+        nurse =organization.getNurDir().findNurse(username);
         SubmittedrequestsJTable.setRowHeight(25);
         SubmittedrequestsJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
         populateRequestTable();
     }
-    public class HeaderColor extends DefaultTableCellRenderer {
+     public class HeaderColor extends DefaultTableCellRenderer {
         public HeaderColor() {
             setOpaque(true);
         }
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-            setBackground(new java.awt.Color(253,218,207));
+            setBackground(new java.awt.Color(18,102,153));
             return this;
         }
     }
     public void populateRequestTable() {
-        
+        DefaultTableModel model = (DefaultTableModel) SubmittedrequestsJTable.getModel();
+        model.setRowCount(0);
+            for(HealthRequest req : nurse.getRequestDirectory().getRequestList()){
+            Object[] row = new Object[6];
+            row[0] = req;
+            row[1] = req.getUser().getName();
+            row[2] = req.getPatientManager()==null?"Not Assigned":req.getPatientManager().getName();
+            row[3] = req.getDoctor()==null?"Not Assigned":req.getDoctor().getName();
+            row[4] = req.getHospital()==null?"Not Assigned": req.getHospital().getName();
+            row[5] = req.getStatus();
+            model.addRow(row);
+        }
    
     }
     /**
@@ -79,7 +99,7 @@ public class HospitalAssignedRequests extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Request ID", "Requester's Name", "Patient Manager", "Doctor Assigned", "Nurse Assigned", "Request Status"
+                "Request ID", "Requester's Name", "Patient Manager", "Doctor Assigned", "Hospital Assigned", "Request Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -98,11 +118,11 @@ public class HospitalAssignedRequests extends javax.swing.JPanel {
             }
         });
         SubmittedrequestsJTable.setRequestFocusEnabled(false);
-        SubmittedrequestsJTable.setSelectionBackground(new java.awt.Color(153, 153, 153));
+        SubmittedrequestsJTable.setSelectionBackground(new java.awt.Color(235, 227, 126));
         DoctorScrollPane.setViewportView(SubmittedrequestsJTable);
 
         jLabel1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
-        jLabel1.setText("User's Requests");
+        jLabel1.setText("Assigned Requests");
 
         viewDetails.setBackground(new java.awt.Color(253, 135, 124));
         viewDetails.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
@@ -128,15 +148,15 @@ public class HospitalAssignedRequests extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(viewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(460, 460, 460)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(42, 42, 42)
-                            .addComponent(DoctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 939, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DoctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 939, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(460, 460, 460)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -147,15 +167,13 @@ public class HospitalAssignedRequests extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(DoctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(viewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(313, Short.MAX_VALUE))
+                .addComponent(viewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(310, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsActionPerformed
         // TODO add your handling code here:
-        
-        
     }//GEN-LAST:event_viewDetailsActionPerformed
 
     private void viewDetailsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDetailsMouseEntered
@@ -165,7 +183,6 @@ public class HospitalAssignedRequests extends javax.swing.JPanel {
         viewDetails.setFocusPainted(true);
         viewDetails.setBorderPainted(false);
         viewDetails.setOpaque(true);
-        
     }//GEN-LAST:event_viewDetailsMouseEntered
 
     private void viewDetailsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDetailsMouseExited

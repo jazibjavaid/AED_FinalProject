@@ -43,4 +43,14 @@ public class DoctorDirectory {
         }
         return false;
     }
+    
+    public Doctor findDoctor(String username){
+        Doctor doc = null;
+        for(Doctor d: doctorDirectory){
+            if(d.getUsername().equalsIgnoreCase(username)){
+            doc=d;
+            }
+        }
+        return doc;
+    }
 }

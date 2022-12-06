@@ -33,12 +33,22 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     EcoSystem system;
     public DoctorWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
        
+        try{
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.enterprise=enterprise;
         this.useraccount=useraccount;
         this.org=org;
         this.system=system;
+        
+        ManageDoctorProfileJPanel profileJPanel = new ManageDoctorProfileJPanel(workAreaJPanel,enterprise,useraccount,system);
+        workAreaJPanel.add("deliveryManDashboard", profileJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
+        } 
+        catch (ParseException ex) {
+            Logger.getLogger(DoctorWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
@@ -179,6 +189,16 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         setColor(btnProfile_Panel);
         resetColor(btnAssignedReq_JPanel);
+        try {
+            // TODO add your handling code here:
+            ManageDoctorProfileJPanel managedoctorProfileJPanel=new ManageDoctorProfileJPanel(workAreaJPanel,enterprise,useraccount,system);
+            workAreaJPanel.add("UserProfileJPanel", managedoctorProfileJPanel);
+            CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+            layout.next(workAreaJPanel);
+        } 
+        catch (ParseException ex) {
+            Logger.getLogger(DoctorWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
     }//GEN-LAST:event_btnProfileMousePressed
 
@@ -186,6 +206,10 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         setColor(btnAssignedReq_JPanel);
         resetColor(btnProfile_Panel);
+        DoctorAssignedRequests doctorAssignedRequests=new DoctorAssignedRequests(workAreaJPanel,enterprise,useraccount,system, org);
+        workAreaJPanel.add("viewAllRequestJPanel", doctorAssignedRequests);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnassignedRequestsMousePressed
 
     private void btnAssignedReq_JPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssignedReq_JPanelMousePressed

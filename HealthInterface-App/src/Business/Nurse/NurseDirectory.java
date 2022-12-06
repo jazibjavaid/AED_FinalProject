@@ -36,11 +36,18 @@ public class NurseDirectory {
         if(n.getId() == nurse.getId()){
             nurseDirectory.remove(n);
             return true;
+            }
         }
-       
-        
+        return false;
     }
-    return false;
     
+    public Nurse findNurse(String username){
+        Nurse nurse = null;
+        for(Nurse d: nurseDirectory){
+            if(d.getUsername().equalsIgnoreCase(username)){
+            nurse=d;
+            }
+        }
+        return nurse;
     }
 }

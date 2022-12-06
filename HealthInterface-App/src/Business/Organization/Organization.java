@@ -7,6 +7,7 @@ package Business.Organization;
 import Business.Doctor.DoctorDirectory;
 import Business.Nurse.NurseDirectory;
 import Business.UserAccount.UserAccountDirectory;
+import Business.WorkProcess.HealthRequestDirectory;
 
 /**
  *
@@ -25,6 +26,8 @@ public class Organization {
     private int orgID;
     private static int counter=0;
     private OrgType orgType;
+    
+    private HealthRequestDirectory requestDirectory = new HealthRequestDirectory();
     
     public enum OrgType{
         Doctor("Doctor Organization"),
@@ -145,6 +148,13 @@ public class Organization {
 
     public void setOrgType(OrgType orgType) {
         this.orgType = orgType;
+    }
+    
+    public HealthRequestDirectory getRequestDirectory() {
+        if(requestDirectory == null){
+            requestDirectory = new HealthRequestDirectory();
+        }
+        return requestDirectory;
     }
     
     @Override
