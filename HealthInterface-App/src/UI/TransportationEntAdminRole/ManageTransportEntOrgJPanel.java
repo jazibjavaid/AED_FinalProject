@@ -8,6 +8,7 @@ import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import java.awt.Component;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -23,9 +24,14 @@ public class ManageTransportEntOrgJPanel extends javax.swing.JPanel {
      */
     
     private OrganizationDirectory directory;
+     private JPanel userProcessContainer;
+
 
     public ManageTransportEntOrgJPanel() {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.directory = directory;
         
         populateTable();
         populateCombo();
