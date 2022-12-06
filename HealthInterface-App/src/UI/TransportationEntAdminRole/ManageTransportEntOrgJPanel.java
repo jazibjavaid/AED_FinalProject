@@ -4,6 +4,13 @@
  */
 package UI.TransportationEntAdminRole;
 
+import Business.Organization.Organization;
+import Business.Organization.OrganizationDirectory;
+import java.awt.Component;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author yuktachikate
@@ -13,8 +20,48 @@ public class ManageTransportEntOrgJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageTransportEntOrgJPanel
      */
+    
+    private OrganizationDirectory directory;
+
     public ManageTransportEntOrgJPanel() {
         initComponents();
+        
+        populateTable();
+        populateCombo();
+        organizationJTable.setRowHeight(25);
+        organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
+    }
+    
+    public class HeaderColor extends DefaultTableCellRenderer {
+        public HeaderColor() {
+            setOpaque(true);
+        }
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
+           setBackground(new java.awt.Color(18,102,153));
+            return this;
+        }
+
+    }
+    
+    private void populateCombo(){
+        organizationJComboBox.removeAllItems();
+        organizationJComboBox.addItem(Organization.OrgType.CabProvider);
+        organizationJComboBox.addItem(Organization.OrgType.AmbulanceProvider);
+       
+    }
+
+    private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for (Organization organization : directory.getOrgList()){
+            Object[] row = new Object[2];
+            row[0] = organization.getName();
+            row[1] = organization.getOrgType().getValue();
+            model.addRow(row);
+        }
     }
 
     /**
