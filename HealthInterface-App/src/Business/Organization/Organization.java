@@ -6,6 +6,7 @@ package Business.Organization;
 
 import Business.Doctor.DoctorDirectory;
 import Business.Nurse.NurseDirectory;
+import Business.PatientManager.PatientManagerDirectory;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkProcess.HealthRequestDirectory;
 
@@ -23,6 +24,7 @@ public class Organization {
     private UserAccountDirectory accountDirectory;
     private DoctorDirectory docDir;
     private NurseDirectory nurDir;
+    private PatientManagerDirectory patientManagerDir;
     private int orgID;
     private static int counter=0;
     private OrgType orgType;
@@ -148,6 +150,22 @@ public class Organization {
 
     public void setOrgType(OrgType orgType) {
         this.orgType = orgType;
+    }
+
+    public UserAccountDirectory getAccountDirectory() {
+        return accountDirectory;
+    }
+
+    public void setAccountDirectory(UserAccountDirectory accountDirectory) {
+        this.accountDirectory = accountDirectory;
+    }
+
+    public PatientManagerDirectory getPatientManagerDir() {
+        return patientManagerDir;
+    }
+
+    public void setPatientManagerDir(PatientManagerDirectory patientManagerDir) {
+        this.patientManagerDir = patientManagerDir;
     }
     
     public HealthRequestDirectory getRequestDirectory() {
