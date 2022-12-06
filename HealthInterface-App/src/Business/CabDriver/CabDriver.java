@@ -27,4 +27,49 @@ public class CabDriver extends Business.Person.Person {
        this.id=count.incrementAndGet(); 
     }
     
+    public String getLicenseNumber() {
+        return licenseNumber;
+    }
+
+    public void setLicenseNumber(String licenseNumber) {
+        this.licenseNumber = licenseNumber;
+    }
+
+    public String getValStartDate() {
+        return valStartDate;
+    }
+
+    public void setValStartDate(String valStartDate) {
+        this.valStartDate = valStartDate;
+    }
+
+    public String getValEndDate() {
+        return valEndDate;
+    }
+
+    public void setValEndDate(String valEndDate) {
+        this.valEndDate = valEndDate;
+    }
+
+    public String getDriverType() {
+        return driverType;
+    }
+
+    public void setDriverType(String driverType) {
+        this.driverType = driverType;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+       return getName();
+    }
+    
 }
