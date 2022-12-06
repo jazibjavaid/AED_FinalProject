@@ -7,6 +7,7 @@ package UI.TransportationEntAdminRole;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -216,7 +217,14 @@ public class ManageTransportEntOrgJPanel extends javax.swing.JPanel {
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
-    
+        Organization.OrgType type = (Organization.OrgType) organizationJComboBox.getSelectedItem();
+          String name=txtOrgName.getText();
+       if("".equals(name)){
+            JOptionPane.showMessageDialog(null, "Please enter organization name");
+            return;
+       }
+       directory.createOrg(type,name);
+        populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 
 
