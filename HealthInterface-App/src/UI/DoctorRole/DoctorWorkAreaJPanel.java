@@ -206,6 +206,10 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         setColor(btnAssignedReq_JPanel);
         resetColor(btnProfile_Panel);
+        DoctorAssignedRequests doctorAssignedRequests=new DoctorAssignedRequests(workAreaJPanel,enterprise,useraccount,system, org);
+        workAreaJPanel.add("viewAllRequestJPanel", doctorAssignedRequests);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnassignedRequestsMousePressed
 
     private void btnAssignedReq_JPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssignedReq_JPanelMousePressed

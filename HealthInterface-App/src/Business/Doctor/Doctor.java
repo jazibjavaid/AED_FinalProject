@@ -6,6 +6,7 @@ package Business.Doctor;
 
 import Business.Organization.Organization;
 import Business.Role.Role;
+import Business.WorkProcess.HealthRequestDirectory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -22,6 +23,7 @@ public class Doctor extends Business.Person.Person{
     private Boolean availability;
     private int id;
     private static final AtomicInteger count = new AtomicInteger(0);
+    private HealthRequestDirectory requestDirectory;
     
      public Doctor(String degree, String hospital, String designation, String yearsExperience, String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username,String password, Role role, Organization orgCategory) {
         super(fullName, dob, gender, address, zipcode, contactNumber, email,username,password, role);
@@ -89,4 +91,10 @@ public class Doctor extends Business.Person.Person{
         this.id = id;
     }
     
+    public HealthRequestDirectory getRequestDirectory() {
+        if(requestDirectory==null){
+            requestDirectory = new HealthRequestDirectory();
+        }
+        return requestDirectory;
+    }
 }
