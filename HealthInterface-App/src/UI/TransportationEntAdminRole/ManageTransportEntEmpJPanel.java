@@ -5,8 +5,10 @@
 package UI.TransportationEntAdminRole;
 
 import Business.AmbulanceDriver.AmbulanceDriver;
+import Business.CabDriver.CabDriver;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -470,6 +472,23 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
 
     private void btnRemoveCabServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveCabServiceActionPerformed
         // TODO add your handling code here:
+        int row = organizationCabJTable.getSelectedRow();
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        CabDriver cd=(CabDriver)organizationCabJTable.getValueAt(row, 0);
+        
+       for(int i=0;i<organizationDir.getOrgList().size();i++){
+           Organization o= organizationDir.getOrgList().get(i);
+           Boolean success=o.getCabDriverDir().removeCabDriver(cd);
+           if(success){
+               o.getEmpDir().removeEmpByName(cd.getFullName());
+               o.getUserAccountDir().removeUserAccountByUserName(cd.getFullName());
+           }
+       }    
+       
+        populateCabServiceTable();
     }//GEN-LAST:event_btnRemoveCabServiceActionPerformed
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed

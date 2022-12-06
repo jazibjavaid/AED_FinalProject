@@ -7,6 +7,7 @@ package Business.Organization;
 import Business.AmbulanceDriver.AmbulanceDriverDirectory;
 import Business.CabDriver.CabDriverDirectory;
 import Business.Doctor.DoctorDirectory;
+import Business.Employee.EmployeeDirectory;
 import Business.Nurse.NurseDirectory;
 import Business.UserAccount.UserAccountDirectory;
 
@@ -26,6 +27,8 @@ public class Organization {
     private NurseDirectory nurDir;
     private CabDriverDirectory cabDriverDir;
     private AmbulanceDriverDirectory ambulanceDriverDir;
+    private EmployeeDirectory empDir;
+
 
 
     private int orgID;
@@ -95,6 +98,13 @@ public class Organization {
 
     public void setAmbulanceDriverDir(AmbulanceDriverDirectory ambulanceDriverDir) {
         this.ambulanceDriverDir = ambulanceDriverDir;
+    }
+    
+    public EmployeeDirectory getEmpDir() {
+        if(empDir == null){
+            empDir = new EmployeeDirectory();
+        }
+        return empDir;
     }
     
     public DoctorDirectory getDocDir() {

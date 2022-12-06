@@ -34,6 +34,15 @@ public class UserAccountDirectory {
         return null;
     }
     
+    public void removeUserAccountByUserName(String name){
+         for(int i=0;i<uaList.size();i++){
+             if(uaList.get(i).getEmployee().getName().equalsIgnoreCase(name)){
+                 uaList.remove(uaList.get(i));
+             }
+         }
+        
+    }
+    
     public UserAccount addUserAccount(UserAccount userAccount) {
         if(uaList==null){
         uaList = new ArrayList<>();
