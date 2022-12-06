@@ -459,7 +459,22 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
 
     private void btnRemoveAmbulanceServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveAmbulanceServiceActionPerformed
         // TODO add your handling code here:
-
+        int row = organizationAmbulanceJTable.getSelectedRow();
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        AmbulanceDriver ad=(AmbulanceDriver)organizationAmbulanceJTable.getValueAt(row, 0);
+        
+       for(int i=0;i<organizationDir.getOrgList().size();i++){
+           Organization o= organizationDir.getOrgList().get(i);
+           Boolean success=o.getAmbulanceDriverDir().removeambulanceDriver(ad);
+           if(success){
+               o.getEmpDir().removeEmpByName(ad.getFullName());
+               o.getUserAccountDir().removeUserAccountByUserName(ad.getFullName());
+           }
+       }      
+        populateAmbulanceServiceTable();
     }//GEN-LAST:event_btnRemoveAmbulanceServiceActionPerformed
 
     private void btnRemoveCabServiceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveCabServiceMouseEntered
