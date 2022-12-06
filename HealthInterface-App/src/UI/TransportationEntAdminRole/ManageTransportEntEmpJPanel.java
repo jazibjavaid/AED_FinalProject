@@ -451,10 +451,18 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
 
     private void btnRemoveAmbulanceServiceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveAmbulanceServiceMouseEntered
         // TODO add your handling code here:
+        btnRemoveAmbulanceService.setBackground(new java.awt.Color(18,102,153));
+        btnRemoveAmbulanceService.setContentAreaFilled(true);
+        btnRemoveAmbulanceService.setFocusPainted(true);
+        btnRemoveAmbulanceService.setBorderPainted(false);
+        btnRemoveAmbulanceService.setOpaque(true);
     }//GEN-LAST:event_btnRemoveAmbulanceServiceMouseEntered
 
     private void btnRemoveAmbulanceServiceMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveAmbulanceServiceMouseExited
         // TODO add your handling code here:
+        btnRemoveAmbulanceService.setContentAreaFilled(false);
+        btnRemoveAmbulanceService.setFocusPainted(false);
+        btnRemoveAmbulanceService.setBorderPainted(true);
     }//GEN-LAST:event_btnRemoveAmbulanceServiceMouseExited
 
     private void btnRemoveAmbulanceServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveAmbulanceServiceActionPerformed
