@@ -5,7 +5,6 @@
  */
 package UI.PatientSupportEntAdminRole;
 
-
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import java.awt.Component;
@@ -17,55 +16,60 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author amishagupta
+ * @author shantanutyagi
  */
 public class ManagePatientSupEntOrgJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageOrgJPanel
      */
-      private OrganizationDirectory directory;
+    private OrganizationDirectory directory;
     private JPanel userProcessContainer;
-    public ManagePatientSupEntOrgJPanel(JPanel userProcessContainer,OrganizationDirectory directory) {
+
+    public ManagePatientSupEntOrgJPanel(JPanel userProcessContainer, OrganizationDirectory directory) {
         initComponents();
-         this.userProcessContainer = userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         this.directory = directory;
-        
+
         populateTable();
         populateCombo();
         organizationJTable.setRowHeight(25);
         organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
     }
-    
+
     public class HeaderColor extends DefaultTableCellRenderer {
+
         public HeaderColor() {
             setOpaque(true);
         }
+
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
-            super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-           setBackground(new java.awt.Color(18,102,153));
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+            setBackground(new java.awt.Color(18, 102, 153));
             return this;
         }
 
     }
-  private void populateCombo(){
+
+    private void populateCombo() {
         organizationJComboBox.removeAllItems();
-        organizationJComboBox.addItem(Organization.Type.PatientManager);
-       
+        organizationJComboBox.addItem(Organization.OrgType.PatientManager);
+
     }
 
-    private void populateTable(){
+    private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (Organization organization : directory.getOrgList()){
+
+        for (Organization organization : directory.getOrgList()) {
             Object[] row = new Object[2];
             row[0] = organization.getName();
-            row[1] = organization.getType().getValue();
+            row[1] = organization.getOrgType().getValue();
             model.addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -196,28 +200,28 @@ public class ManagePatientSupEntOrgJPanel extends javax.swing.JPanel {
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
-       Organization.Type type = (Organization.Type) organizationJComboBox.getSelectedItem();
-          String name=txtOrgName.getText();
-       if("".equals(name)){
+        Organization.OrgType orgType = (Organization.OrgType) organizationJComboBox.getSelectedItem();
+        String name = txtOrgName.getText();
+        if ("".equals(name)) {
             JOptionPane.showMessageDialog(null, "Please enter organization name");
             return;
-       }
-       directory.createOrg(type,name);
+        }
+        directory.createOrg(orgType, name);
         populateTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void addJButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addJButtonMouseEntered
         // TODO add your handling code here:
-                  addJButton.setBackground(new java.awt.Color(18,102,153));
+        addJButton.setBackground(new java.awt.Color(18, 102, 153));
         addJButton.setContentAreaFilled(true);
         addJButton.setFocusPainted(true);
         addJButton.setBorderPainted(false);
-         addJButton.setOpaque(true);
+        addJButton.setOpaque(true);
     }//GEN-LAST:event_addJButtonMouseEntered
 
     private void addJButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addJButtonMouseExited
         // TODO add your handling code here:
-           addJButton.setContentAreaFilled(false);
+        addJButton.setContentAreaFilled(false);
         addJButton.setFocusPainted(false);
         addJButton.setBorderPainted(true);
     }//GEN-LAST:event_addJButtonMouseExited

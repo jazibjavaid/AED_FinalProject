@@ -5,6 +5,7 @@
 package Business.Organization;
 
 import Business.Doctor.DoctorDirectory;
+import Business.Employee.EmployeeDirectory;
 import Business.Nurse.NurseDirectory;
 import Business.PatientManager.PatientManagerDirectory;
 import Business.UserAccount.UserAccountDirectory;
@@ -24,7 +25,8 @@ public class Organization {
     private UserAccountDirectory accountDirectory;
     private DoctorDirectory docDir;
     private NurseDirectory nurDir;
-    private PatientManagerDirectory patientManagerDir;
+    private PatientManagerDirectory patientManagerDirectory;
+    private EmployeeDirectory employeeDirectory;
     private int orgID;
     private static int counter=0;
     private OrgType orgType;
@@ -160,12 +162,20 @@ public class Organization {
         this.accountDirectory = accountDirectory;
     }
 
-    public PatientManagerDirectory getPatientManagerDir() {
-        return patientManagerDir;
+    public PatientManagerDirectory getPatientManagerDirectory() {
+        return patientManagerDirectory;
     }
 
-    public void setPatientManagerDir(PatientManagerDirectory patientManagerDir) {
-        this.patientManagerDir = patientManagerDir;
+    public void setPatientManagerDirectory(PatientManagerDirectory patientManagerDirectory) {
+        this.patientManagerDirectory = patientManagerDirectory;
+    }
+
+    public EmployeeDirectory getEmployeeDirectory() {
+        return employeeDirectory;
+    }
+
+    public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
+        this.employeeDirectory = employeeDirectory;
     }
     
     public HealthRequestDirectory getRequestDirectory() {

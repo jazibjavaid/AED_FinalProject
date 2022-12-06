@@ -5,7 +5,6 @@
  */
 package UI.PatientSupportEntAdminRole;
 
-
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -22,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author amishagupta
+ * @author shantanutyagi
  */
 public class ManagePatientSupEntEmpJPanel extends javax.swing.JPanel {
 
@@ -31,65 +30,69 @@ public class ManagePatientSupEntEmpJPanel extends javax.swing.JPanel {
      */
     private OrganizationDirectory organizationDir;
     private JPanel userProcessContainer;
-    private Enterprise ent;
+    private Enterprise enterprise;
     private EcoSystem system;
 
-    public ManagePatientSupEntEmpJPanel(EcoSystem system,JPanel userProcessContainer,OrganizationDirectory organizationDir,Enterprise ent) {
+    public ManagePatientSupEntEmpJPanel(EcoSystem system, JPanel userProcessContainer, OrganizationDirectory organizationDir, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDir = organizationDir;
-        this.ent=ent;
-        this.system=system;
+        this.enterprise = enterprise;
+        this.system = system;
 
         populateOrganizationComboBox();
         populateOrganizationEmpComboBox();
         populatepatientManagerTable();
-         organizationPatientManagerJTable.setRowHeight(25);
+        organizationPatientManagerJTable.setRowHeight(25);
         organizationPatientManagerJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
-        
+
     }
-     public class HeaderColor extends DefaultTableCellRenderer {
+
+    public class HeaderColor extends DefaultTableCellRenderer {
+
         public HeaderColor() {
             setOpaque(true);
         }
+
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
-            super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-           setBackground(new java.awt.Color(18,102,153));
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+            setBackground(new java.awt.Color(18, 102, 153));
             return this;
         }
 
     }
-     public void populateOrganizationComboBox(){
+
+    public void populateOrganizationComboBox() {
         organizationEmpJComboBox.removeAllItems();
-        
-        for (Organization organization : organizationDir.getOrgList()){
-            organizationEmpJComboBox.addItem(organization);
-        }
-    }
-    
-    public void populateOrganizationEmpComboBox(){
-        organizationEmpJComboBox.removeAllItems();
-        
-        for (Organization organization : organizationDir.getOrgList()){
+
+        for (Organization organization : organizationDir.getOrgList()) {
             organizationEmpJComboBox.addItem(organization);
         }
     }
 
-    private void populatepatientManagerTable(){
-        DefaultTableModel model = (DefaultTableModel) organizationPatientManagerJTable.getModel();
-        
-        model.setRowCount(0);
-        for(Organization org:organizationDir.getOrgList()){
-        for (PatientManager p : org.getPatientManagerDir().getPatientManagerDirectory()){
-            Object[] row = new Object[6];
-            row[0] = p;
-            row[1] = p.getFullName();          
-            row[2] = p.getAddress();
-            row[3] = p.getZipcode();
-            row[4] = p.getContactNumber();
-            row[5] = p.getEmail();
-            model.addRow(row);
+    public void populateOrganizationEmpComboBox() {
+        organizationEmpJComboBox.removeAllItems();
+
+        for (Organization organization : organizationDir.getOrgList()) {
+            organizationEmpJComboBox.addItem(organization);
         }
+    }
+
+    private void populatepatientManagerTable() {
+        DefaultTableModel model = (DefaultTableModel) organizationPatientManagerJTable.getModel();
+
+        model.setRowCount(0);
+        for (Organization org : organizationDir.getOrgList()) {
+            for (PatientManager p : org.getPatientManagerDirectory().getPatientManagerDirectory()) {
+                Object[] row = new Object[6];
+                row[0] = p;
+                row[1] = p.getFullName();
+                row[2] = p.getAddress();
+                row[3] = p.getZipcode();
+                row[4] = p.getContactNumber();
+                row[5] = p.getEmail();
+                model.addRow(row);
+            }
         }
     }
 
@@ -370,49 +373,47 @@ public class ManagePatientSupEntEmpJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-        Validations validation=new Validations();
+        Validations validation = new Validations();
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
         String name = nameJTextField.getText();
-        String address=txtAddress.getText();
-        String zipcode=txtZipCode.getText();
-        String contactNumber=txtContactNo.getText();
+        String address = txtAddress.getText();
+        String zipcode = txtZipCode.getText();
+        String contactNumber = txtContactNo.getText();
         String gender = (String) GenderCombobox.getSelectedItem();
-        String email=txtEmail.getText();
+        String email = txtEmail.getText();
         String username = txtuserName.getText();
         char[] passwordCharArray = txtpassword.getPassword();
         String password = String.valueOf(passwordCharArray);
-        
-        if(name.equals("")||address.equals("")||email.equals("")||zipcode.equals("")||contactNumber.equals("")||username.equals("")||password.equals("")){
+
+        if (name.equals("") || address.equals("") || email.equals("") || zipcode.equals("") || contactNumber.equals("") || username.equals("") || password.equals("")) {
             JOptionPane.showMessageDialog(null, "Please enter all the fields.", "Error!", JOptionPane.ERROR_MESSAGE);
-             return;
+            return;
         }
-        Boolean unique=system.checkIfUserIsUnique(username);
-        if(!unique){
+        Boolean unique = system.checkIfUserIsUnique(username);
+        if (!unique) {
             JOptionPane.showMessageDialog(null, "Username " + username + " already exists. Please try with different username", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if(!validation.isValidPassword(password)){
+        if (!validation.isValidPassword(password)) {
             return;
         }
-        if(!validation.isValidZipCode(zipcode)){
+        if (!validation.isValidZipCode(zipcode)) {
             return;
         }
-        if(!validation.isValidPhoneNumber(contactNumber)){
+        if (!validation.isValidPhoneNumber(contactNumber)) {
             return;
         }
-        if(!validation.isValidEmail(email)){
+        if (!validation.isValidEmail(email)) {
             return;
-        } 
-        if(organization.getType().getValue().equals("Patient Manager Organization")){
-         PatientManager p=new PatientManager(name, null, gender, address, zipcode, contactNumber, email,username,password,new PatientManagerRole());
-          organization.getpManagerDir().addpatientManager(p);
-          organization.getUserAccountDir().addUserAccount(p);
-          ///organization.getEmpDir().createEmp(name);
-          populatepatientManagerTable();
         }
-      
-       
-        
+        if (organization.getOrgType().getValue().equals("Patient Manager Organization")) {
+            PatientManager p = new PatientManager(name, null, gender, address, zipcode, contactNumber, email, username, password, new PatientManagerRole());
+            organization.getPatientManagerDirectory().addpatientManager(p);
+            organization.getUserAccountDir().addUserAccount(p);
+            ///organization.getEmpDir().createEmp(name);
+            populatepatientManagerTable();
+        }
+
 
     }//GEN-LAST:event_addJButtonActionPerformed
 
@@ -439,28 +440,20 @@ public class ManagePatientSupEntEmpJPanel extends javax.swing.JPanel {
     private void btnRemovePatientManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemovePatientManagerActionPerformed
         // TODO add your handling code here:
         int row = organizationPatientManagerJTable.getSelectedRow();
-        if(row<0) {
+        if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        PatientManager pmanager=(PatientManager)organizationPatientManagerJTable.getValueAt(row, 0);
-        
-       for(int i=0;i<organizationDir.getOrgList().size();i++){
-           Organization o= organizationDir.getOrgList().get(i);
-           Boolean success=o.getpManagerDir().removepatientManager(pmanager);
-           if(success){
-               o.getEmpDir().removeEmpByName(pmanager.getFullName());
-               o.getUserAccountDir().removeUserAccountByUserName(pmanager.getFullName());
-           }
-       }      
-        
-//        for(Organization o:organizationDir.getOrgList())
-//        {
-//            //o.getEmpDir().removeEmp(e);
-//            o.getDocDir().removeDoctor(d);
-//        }
-       
+        PatientManager pmanager = (PatientManager) organizationPatientManagerJTable.getValueAt(row, 0);
 
+        for (int i = 0; i < organizationDir.getOrgList().size(); i++) {
+            Organization o = organizationDir.getOrgList().get(i);
+            Boolean success = o.getPatientManagerDirectory().removepatientManager(pmanager);
+            if (success) {
+                o.getEmployeeDirectory().removeEmpByName(pmanager.getFullName());
+                o.getUserAccountDir().removeUserAccountByUserName(pmanager.getFullName());
+            }
+        }
         populatepatientManagerTable();
     }//GEN-LAST:event_btnRemovePatientManagerActionPerformed
 
