@@ -83,7 +83,7 @@ public class ManagePatientSupEntEmpJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (Organization org : organizationDir.getOrgList()) {
-            for (PatientManager p : org.getPatientManagerDirectory().getPatientManagerDirectory()) {
+            for (PatientManager p : org.getpManagerDir().getPatientManagerDirectory()) {
                 Object[] row = new Object[6];
                 row[0] = p;
                 row[1] = p.getFullName();

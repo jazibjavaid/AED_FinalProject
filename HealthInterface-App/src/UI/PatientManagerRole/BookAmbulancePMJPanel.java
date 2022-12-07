@@ -245,25 +245,6 @@ public class BookAmbulancePMJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int row = serviceTable.getSelectedRow();
-        if(row<0) {
-            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        AmbulanceService ambService=(AmbulanceService)serviceTable.getValueAt(row, 0);
-        if(user==null){
-             JOptionPane.showMessageDialog(null, "No Patient selected", "Error!", JOptionPane.ERROR_MESSAGE);
-             return;
-        }
-        ServiceRequest serReq = new ServiceRequest(ambService.getServiceName(), ambService.getServiceType(), user, null, null,"New");
-        ambulance.getServiceRequestDirectory().addRequest(serReq);
-        pManager.getServicerequestDirectoryAmb().addRequest(serReq);
-        user.getServiceRequestDirectoryAmb().addRequest(serReq);
-        JOptionPane.showMessageDialog(null, "Ambulance Service booked Successfully");
-        ManageAmbulanceBookingPMJPanel manageAmbulance=new ManageAmbulanceBookingPMJPanel(userProcessContainer,ent,userAccount,system,org);
-        userProcessContainer.add("manageAmbulance", manageAmbulance);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
 
         
 
@@ -331,11 +312,11 @@ public class BookAmbulancePMJPanel extends javax.swing.JPanel {
     public void populateComboBox(){
         
 //         Organization orgnization = null;
-        for(Network net: system.getNetworkList()){
-            if(net.getName().equalsIgnoreCase(user.getRegisteredUserNetwork().getName())){
-                for(Enterprise ent: net.getEnterpriseDir().getEnterpriseList()){
+        for(City city: system.getCityList()){
+            if(city.getName().equalsIgnoreCase(user.getRegisteredUserCity().getName())){
+                for(Enterprise ent: city.getEnterpriseDir().getEnterpriseList()){
              for(Organization org: ent.getOrganizationDirectory().getOrgList()){
-                if(org.getType().getValue().equalsIgnoreCase("Ambulance Provider Organization")){
+                if(org.getOrgType().getValue().equalsIgnoreCase("Ambulance Provider Organization")){
                     for(AmbulanceDriver ad: org.getAmbulanceDriverDir().getambulanceDriverDirectory()){
                 ambulanceProviderComboBox.addItem(ad);
             }
