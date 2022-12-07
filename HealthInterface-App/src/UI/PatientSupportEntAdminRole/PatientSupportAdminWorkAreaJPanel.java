@@ -36,18 +36,18 @@ public class PatientSupportAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.useraccount=useraccount;
         this.org=org;
         this.system=system;
-          ManagePatientSupEntOrgJPanel profileJPanel = new ManagePatientSupEntOrgJPanel(workAreaJPanel,enterprise.getOrganizationDirectory());
+        ManagePatientSupEntOrgJPanel profileJPanel = new ManagePatientSupEntOrgJPanel(workAreaJPanel,enterprise.getOrganizationDirectory());
         workAreaJPanel.add("foodSupplyDashboard", profileJPanel);
         CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
         layout.next(workAreaJPanel);
     }
 
      void setColor(JPanel panel){
-        panel.setBackground(new Color(130,175,203));
+        panel.setBackground(new Color(253,135,124));
     }
     
     void resetColor(JPanel panel){
-         panel.setBackground(new Color(18,102,153));
+         panel.setBackground(new Color(253,214,207));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,13 +69,12 @@ public class PatientSupportAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(18, 102, 153));
+        jPanel1.setBackground(new java.awt.Color(253, 217, 204));
 
-        btnOrganization_Panel.setBackground(new java.awt.Color(130, 175, 203));
+        btnOrganization_Panel.setBackground(new java.awt.Color(253, 135, 124));
         btnOrganization_Panel.setToolTipText("");
 
         btnmgOrg.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnmgOrg.setForeground(new java.awt.Color(255, 255, 255));
         btnmgOrg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnmgOrg.setText("Manage Organization");
         btnmgOrg.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,7 +105,7 @@ public class PatientSupportAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        btnEmployee_Panel.setBackground(new java.awt.Color(18, 102, 153));
+        btnEmployee_Panel.setBackground(new java.awt.Color(253, 217, 204));
         btnEmployee_Panel.setToolTipText("");
         btnEmployee_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -115,7 +114,6 @@ public class PatientSupportAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnManageEmployee.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnManageEmployee.setForeground(new java.awt.Color(255, 255, 255));
         btnManageEmployee.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnManageEmployee.setText("Manage Employee");
         btnManageEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
