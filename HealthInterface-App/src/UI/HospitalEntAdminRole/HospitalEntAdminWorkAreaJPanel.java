@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.HospitalEntAdminRole;
+package UI.HospitalEntAdminRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;

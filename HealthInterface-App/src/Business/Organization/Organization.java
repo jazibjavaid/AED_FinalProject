@@ -4,6 +4,7 @@
  */
 package Business.Organization;
 
+import Business.AmbulanceDriver.AmbulanceDriverDirectory;
 import Business.Doctor.DoctorDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Nurse.NurseDirectory;
@@ -27,6 +28,8 @@ public class Organization {
     private NurseDirectory nurDir;
     private PatientManagerDirectory patientManagerDirectory;
     private EmployeeDirectory employeeDirectory;
+    private PatientManagerDirectory patManagerDir;
+    private AmbulanceDriverDirectory ambulanceDriverDir;
     private int orgID;
     private static int counter=0;
     private OrgType orgType;
@@ -183,6 +186,29 @@ public class Organization {
             requestDirectory = new HealthRequestDirectory();
         }
         return requestDirectory;
+    }
+    
+    public PatientManagerDirectory getpManagerDir() {
+        if(patManagerDir==null){
+            patManagerDir=new PatientManagerDirectory();
+        }
+        
+        return patManagerDir;
+    }
+
+    public void setpManagerDir(PatientManagerDirectory patManagerDir) {
+        this.patManagerDir = patManagerDir;
+    }
+    
+    public AmbulanceDriverDirectory getAmbulanceDriverDir() {
+         if(ambulanceDriverDir==null){
+            ambulanceDriverDir=new AmbulanceDriverDirectory();
+        }
+        return ambulanceDriverDir;
+    }
+
+    public void setAmbulanceDriverDir(AmbulanceDriverDirectory ambulanceDriverDir) {
+        this.ambulanceDriverDir = ambulanceDriverDir;
     }
     
     @Override
