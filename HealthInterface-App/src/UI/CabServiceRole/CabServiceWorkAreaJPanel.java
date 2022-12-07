@@ -4,6 +4,18 @@
  */
 package UI.CabServiceRole;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import UI.AmbulanceServiceRole.ManageAmbulanceServiceProfileJPanel;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPanel;
+
 /**
  *
  * @author yuktachikate
@@ -13,10 +25,22 @@ public class CabServiceWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CabServiceWorkAreaJPanel
      */
+    JPanel userProcessContainer;
+    Enterprise enterprise;
+    UserAccount useraccount;
+    Organization org;
+    EcoSystem system;
     public CabServiceWorkAreaJPanel() {
         initComponents();
     }
 
+    void setColor(JPanel panel){
+        panel.setBackground(new Color(130,175,203));
+    }
+    
+    void resetColor(JPanel panel){
+         panel.setBackground(new Color(18,102,153));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -182,7 +206,18 @@ public class CabServiceWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnProfileMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfileMousePressed
         // TODO add your handling code here:
-        
+        setColor(btnProfile_Panel);
+        resetColor(btnAddServices_JPanel);
+        resetColor(btnAssignedReq_JPanel);
+        try {
+            // TODO add your handling code here:
+            ManageAmbulanceServiceProfileJPanel manageAmbulanceProfile=new ManageAmbulanceServiceProfileJPanel(workAreaJPanel,enterprise,useraccount,system);
+            workAreaJPanel.add("manageAmbulanceProfile", manageAmbulanceProfile);
+            CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+            layout.next(workAreaJPanel);
+        } catch (ParseException ex) {
+            Logger.getLogger(CabServiceWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnProfileMousePressed
 
     private void btnassignedRequestsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnassignedRequestsMousePressed
