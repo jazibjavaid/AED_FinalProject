@@ -11,15 +11,14 @@ import Business.AmbulanceDriver.AmbulanceDriver;
 import Business.AmbulanceDriver.AmbulanceService;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.FoodSupplier.FoodSupplier;
-import Business.Network.Network;
+import Business.City.City;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.PatientManager.PatientManager;
 import Business.RegisteredUser.RegisteredUser;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.HealthRequest;
-import Business.WorkQueue.ServiceRequest;
+import Business.WorkProcess.HealthRequest;
+import Business.WorkProcess.ServiceRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author amishagupta
+ * @author shantanutyagi
  */
 public class BookAmbulancePMJPanel extends javax.swing.JPanel {
 
@@ -43,7 +42,6 @@ public class BookAmbulancePMJPanel extends javax.swing.JPanel {
     private Enterprise ent;
     private UserAccount userAccount;
     private EcoSystem system;
-    private FoodSupplier foodProvider;
     private Organization org;
     private AmbulanceDriver ambulance;
     PatientManager pManager;
@@ -57,7 +55,7 @@ public class BookAmbulancePMJPanel extends javax.swing.JPanel {
         this.system = system;
         this.ent=ent;
         this.org = org;
-        pManager=org.getpManagerDir().findPatientManager(userAccount.getUsername());
+        pManager=org.getPatientManagerDirectory().findPatientManager(userAccount.getUsername());
         UserComboBox();
         populateComboBox();
             serviceTable.setRowHeight(25);
