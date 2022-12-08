@@ -263,6 +263,15 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnApprovedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApprovedMouseEntered
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnApprovedMouseEntered
+
+    private void btnApprovedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApprovedMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnApprovedMouseExited
+
+    private void btnApprovedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprovedActionPerformed
+        // TODO add your handling code here:
         int row = SubmittedrequestsJTable.getSelectedRow();
         if(row<0) {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -276,14 +285,6 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Cab marked accepted");
         populateRequestTable();
         }
-    }//GEN-LAST:event_btnApprovedMouseEntered
-
-    private void btnApprovedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApprovedMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnApprovedMouseExited
-
-    private void btnApprovedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprovedActionPerformed
-        // TODO add your handling code here:
 
     }//GEN-LAST:event_btnApprovedActionPerformed
 
@@ -297,7 +298,19 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnArrivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArrivedActionPerformed
         // TODO add your handling code here:
-        
+        int row = SubmittedrequestsJTable.getSelectedRow();
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        ServiceRequest serReq=(ServiceRequest)SubmittedrequestsJTable.getValueAt(row, 0);
+        if(serReq.getStatus().equalsIgnoreCase("declined") || serReq.getStatus().equalsIgnoreCase("completed") || serReq.getStatus().equalsIgnoreCase("arrived") || serReq.getStatus().equalsIgnoreCase("riding") || serReq.getStatus().equalsIgnoreCase("cancelled")){
+        JOptionPane.showMessageDialog(null, "Cab is already marked "+serReq.getStatus());
+        }else{
+        serReq.setStatus("Arrived");
+        JOptionPane.showMessageDialog(null, "Cab request marked Arrived");
+        populateRequestTable();
+        }
 
     }//GEN-LAST:event_btnArrivedActionPerformed
 
@@ -311,6 +324,19 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnRidingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRidingActionPerformed
         // TODO add your handling code here:
+        int row = SubmittedrequestsJTable.getSelectedRow();
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        ServiceRequest serReq=(ServiceRequest)SubmittedrequestsJTable.getValueAt(row, 0);
+        if(serReq.getStatus().equalsIgnoreCase("declined") || serReq.getStatus().equalsIgnoreCase("completed") || serReq.getStatus().equalsIgnoreCase("accepted") || serReq.getStatus().equalsIgnoreCase("riding") || serReq.getStatus().equalsIgnoreCase("cancelled")){
+        JOptionPane.showMessageDialog(null, "Cab is already marked "+serReq.getStatus());
+        } else{
+         serReq.setStatus("Riding");
+        JOptionPane.showMessageDialog(null, "Cab request marked riding");
+        populateRequestTable();
+        }
     }//GEN-LAST:event_btnRidingActionPerformed
 
     private void btnCompletedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompletedMouseEntered
