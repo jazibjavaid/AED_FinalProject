@@ -263,11 +263,19 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnApprovedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApprovedMouseEntered
         // TODO add your handling code here:
+        btnApproved.setBackground(new java.awt.Color(18,102,153));
+        btnApproved.setContentAreaFilled(true);
+        btnApproved.setFocusPainted(true);
+        btnApproved.setBorderPainted(false);
+        btnApproved.setOpaque(true);
         
     }//GEN-LAST:event_btnApprovedMouseEntered
 
     private void btnApprovedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApprovedMouseExited
         // TODO add your handling code here:
+        btnApproved.setContentAreaFilled(false);
+        btnApproved.setFocusPainted(false);
+        btnApproved.setBorderPainted(true);
     }//GEN-LAST:event_btnApprovedMouseExited
 
     private void btnApprovedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprovedActionPerformed
@@ -290,10 +298,18 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnArrivedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnArrivedMouseEntered
         // TODO add your handling code here:
+        btnArrived.setBackground(new java.awt.Color(18,102,153));
+        btnArrived.setContentAreaFilled(true);
+        btnArrived.setFocusPainted(true);
+        btnArrived.setBorderPainted(false);
+        btnArrived.setOpaque(true);
     }//GEN-LAST:event_btnArrivedMouseEntered
 
     private void btnArrivedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnArrivedMouseExited
         // TODO add your handling code here:
+        btnArrived.setContentAreaFilled(false);
+        btnArrived.setFocusPainted(false);
+        btnArrived.setBorderPainted(true);
     }//GEN-LAST:event_btnArrivedMouseExited
 
     private void btnArrivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArrivedActionPerformed
@@ -316,10 +332,18 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnRidingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRidingMouseEntered
         // TODO add your handling code here:
+        btnRiding.setBackground(new java.awt.Color(18,102,153));
+        btnRiding.setContentAreaFilled(true);
+        btnRiding.setFocusPainted(true);
+        btnRiding.setBorderPainted(false);
+        btnRiding.setOpaque(true);
     }//GEN-LAST:event_btnRidingMouseEntered
 
     private void btnRidingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRidingMouseExited
         // TODO add your handling code here:
+        btnRiding.setContentAreaFilled(false);
+        btnRiding.setFocusPainted(false);
+        btnRiding.setBorderPainted(true);
     }//GEN-LAST:event_btnRidingMouseExited
 
     private void btnRidingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRidingActionPerformed
@@ -341,10 +365,18 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnCompletedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompletedMouseEntered
         // TODO add your handling code here:
+        btnCompleted.setBackground(new java.awt.Color(18,102,153));
+        btnCompleted.setContentAreaFilled(true);
+        btnCompleted.setFocusPainted(true);
+        btnCompleted.setBorderPainted(false);
+        btnCompleted.setOpaque(true);
     }//GEN-LAST:event_btnCompletedMouseEntered
 
     private void btnCompletedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompletedMouseExited
         // TODO add your handling code here:
+        btnCompleted.setContentAreaFilled(false);
+        btnCompleted.setFocusPainted(false);
+        btnCompleted.setBorderPainted(true);
     }//GEN-LAST:event_btnCompletedMouseExited
 
     private void btnCompletedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletedActionPerformed
@@ -366,6 +398,23 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnDeclineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeclineMouseEntered
         // TODO add your handling code here:
+        btnDecline.setBackground(new java.awt.Color(18,102,153));
+        btnDecline.setContentAreaFilled(true);
+        btnDecline.setFocusPainted(true);
+        btnDecline.setBorderPainted(false);
+        btnDecline.setOpaque(true);
+        
+    }//GEN-LAST:event_btnDeclineMouseEntered
+
+    private void btnDeclineMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeclineMouseExited
+        // TODO add your handling code here:
+        btnDecline.setContentAreaFilled(false);
+        btnDecline.setFocusPainted(false);
+        btnDecline.setBorderPainted(true);
+    }//GEN-LAST:event_btnDeclineMouseExited
+
+    private void btnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineActionPerformed
+        // TODO add your handling code here:
         int row = SubmittedrequestsJTable.getSelectedRow();
         if(row<0) {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -379,14 +428,6 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Cab request declined");
         populateRequestTable();
         }
-    }//GEN-LAST:event_btnDeclineMouseEntered
-
-    private void btnDeclineMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeclineMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeclineMouseExited
-
-    private void btnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineActionPerformed
-        // TODO add your handling code here:
 
     }//GEN-LAST:event_btnDeclineActionPerformed
 
