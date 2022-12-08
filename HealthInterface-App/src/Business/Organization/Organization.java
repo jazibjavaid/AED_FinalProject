@@ -9,6 +9,7 @@ import Business.Doctor.DoctorDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Nurse.NurseDirectory;
 import Business.PatientManager.PatientManagerDirectory;
+import Business.Tester.TesterDirectory;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkProcess.HealthRequestDirectory;
 
@@ -30,6 +31,7 @@ public class Organization {
     private EmployeeDirectory employeeDirectory;
     private PatientManagerDirectory patManagerDir;
     private AmbulanceDriverDirectory ambulanceDriverDir;
+    private TesterDirectory testerDir;
     private int orgID;
     private static int counter=0;
     private OrgType orgType;
@@ -171,6 +173,30 @@ public class Organization {
 
     public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
         this.employeeDirectory = employeeDirectory;
+    }
+
+    public PatientManagerDirectory getPatientManagerDirectory() {
+        return patientManagerDirectory;
+    }
+
+    public void setPatientManagerDirectory(PatientManagerDirectory patientManagerDirectory) {
+        this.patientManagerDirectory = patientManagerDirectory;
+    }
+
+    public PatientManagerDirectory getPatManagerDir() {
+        return patManagerDir;
+    }
+
+    public void setPatManagerDir(PatientManagerDirectory patManagerDir) {
+        this.patManagerDir = patManagerDir;
+    }
+
+    public TesterDirectory getTesterDir() {
+        return testerDir;
+    }
+
+    public void setTesterDir(TesterDirectory testerDir) {
+        this.testerDir = testerDir;
     }
     
     public HealthRequestDirectory getRequestDirectory() {

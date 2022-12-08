@@ -6,6 +6,7 @@ package Business.Tester;
 
 import Business.Role.Role;
 import java.util.concurrent.atomic.AtomicInteger;
+import Business.WorkProcess.HealthRequestDirectory;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Tester extends Business.Person.Person {
     private TestsDirectory testDirectory;
     private TestsDirectory addTestDirectory;
     private TestsDirectory completedTestsDirectory;
+    private HealthRequestDirectory requestDirectory;
     private static final AtomicInteger count = new AtomicInteger(0);
     
     public Tester( String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username,String password, Role role) {
@@ -75,6 +77,22 @@ public class Tester extends Business.Person.Person {
 
     public void setAddTestDirectory(TestsDirectory addTestDirectory) {
         this.addTestDirectory = addTestDirectory;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public HealthRequestDirectory getRequestDirectory() {
+        return requestDirectory;
+    }
+
+    public void setRequestDirectory(HealthRequestDirectory requestDirectory) {
+        this.requestDirectory = requestDirectory;
     }
     
     @Override
