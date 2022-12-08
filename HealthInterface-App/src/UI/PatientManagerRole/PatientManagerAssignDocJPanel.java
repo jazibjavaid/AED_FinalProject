@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import UI.UserRole.HealthRequestReport;
 
 /**
  *
@@ -220,6 +221,18 @@ public class PatientManagerAssignDocJPanel extends javax.swing.JPanel {
 
     private void viewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsActionPerformed
         // TODO add your handling code here:
+        int selectedRow = SubmittedrequestsJTable.getSelectedRow();
+         if (selectedRow < 0){
+              JOptionPane.showMessageDialog(null, "Please select a row!");
+            return;
+        }
+        else{
+                req = (HealthRequest)SubmittedrequestsJTable.getValueAt(selectedRow, 0);
+                HealthRequestReport healthRequest=new HealthRequestReport(userProcessContainer,enterprise,useraccount,system, req, patientManager, "patManAllReq", organization);
+                userProcessContainer.add("PatientManagerProfileJPanel", healthRequest);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+        }
     }//GEN-LAST:event_viewDetailsActionPerformed
 
     private void viewDetailsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDetailsMouseEntered
