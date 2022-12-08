@@ -232,9 +232,9 @@ public class ManagePatientManagerProfileJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(208, Short.MAX_VALUE)
+                .addContainerGap(240, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
+                .addGap(54, 54, 54))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,8 +283,8 @@ public class ManagePatientManagerProfileJPanel extends javax.swing.JPanel {
         String username = useraccount.getUsername();
         PatientManager patman = null;
         for (Organization org : enterprise.getOrganizationDirectory().getOrgList()) {
-            if (org.getPatientManagerDirectory().findPatientManager(username) != null) {
-                patman = org.getPatientManagerDirectory().findPatientManager(username);
+            if (org.getpManagerDir().findPatientManager(username) != null) {
+                patman = org.getpManagerDir().findPatientManager(username);
                 //PatientManager patman=enterprise.getOrganizationDirectory().getOrgList().get(0).getpManagerDir().findPatientManager(username);
 
                 patman.setFullName(name);
@@ -358,8 +358,8 @@ public class ManagePatientManagerProfileJPanel extends javax.swing.JPanel {
         String username = useraccount.getUsername();
         PatientManager pat = null;
         for (Organization org : enterprise.getOrganizationDirectory().getOrgList()) {
-            if (org.getPatientManagerDirectory().findPatientManager(username) != null) {
-                pat = org.getPatientManagerDirectory().findPatientManager(username);
+            if (org.getpManagerDir().findPatientManager(username) != null) {
+                pat = org.getpManagerDir().findPatientManager(username);
                 // PatientManager pat=enterprise.getOrganizationDirectory().getOrgList().get(0).getpManagerDir().findPatientManager(username);
                 nameJTextField.setText(pat.getFullName());
                 txtAddress.setText(pat.getAddress());

@@ -54,11 +54,11 @@ public class PatientManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     
      void setColor(JPanel panel){
-        panel.setBackground(new Color(130,175,203));
+        panel.setBackground(new Color(253,135,124));
     }
     
     void resetColor(JPanel panel){
-         panel.setBackground(new Color(18,102,153));
+         panel.setBackground(new Color(253,217,204));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -270,10 +270,9 @@ public class PatientManagerWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 255));
+        jButton1.setBackground(new java.awt.Color(204, 255, 204));
         jButton1.setFont(new java.awt.Font(".SF NS Text", 1, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/bar.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/bar.png"))); // NOI18N
         jButton1.setText("Analytics");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -357,6 +356,10 @@ public class PatientManagerWorkAreaJPanel extends javax.swing.JPanel {
                 resetColor(btnProfile_Panel);
                 resetColor(btnNotifications_JPanel);
                 resetColor(btnAssignedRequest_JPanel);
+                PatientManagerAssignDocJPanel viewAllRequestJPanel=new PatientManagerAssignDocJPanel(workAreaJPanel,enterprise,useraccount,system, org);
+                workAreaJPanel.add("viewAllRequestJPanel", viewAllRequestJPanel);
+                CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+                layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnAllRequestsMousePressed
 
     private void btnAllRequest_JPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAllRequest_JPanelMousePressed

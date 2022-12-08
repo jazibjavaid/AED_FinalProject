@@ -62,7 +62,7 @@ public class ManageAmbulanceBookingPMJPanel extends javax.swing.JPanel {
   public void populateRequestTable() {
         DefaultTableModel model = (DefaultTableModel) SubmittedrequestsJTable.getModel();
         model.setRowCount(0);
-            PatientManager pMan = organization.getPatientManagerDirectory().findPatientManager(useraccount.getUsername());
+            PatientManager pMan = organization.getpManagerDir().findPatientManager(useraccount.getUsername());
            for(ServiceRequest serReq : pMan.getServicerequestDirectoryAmb().getServiceRequestList()){
             Object[] row = new Object[6];
                RegisteredUser user = serReq.getUser();

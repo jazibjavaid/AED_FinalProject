@@ -55,10 +55,10 @@ public class BookAmbulancePMJPanel extends javax.swing.JPanel {
         this.system = system;
         this.ent=ent;
         this.org = org;
-        pManager=org.getPatientManagerDirectory().findPatientManager(userAccount.getUsername());
+        pManager=org.getpManagerDir().findPatientManager(userAccount.getUsername());
         UserComboBox();
         populateComboBox();
-            serviceTable.setRowHeight(25);
+        serviceTable.setRowHeight(25);
         serviceTable.getTableHeader().setDefaultRenderer(new HeaderColor());
         
     }
@@ -68,7 +68,7 @@ public class BookAmbulancePMJPanel extends javax.swing.JPanel {
         }
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-           setBackground(new java.awt.Color(18,102,153));
+            setBackground(new java.awt.Color(253,217,208));
             return this;
         }
 
@@ -118,7 +118,7 @@ public class BookAmbulancePMJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         jLabel2.setText("Select a Service");
 
-        jButton1.setBackground(new java.awt.Color(18, 102, 153));
+        jButton1.setBackground(new java.awt.Color(253, 135, 124));
         jButton1.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         jButton1.setText("Book");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -212,7 +212,7 @@ public class BookAmbulancePMJPanel extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, 440));
 
-        jButton3.setBackground(new java.awt.Color(18, 102, 153));
+        jButton3.setBackground(new java.awt.Color(253, 135, 124));
         jButton3.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         jButton3.setText("Back");
         jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -240,52 +240,48 @@ public class BookAmbulancePMJPanel extends javax.swing.JPanel {
     private void ambulanceProviderComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ambulanceProviderComboBoxActionPerformed
         // TODO add your handling code here:
         ambulance = (AmbulanceDriver)ambulanceProviderComboBox.getSelectedItem();
-            populateServiceTable();
+        populateServiceTable();
     }//GEN-LAST:event_ambulanceProviderComboBoxActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-
-        
-
+        // TODO add your handling code here:   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void userComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userComboBoxActionPerformed
         // TODO add your handling code here:
-        
         user = (RegisteredUser)userComboBox.getSelectedItem();
     }//GEN-LAST:event_userComboBoxActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         userProcessContainer.remove(this);
+        userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
         // TODO add your handling code here:
-         jButton3.setBackground(new java.awt.Color(18,102,153));
+        jButton3.setBackground(new java.awt.Color(253,135,124));
         jButton3.setContentAreaFilled(true);
         jButton3.setFocusPainted(true);
         jButton3.setBorderPainted(false);
-         jButton3.setOpaque(true);
+        jButton3.setOpaque(true);
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
         // TODO add your handling code here:
-          jButton3.setContentAreaFilled(false);
+        jButton3.setContentAreaFilled(false);
         jButton3.setFocusPainted(false);
         jButton3.setBorderPainted(true);
     }//GEN-LAST:event_jButton3MouseExited
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
-         jButton1.setBackground(new java.awt.Color(18,102,153));
+        jButton1.setBackground(new java.awt.Color(253,135,124));
         jButton1.setContentAreaFilled(true);
         jButton1.setFocusPainted(true);
         jButton1.setBorderPainted(false);
-         jButton1.setOpaque(true);
+        jButton1.setOpaque(true);
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
@@ -315,37 +311,32 @@ public class BookAmbulancePMJPanel extends javax.swing.JPanel {
         for(City city: system.getCityList()){
             if(city.getName().equalsIgnoreCase(user.getRegisteredUserCity().getName())){
                 for(Enterprise ent: city.getEnterpriseDir().getEnterpriseList()){
-             for(Organization org: ent.getOrganizationDirectory().getOrgList()){
-                if(org.getOrgType().getValue().equalsIgnoreCase("Ambulance Provider Organization")){
-                    for(AmbulanceDriver ad: org.getAmbulanceDriverDir().getambulanceDriverDirectory()){
-                ambulanceProviderComboBox.addItem(ad);
-            }
+                    for(Organization org: ent.getOrganizationDirectory().getOrgList()){
+                        if(org.getOrgType().getValue().equalsIgnoreCase("Ambulance Provider Organization")){
+                            for(AmbulanceDriver ad: org.getAmbulanceDriverDir().getambulanceDriverDirectory()){
+                            ambulanceProviderComboBox.addItem(ad);
+                            }
+                        }
+                    }
                 }
             }
-         }
-            }
-         
-    }
+        }
         
         
             
     }
     
-     public void UserComboBox(){
+    public void UserComboBox(){
          
-              ArrayList<HealthRequest> requestList = pManager.getRequestDirectory().getRequestList();
-         ArrayList<RegisteredUser> uniqueuser = new ArrayList<>();
-           for(HealthRequest req: requestList){
+        ArrayList<HealthRequest> requestList = pManager.getRequestDirectory().getRequestList();
+        ArrayList<RegisteredUser> uniqueuser = new ArrayList<>();
+        for(HealthRequest req: requestList){
             if(!uniqueuser.contains(req.getUser())){
                  uniqueuser.add(req.getUser());
             }
         }
-         for(RegisteredUser user: uniqueuser){
+        for(RegisteredUser user: uniqueuser){
                 userComboBox.addItem(user);
-            }
-//         ArrayList<HealthRequest> requestList = pManager.getRequestDirectory().getRequestList();
-//         for(HealthRequest req: requestList){
-//                userComboBox.addItem(req.getUser());
-//            }
+        }
     }
 }

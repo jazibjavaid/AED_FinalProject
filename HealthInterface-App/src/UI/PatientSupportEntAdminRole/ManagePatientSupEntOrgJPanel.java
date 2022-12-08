@@ -45,7 +45,7 @@ public class ManagePatientSupEntOrgJPanel extends javax.swing.JPanel {
 
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);
-            setBackground(new java.awt.Color(18, 102, 153));
+            setBackground(new java.awt.Color(253, 217, 208));
             return this;
         }
 
@@ -120,7 +120,7 @@ public class ManagePatientSupEntOrgJPanel extends javax.swing.JPanel {
         organizationJTable.setSelectionBackground(new java.awt.Color(235, 227, 126));
         jScrollPane1.setViewportView(organizationJTable);
 
-        addJButton.setBackground(new java.awt.Color(18, 102, 153));
+        addJButton.setBackground(new java.awt.Color(253, 135, 153));
         addJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
         addJButton.setText("Add Organization");
@@ -212,7 +212,7 @@ public class ManagePatientSupEntOrgJPanel extends javax.swing.JPanel {
 
     private void addJButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addJButtonMouseEntered
         // TODO add your handling code here:
-        addJButton.setBackground(new java.awt.Color(18, 102, 153));
+        addJButton.setBackground(new java.awt.Color(253, 135, 124));
         addJButton.setContentAreaFilled(true);
         addJButton.setFocusPainted(true);
         addJButton.setBorderPainted(false);

@@ -165,14 +165,6 @@ public class Organization {
         this.accountDirectory = accountDirectory;
     }
 
-    public PatientManagerDirectory getPatientManagerDirectory() {
-        return patientManagerDirectory;
-    }
-
-    public void setPatientManagerDirectory(PatientManagerDirectory patientManagerDirectory) {
-        this.patientManagerDirectory = patientManagerDirectory;
-    }
-
     public EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
     }

@@ -56,7 +56,7 @@ public class ManagePatientSupEntEmpJPanel extends javax.swing.JPanel {
 
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);
-            setBackground(new java.awt.Color(18, 102, 153));
+            setBackground(new java.awt.Color(253, 217, 208));
             return this;
         }
 
@@ -169,7 +169,7 @@ public class ManagePatientSupEntEmpJPanel extends javax.swing.JPanel {
         lblDoctorslist1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
         lblDoctorslist1.setText("Patient Managers");
 
-        btnRemovePatientManager.setBackground(new java.awt.Color(18, 102, 153));
+        btnRemovePatientManager.setBackground(new java.awt.Color(253, 135, 124));
         btnRemovePatientManager.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnRemovePatientManager.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/delete2.png"))); // NOI18N
         btnRemovePatientManager.setText("Remove Patient Manager");
@@ -227,7 +227,7 @@ public class ManagePatientSupEntEmpJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Name");
 
-        addJButton.setBackground(new java.awt.Color(18, 102, 153));
+        addJButton.setBackground(new java.awt.Color(253, 135, 124));
         addJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
         addJButton.setText("Create Patient Manager");
@@ -408,7 +408,7 @@ public class ManagePatientSupEntEmpJPanel extends javax.swing.JPanel {
         }
         if (organization.getOrgType().getValue().equals("Patient Manager Organization")) {
             PatientManager p = new PatientManager(name, null, gender, address, zipcode, contactNumber, email, username, password, new PatientManagerRole());
-            organization.getPatientManagerDirectory().addpatientManager(p);
+            organization.getpManagerDir().addpatientManager(p);
             organization.getUserAccountDir().addUserAccount(p);
             ///organization.getEmpDir().createEmp(name);
             populatepatientManagerTable();
@@ -448,7 +448,7 @@ public class ManagePatientSupEntEmpJPanel extends javax.swing.JPanel {
 
         for (int i = 0; i < organizationDir.getOrgList().size(); i++) {
             Organization o = organizationDir.getOrgList().get(i);
-            Boolean success = o.getPatientManagerDirectory().removepatientManager(pmanager);
+            Boolean success = o.getpManagerDir().removepatientManager(pmanager);
             if (success) {
                 o.getEmployeeDirectory().removeEmpByName(pmanager.getFullName());
                 o.getUserAccountDir().removeUserAccountByUserName(pmanager.getFullName());
