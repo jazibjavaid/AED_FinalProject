@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.NurseRole;
-
+package UI.PatientManagerRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Nurse.Nurse;
 import Business.Organization.Organization;
+import Business.PatientManager.PatientManager;
 import Business.UserAccount.UserAccount;
 import Business.WorkProcess.HealthRequest;
 import java.awt.CardLayout;
@@ -19,25 +18,25 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
+import UI.UserRole.HealthRequestReport;
 
 /**
  *
  * @author amishagupta
  */
-public class NurseAssignedRequest extends javax.swing.JPanel {
+public class PatientManagerAssignedRequests extends javax.swing.JPanel {
 
     /**
      * Creates new form PatientManagerAssignDocJPanel
      */
-    private UserAccount useraccount;
-    private EcoSystem system;
-    private Nurse nurse;
-    private Enterprise enterprise;
-    private Organization organization;
-    private JPanel userProcessContainer;
-    private HealthRequest req;
-    public NurseAssignedRequest(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, Organization organization) {
+        private UserAccount useraccount;
+        private EcoSystem system;
+        private PatientManager patientManager;
+        private Enterprise enterprise;
+        private Organization organization;
+        private JPanel userProcessContainer;
+        private HealthRequest req;
+        public PatientManagerAssignedRequests(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, Organization organization) {
         initComponents();
         this.useraccount=account;
         this.system=system;
@@ -45,30 +44,30 @@ public class NurseAssignedRequest extends javax.swing.JPanel {
         this.organization = organization;
         this.userProcessContainer = userProcessContainer;
         String username = useraccount.getUsername();
-        nurse =organization.getNurDir().findNurse(username);
+        patientManager =organization.getpManagerDir().findPatientManager(username);
         SubmittedrequestsJTable.setRowHeight(25);
         SubmittedrequestsJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
         populateRequestTable();
     }
-     public class HeaderColor extends DefaultTableCellRenderer {
+    public class HeaderColor extends DefaultTableCellRenderer {
         public HeaderColor() {
             setOpaque(true);
         }
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-            setBackground(new java.awt.Color(18,102,153));
+            setBackground(new java.awt.Color(253,217,208));
             return this;
         }
     }
     public void populateRequestTable() {
         DefaultTableModel model = (DefaultTableModel) SubmittedrequestsJTable.getModel();
         model.setRowCount(0);
-            for(HealthRequest req : nurse.getRequestDirectory().getRequestList()){
+           for(HealthRequest req : patientManager.getRequestDirectory().getRequestList()){
             Object[] row = new Object[6];
             row[0] = req;
             row[1] = req.getUser().getName();
-            row[2] = req.getPatientManager()==null?"Not Assigned":req.getPatientManager().getName();
-            row[3] = req.getDoctor()==null?"Not Assigned":req.getDoctor().getName();
+            row[2] = req.getDoctor()==null?"Not Assigned":req.getDoctor().getName();
+            row[3] = req.getNurse()==null?"Not Assigned":req.getNurse().getName();
             row[4] = req.getHospital()==null?"Not Assigned": req.getHospital().getName();
             row[5] = req.getStatus();
             model.addRow(row);
@@ -99,7 +98,7 @@ public class NurseAssignedRequest extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Request ID", "Requester's Name", "Patient Manager", "Doctor Assigned", "Hospital Assigned", "Request Status"
+                "Request ID", "Requester's Name", "Doctor Assigned", "Nurse Assigned", "Hospital Assigned", "Request Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -153,10 +152,10 @@ public class NurseAssignedRequest extends javax.swing.JPanel {
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DoctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 939, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(viewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(460, 460, 460)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -167,13 +166,26 @@ public class NurseAssignedRequest extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(DoctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(viewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(310, Short.MAX_VALUE))
+                .addComponent(viewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(312, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsActionPerformed
         // TODO add your handling code here:
+        int selectedRow = SubmittedrequestsJTable.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null, "Please select a row!");
+            return;
+        }
+        else{
+            req = (HealthRequest)SubmittedrequestsJTable.getValueAt(selectedRow, 0);
+            HealthRequestReport healthRequest=new HealthRequestReport(userProcessContainer,enterprise,useraccount,system, req, patientManager, "patManAssignedReq",organization);
+            userProcessContainer.add("PatientManagerProfileJPanel", healthRequest);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        }
+        
     }//GEN-LAST:event_viewDetailsActionPerformed
 
     private void viewDetailsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDetailsMouseEntered

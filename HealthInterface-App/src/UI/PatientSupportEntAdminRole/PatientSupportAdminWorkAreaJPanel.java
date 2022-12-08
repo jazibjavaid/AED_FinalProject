@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.HospitalEntAdminRole;
+package UI.PatientSupportEntAdminRole;
+
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -15,10 +16,10 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author jazibjavaid
+ * @author shantanutyagi
  */
 
-public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
+public class PatientSupportAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form HospitalEntAdminWorkAreaJPanel
@@ -28,26 +29,26 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
     UserAccount useraccount;
     Organization org;
     EcoSystem system;
-    public HospitalEntAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
+    public PatientSupportAdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.enterprise=enterprise;
         this.useraccount=useraccount;
         this.org=org;
         this.system=system;
-        ManageHospEntOrgJPanel profileJPanel = new ManageHospEntOrgJPanel(workAreaJPanel,enterprise.getOrganizationDirectory());
-        workAreaJPanel.add("cabServiceDashboard", profileJPanel);
+        ManagePatientSupEntOrgJPanel profileJPanel = new ManagePatientSupEntOrgJPanel(workAreaJPanel,enterprise.getOrganizationDirectory());
+        workAreaJPanel.add("foodSupplyDashboard", profileJPanel);
         CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
         layout.next(workAreaJPanel);
     }
-    void setColor(JPanel panel){
+
+     void setColor(JPanel panel){
         panel.setBackground(new Color(253,135,124));
     }
     
     void resetColor(JPanel panel){
-         panel.setBackground(new Color(253,218,207));
+         panel.setBackground(new Color(253,214,207));
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,14 +65,11 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnEmployee_Panel = new javax.swing.JPanel();
         btnManageEmployee = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnPatients_JPanel = new javax.swing.JPanel();
-        btnManagePatient = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         workAreaJPanel = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(253, 218, 207));
+        jPanel1.setBackground(new java.awt.Color(253, 217, 204));
 
         btnOrganization_Panel.setBackground(new java.awt.Color(253, 135, 124));
         btnOrganization_Panel.setToolTipText("");
@@ -95,8 +93,8 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnmgOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addComponent(btnmgOrg, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         btnOrganization_PanelLayout.setVerticalGroup(
             btnOrganization_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +105,7 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        btnEmployee_Panel.setBackground(new java.awt.Color(253, 218, 207));
+        btnEmployee_Panel.setBackground(new java.awt.Color(253, 217, 204));
         btnEmployee_Panel.setToolTipText("");
         btnEmployee_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -126,42 +124,6 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/userp.png"))); // NOI18N
 
-        btnPatients_JPanel.setBackground(new java.awt.Color(253, 218, 207));
-        btnPatients_JPanel.setToolTipText("");
-
-        btnManagePatient.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnManagePatient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnManagePatient.setText("Manage Patients");
-        btnManagePatient.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnManagePatientMousePressed(evt);
-            }
-        });
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/patient.png"))); // NOI18N
-
-        javax.swing.GroupLayout btnPatients_JPanelLayout = new javax.swing.GroupLayout(btnPatients_JPanel);
-        btnPatients_JPanel.setLayout(btnPatients_JPanelLayout);
-        btnPatients_JPanelLayout.setHorizontalGroup(
-            btnPatients_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnPatients_JPanelLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnManagePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        btnPatients_JPanelLayout.setVerticalGroup(
-            btnPatients_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnPatients_JPanelLayout.createSequentialGroup()
-                .addGroup(btnPatients_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(btnPatients_JPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnManagePatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout btnEmployee_PanelLayout = new javax.swing.GroupLayout(btnEmployee_Panel);
         btnEmployee_Panel.setLayout(btnEmployee_PanelLayout);
         btnEmployee_PanelLayout.setHorizontalGroup(
@@ -172,19 +134,14 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnManageEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(btnPatients_JPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         btnEmployee_PanelLayout.setVerticalGroup(
             btnEmployee_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnEmployee_PanelLayout.createSequentialGroup()
-                .addGroup(btnEmployee_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addGroup(btnEmployee_PanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnManageEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPatients_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnEmployee_PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnManageEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -197,68 +154,53 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(20, 20, 20)
                 .addComponent(btnOrganization_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnEmployee_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(704, Short.MAX_VALUE))
+                .addContainerGap(776, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 880));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 880));
 
         workAreaJPanel.setBackground(new java.awt.Color(255, 255, 255));
         workAreaJPanel.setLayout(new java.awt.CardLayout());
-        add(workAreaJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1160, 880));
+        add(workAreaJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 1180, 880));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnmgOrgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmgOrgMousePressed
         // TODO add your handling code here:
         setColor(btnOrganization_Panel);
         resetColor(btnEmployee_Panel);
-        resetColor(btnPatients_JPanel);
-        ManageHospEntOrgJPanel manageOrgJPanel=new ManageHospEntOrgJPanel(workAreaJPanel,enterprise.getOrganizationDirectory());
-        workAreaJPanel.add("ManageOrgJPanel", manageOrgJPanel);
+        ManagePatientSupEntOrgJPanel managePatientSupOrgJPanel=new ManagePatientSupEntOrgJPanel(workAreaJPanel,enterprise.getOrganizationDirectory());
+        workAreaJPanel.add("ManageOrgJPanel", managePatientSupOrgJPanel);
         CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
         layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnmgOrgMousePressed
 
     private void btnManageEmployeeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManageEmployeeMousePressed
         // TODO add your handling code here:
-        ManageHospEntEmpJPanel manageEmpJPanel=new ManageHospEntEmpJPanel(system,workAreaJPanel,enterprise.getOrganizationDirectory(),enterprise);
-        workAreaJPanel.add("ManageEmpJPanel", manageEmpJPanel);
-        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
-        layout.next(workAreaJPanel);
+
         setColor(btnEmployee_Panel);
         resetColor(btnOrganization_Panel);
-        resetColor(btnPatients_JPanel);
+        ManagePatientSupEntEmpJPanel managePatientSupEmpJPanel=new ManagePatientSupEntEmpJPanel(system,workAreaJPanel,enterprise.getOrganizationDirectory(),enterprise);
+        workAreaJPanel.add("ManageEmpJPanel", managePatientSupEmpJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnManageEmployeeMousePressed
 
     private void btnEmployee_PanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmployee_PanelMousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEmployee_PanelMousePressed
 
-    private void btnManagePatientMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManagePatientMousePressed
-        // TODO add your handling code here:
-        setColor(btnPatients_JPanel);
-        resetColor(btnOrganization_Panel);
-        resetColor(btnEmployee_Panel);
-        HospitalAssignedRequests managePatientJPanel=new HospitalAssignedRequests(workAreaJPanel,enterprise, useraccount,system, org);
-        workAreaJPanel.add("ManageEnterpriseAdminJPanel", managePatientJPanel);
-        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
-        layout.next(workAreaJPanel);
-    }//GEN-LAST:event_btnManagePatientMousePressed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnEmployee_Panel;
     private javax.swing.JLabel btnManageEmployee;
-    private javax.swing.JLabel btnManagePatient;
     private javax.swing.JPanel btnOrganization_Panel;
-    private javax.swing.JPanel btnPatients_JPanel;
     private javax.swing.JLabel btnmgOrg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel workAreaJPanel;
     // End of variables declaration//GEN-END:variables

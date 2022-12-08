@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.DoctorRole;
+package UI.PatientManagerRole;
 
 import Business.Doctor.Doctor;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
+import Business.PatientManager.PatientManager;
+import Business.RegisteredUser.RegisteredUser;
 import Business.UserAccount.UserAccount;
+import Business.Validation.Validations;
 import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,9 +21,9 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author jazibjavaid
+ * @author shantanutyagi
  */
-public class ManageDoctorProfileJPanel extends javax.swing.JPanel {
+public class ManagePatientManagerProfileJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageProfileJPanel
@@ -30,18 +31,15 @@ public class ManageDoctorProfileJPanel extends javax.swing.JPanel {
     private UserAccount useraccount;
     private EcoSystem system;
     private Enterprise enterprise;
-    DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
- 
-    public ManageDoctorProfileJPanel(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system) throws ParseException {
+
+    public ManagePatientManagerProfileJPanel(JPanel userProcessContainer, Enterprise enterprise, UserAccount account, EcoSystem system) {
         initComponents();
-        this.useraccount=account;
+        this.useraccount = account;
         this.system = system;
-        this.enterprise=enterprise;
+        this.enterprise = enterprise;
         populateprofile();
         jDateChooser1.setMaxSelectableDate(new Date());
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,9 +50,9 @@ public class ManageDoctorProfileJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         GenderCombobox = new javax.swing.JComboBox();
         txtZipCode = new javax.swing.JTextField();
         lblEmail = new javax.swing.JLabel();
@@ -67,12 +65,8 @@ public class ManageDoctorProfileJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         lblGender = new javax.swing.JLabel();
         txtContactNo = new javax.swing.JTextField();
-        lblDegree = new javax.swing.JLabel();
-        txtDegree = new javax.swing.JTextField();
-        lblYearsExp = new javax.swing.JLabel();
-        txtYearsExp = new javax.swing.JTextField();
         addJButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -80,8 +74,6 @@ public class ManageDoctorProfileJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         jLabel2.setText("Name");
-
-        jDateChooser1.setDateFormatString("dd-MM-yyyy");
 
         GenderCombobox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female", "Others" }));
         GenderCombobox.addActionListener(new java.awt.event.ActionListener() {
@@ -132,24 +124,6 @@ public class ManageDoctorProfileJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblDegree.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
-        lblDegree.setText("Degree");
-
-        txtDegree.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDegreeActionPerformed(evt);
-            }
-        });
-
-        lblYearsExp.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
-        lblYearsExp.setText("Experience Years");
-
-        txtYearsExp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtYearsExpActionPerformed(evt);
-            }
-        });
-
         addJButton.setBackground(new java.awt.Color(253, 135, 124));
         addJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         addJButton.setText("Save");
@@ -169,64 +143,43 @@ public class ManageDoctorProfileJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font(".SF NS Text", 1, 24)); // NOI18N
-        jLabel3.setText("MY PROFILE");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(234, 234, 234)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblGender)
-                        .addGap(110, 110, 110)
-                        .addComponent(GenderCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblEmail)
-                        .addGap(124, 124, 124)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblDegree)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtDegree, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblYearsExp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtYearsExp, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblZipCode)
                             .addComponent(lblContactNo)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
-                            .addComponent(lblAddress))
-                        .addGap(51, 51, 51)
+                            .addComponent(lblAddress)
+                            .addComponent(lblEmail)
+                            .addComponent(lblGender))
+                        .addGap(55, 55, 55)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtZipCode, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtContactNo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtAddress)
-                            .addComponent(nameJTextField))))
-                .addGap(0, 293, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(333, 333, 333)
-                .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(361, 361, 361))
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(GenderCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                .addComponent(txtContactNo)
+                                .addComponent(txtZipCode)
+                                .addComponent(nameJTextField))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -236,13 +189,16 @@ public class ManageDoctorProfileJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblContactNo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAddress))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -250,36 +206,42 @@ public class ManageDoctorProfileJPanel extends javax.swing.JPanel {
                     .addComponent(lblEmail))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GenderCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GenderCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblGender))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDegree, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDegree))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblYearsExp)
-                    .addComponent(txtYearsExp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105))
+                .addGap(38, 38, 38)
+                .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(162, 162, 162))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(574, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(240, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(86, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -290,39 +252,50 @@ public class ManageDoctorProfileJPanel extends javax.swing.JPanel {
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         String name = nameJTextField.getText();
-        String address=txtAddress.getText();
-        String zipcode=txtZipCode.getText();
-        String contactNumber=txtContactNo.getText();
-        String selectedgender = GenderCombobox.getSelectedItem().toString();
-        String email=txtEmail.getText();
-        String degree = txtDegree.getText();
-        String exp = txtYearsExp.getText();
-        String birthDate = formatter.format(jDateChooser1.getDate());
-        
-        
-         if(name.equals("")||address.equals("")||zipcode.equals("")||contactNumber.equals("")||selectedgender.equals("")||email.equals("")||degree.equals("")||exp.equals("")){
+        String address = txtAddress.getText();
+        String zipcode = txtZipCode.getText();
+        String contactNumber = txtContactNo.getText();
+        String selectedgender = (String) GenderCombobox.getSelectedItem();
+        String email = txtEmail.getText();
+
+        Date birthDate = jDateChooser1.getDate();
+        String strDate = DateFormat.getDateInstance().format(birthDate);
+        //         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //        String stringDate = sdf.format(doBirth );
+
+        Validations validation = new Validations();
+
+        if (name.equals("") || address.equals("") || zipcode.equals("") || contactNumber.equals("") || selectedgender.equals("") || email.equals("")) {
             JOptionPane.showMessageDialog(null, "Did you miss any details? Please check again !", "Error!", JOptionPane.ERROR_MESSAGE);
-          return;
+            return;
         }
-        
-        
+        if (!validation.isValidZipCode(zipcode)) {
+            return;
+        }
+        if (!validation.isValidPhoneNumber(contactNumber)) {
+            return;
+
+        }
+        if (!validation.isValidEmail(email)) {
+            return;
+        }
+
         String username = useraccount.getUsername();
-//        RegisteredUser registeredUser= system.getRegisteredUserDirectory().findRegisteredUser(username);
-        Doctor doctor = null;
-        for(Organization org : enterprise.getOrganizationDirectory().getOrgList()){
-           if(org.getDocDir().findDoctor(username)!= null){
-               doctor = org.getDocDir().findDoctor(username);
-        doctor.setFullName(name);
-        doctor.setAddress(address);
-        doctor.setEmail(email);
-        doctor.setContactNumber(contactNumber);
-        doctor.setDob(birthDate);
-        doctor.setDegree(degree);
-        doctor.setYearsExperience(exp);
-        doctor.setGender(selectedgender);
-           }}
+        PatientManager patman = null;
+        for (Organization org : enterprise.getOrganizationDirectory().getOrgList()) {
+            if (org.getpManagerDir().findPatientManager(username) != null) {
+                patman = org.getpManagerDir().findPatientManager(username);
+                //PatientManager patman=enterprise.getOrganizationDirectory().getOrgList().get(0).getpManagerDir().findPatientManager(username);
+
+                patman.setFullName(name);
+                patman.setAddress(address);
+                patman.setEmail(email);
+                patman.setContactNumber(contactNumber);
+                patman.setDob(strDate);
+                patman.setGender(selectedgender);
+            }
+        }
         JOptionPane.showMessageDialog(null, new JLabel("<html><h2><I><font color='green'> Details Saved Successfully!! </font><></h2></html>"));
-         
 
 
     }//GEN-LAST:event_addJButtonActionPerformed
@@ -343,21 +316,14 @@ public class ManageDoctorProfileJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_GenderComboboxActionPerformed
 
-    private void txtDegreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDegreeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDegreeActionPerformed
-
-    private void txtYearsExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtYearsExpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtYearsExpActionPerformed
-
     private void addJButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addJButtonMouseEntered
         // TODO add your handling code here:
-        addJButton.setBackground(new java.awt.Color(253,135,124));
+        addJButton.setBackground(new java.awt.Color(18, 102, 153));
         addJButton.setContentAreaFilled(true);
         addJButton.setFocusPainted(true);
         addJButton.setBorderPainted(false);
         addJButton.setOpaque(true);
+
     }//GEN-LAST:event_addJButtonMouseEntered
 
     private void addJButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addJButtonMouseExited
@@ -374,46 +340,37 @@ public class ManageDoctorProfileJPanel extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblContactNo;
-    private javax.swing.JLabel lblDegree;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblGender;
-    private javax.swing.JLabel lblYearsExp;
     private javax.swing.JLabel lblZipCode;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtContactNo;
-    private javax.swing.JTextField txtDegree;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtYearsExp;
     private javax.swing.JTextField txtZipCode;
     // End of variables declaration//GEN-END:variables
 
-    private void populateprofile() throws ParseException {
+    private void populateprofile() {
         String username = useraccount.getUsername();
-       // Doctor doctor1= enterprise.getDocDir().findDoctor(username);
-       Doctor doctor = null;
-       for(Organization org : enterprise.getOrganizationDirectory().getOrgList()){
-           if(org.getDocDir().findDoctor(username)!= null){
-               doctor = org.getDocDir().findDoctor(username);
-       // Doctor doctor=enterprise.getOrganizationDirectory().getOrgList().get(0).getDocDir().findDoctor(username);
-        nameJTextField.setText(doctor.getFullName());
-        txtAddress.setText(doctor.getAddress());
-        txtZipCode.setText(doctor.getZipcode());
-        txtContactNo.setText(doctor.getContactNumber());
-        txtYearsExp.setText(doctor.getYearsExperience());
-        txtDegree.setText(doctor.getDegree());
-        GenderCombobox.setSelectedItem(doctor.getGender());  
-        txtEmail.setText(doctor.getEmail());       
-        String birthDate = doctor.getDob();
-        if(birthDate != null){
-            Date date = (Date) formatter.parse(birthDate);
-            jDateChooser1.setDate(date);
-        }    
-           }
-       }
+        PatientManager pat = null;
+        for (Organization org : enterprise.getOrganizationDirectory().getOrgList()) {
+            if (org.getpManagerDir().findPatientManager(username) != null) {
+                pat = org.getpManagerDir().findPatientManager(username);
+                // PatientManager pat=enterprise.getOrganizationDirectory().getOrgList().get(0).getpManagerDir().findPatientManager(username);
+                nameJTextField.setText(pat.getFullName());
+                txtAddress.setText(pat.getAddress());
+                txtZipCode.setText(pat.getZipcode());
+                txtContactNo.setText(pat.getContactNumber());
+                GenderCombobox.setSelectedItem(pat.getGender());
+                txtEmail.setText(pat.getEmail());
+                jDateChooser1.setDateFormatString(pat.getDob());
+
+            }
+        }
+
     }
 }

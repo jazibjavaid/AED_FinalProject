@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.SystemAdmin;
+package UI.SystemAdmin;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.City.City;
 import Business.Role.HospitalEntAdminRole;
+import Business.Role.PatientSupportEntAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -281,6 +282,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 UserAccount account=new UserAccount(username, password, name, new HospitalEntAdminRole());
                 enterprise.getUserAccountDir().addUserAccount(account);
                 JOptionPane.showMessageDialog(null, "User Account created successfully");
+                
+            }
+            else if(enterprise.getEnterpriseCategory().toString().equals("Patient Support Services")){
+                 UserAccount account=new UserAccount(username, password, name,  new PatientSupportEntAdminRole());
+                enterprise.getUserAccountDir().addUserAccount(account);
+                 JOptionPane.showMessageDialog(null, "User Account created successfully");
+               // UserAccount account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new PatientSupportEntAdminRole());
                 
             }
         }    

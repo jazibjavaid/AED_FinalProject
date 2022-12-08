@@ -5,6 +5,7 @@
 package Business.AmbulanceDriver;
 
 import Business.Role.Role;
+import Business.WorkProcess.ServiceRequestDirectory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -20,6 +21,7 @@ public class AmbulanceDriver extends Business.Person.Person{
     private int id;
     private static final AtomicInteger count = new AtomicInteger(0); 
     private AmbulanceServiceDirectory ambulanceServiceDirectory;
+    private ServiceRequestDirectory serviceRequestDirectory;
     
     public AmbulanceDriver(String licenseNumber,String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username, String password, Role role) {
         super(fullName, dob, gender, address, zipcode, contactNumber, email,username, password,role);
@@ -76,6 +78,14 @@ public class AmbulanceDriver extends Business.Person.Person{
 
     public void setAmbulanceServiceDirectory(AmbulanceServiceDirectory ambulanceServiceDirectory) {
         this.ambulanceServiceDirectory = ambulanceServiceDirectory;
+    }
+
+    public ServiceRequestDirectory getServiceRequestDirectory() {
+        return serviceRequestDirectory;
+    }
+
+    public void setServiceRequestDirectory(ServiceRequestDirectory serviceRequestDirectory) {
+        this.serviceRequestDirectory = serviceRequestDirectory;
     }
       
     @Override

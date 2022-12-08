@@ -4,10 +4,22 @@
  */
 package Business.Role;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+import UI.PatientSupportEntAdminRole.PatientSupportAdminWorkAreaJPanel;
+
 /**
  *
  * @author jazibjavaid
  */
-public class PatientSupportEntAdminRole {
+public class PatientSupportEntAdminRole extends Role{
+    
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
+        return new PatientSupportAdminWorkAreaJPanel(userProcessContainer, useraccount, org, enterprise, system);
+    }
     
 }

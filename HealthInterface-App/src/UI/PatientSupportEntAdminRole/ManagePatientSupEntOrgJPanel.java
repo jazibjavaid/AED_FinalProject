@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.HospitalEntAdminRole;
-
+package UI.PatientSupportEntAdminRole;
 
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
@@ -17,57 +16,60 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author jazibjavaid
+ * @author shantanutyagi
  */
-public class ManageHospEntOrgJPanel extends javax.swing.JPanel {
+public class ManagePatientSupEntOrgJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageOrgJPanel
      */
     private OrganizationDirectory directory;
     private JPanel userProcessContainer;
-  
-    public ManageHospEntOrgJPanel(JPanel userProcessContainer,OrganizationDirectory directory) {
+
+    public ManagePatientSupEntOrgJPanel(JPanel userProcessContainer, OrganizationDirectory directory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.directory = directory;
- 
-        
+
         populateTable();
         populateCombo();
         organizationJTable.setRowHeight(25);
         organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
     }
-    
+
     public class HeaderColor extends DefaultTableCellRenderer {
+
         public HeaderColor() {
             setOpaque(true);
         }
+
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
-            super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-            setBackground(new java.awt.Color(253,218,207));
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+            setBackground(new java.awt.Color(253, 217, 208));
             return this;
         }
 
     }
-    private void populateCombo(){
+
+    private void populateCombo() {
         organizationJComboBox.removeAllItems();
-        organizationJComboBox.addItem(Organization.OrgType.Doctor);
-        organizationJComboBox.addItem(Organization.OrgType.Nurse);
+        organizationJComboBox.addItem(Organization.OrgType.PatientManager);
+
     }
 
-    private void populateTable(){
+    private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-        
+
         model.setRowCount(0);
-     
-        for (Organization organization : directory.getOrgList()){
+
+        for (Organization organization : directory.getOrgList()) {
             Object[] row = new Object[2];
             row[0] = organization.getName();
             row[1] = organization.getOrgType().getValue();
             model.addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,10 +117,10 @@ public class ManageHospEntOrgJPanel extends javax.swing.JPanel {
             }
         });
         organizationJTable.setRequestFocusEnabled(false);
-        organizationJTable.setSelectionBackground(new java.awt.Color(153, 153, 153));
+        organizationJTable.setSelectionBackground(new java.awt.Color(235, 227, 126));
         jScrollPane1.setViewportView(organizationJTable);
 
-        addJButton.setBackground(new java.awt.Color(253, 218, 207));
+        addJButton.setBackground(new java.awt.Color(253, 135, 153));
         addJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
         addJButton.setText("Add Organization");
@@ -139,21 +141,12 @@ public class ManageHospEntOrgJPanel extends javax.swing.JPanel {
         });
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                organizationJComboBoxActionPerformed(evt);
-            }
-        });
 
-        jLabel1.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         jLabel1.setText("Organization Type ");
 
         jLabel2.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
         jLabel2.setText("Manage Organization");
 
-        txtOrgName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-
-        jLabel3.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         jLabel3.setText("Organization Name ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -163,68 +156,63 @@ public class ManageHospEntOrgJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(398, 398, 398)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(247, 247, 247)
+                        .addGap(103, 103, 103)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(312, 312, 312)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(297, 297, 297)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3))
-                                .addGap(49, 49, 49)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtOrgName)
-                                    .addComponent(organizationJComboBox, 0, 175, Short.MAX_VALUE)))
+                                .addComponent(jLabel3)
+                                .addGap(50, 50, 50)
+                                .addComponent(txtOrgName))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(288, Short.MAX_VALUE))
+                                .addComponent(jLabel1)
+                                .addGap(56, 56, 56)
+                                .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(269, 269, 269)
+                        .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(432, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(226, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
-        Organization.OrgType type = (Organization.OrgType) organizationJComboBox.getSelectedItem();
-        String name=txtOrgName.getText();
-        if("".equals(name)){
+        Organization.OrgType orgType = (Organization.OrgType) organizationJComboBox.getSelectedItem();
+        String name = txtOrgName.getText();
+        if ("".equals(name)) {
             JOptionPane.showMessageDialog(null, "Please enter organization name");
             return;
         }
-        directory.createOrg(type,name);
+        directory.createOrg(orgType, name);
         populateTable();
-        txtOrgName.setText("");
     }//GEN-LAST:event_addJButtonActionPerformed
-
-    private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_organizationJComboBoxActionPerformed
 
     private void addJButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addJButtonMouseEntered
         // TODO add your handling code here:
-        addJButton.setBackground(new java.awt.Color(253,135,124));
+        addJButton.setBackground(new java.awt.Color(253, 135, 124));
         addJButton.setContentAreaFilled(true);
         addJButton.setFocusPainted(true);
         addJButton.setBorderPainted(false);

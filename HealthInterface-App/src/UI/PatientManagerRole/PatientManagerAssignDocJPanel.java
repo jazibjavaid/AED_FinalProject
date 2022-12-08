@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.NurseRole;
-
+package UI.PatientManagerRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Nurse.Nurse;
 import Business.Organization.Organization;
+import Business.PatientManager.PatientManager;
 import Business.UserAccount.UserAccount;
 import Business.WorkProcess.HealthRequest;
 import java.awt.CardLayout;
@@ -19,25 +18,25 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
+import UI.UserRole.HealthRequestReport;
 
 /**
  *
- * @author amishagupta
+ * @author jazibjavaid
  */
-public class NurseAssignedRequest extends javax.swing.JPanel {
+public class PatientManagerAssignDocJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form PatientManagerAssignDocJPanel
      */
     private UserAccount useraccount;
     private EcoSystem system;
-    private Nurse nurse;
+    private PatientManager patientManager;
     private Enterprise enterprise;
     private Organization organization;
     private JPanel userProcessContainer;
     private HealthRequest req;
-    public NurseAssignedRequest(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, Organization organization) {
+    public PatientManagerAssignDocJPanel(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, Organization organization) {
         initComponents();
         this.useraccount=account;
         this.system=system;
@@ -45,32 +44,33 @@ public class NurseAssignedRequest extends javax.swing.JPanel {
         this.organization = organization;
         this.userProcessContainer = userProcessContainer;
         String username = useraccount.getUsername();
-        nurse =organization.getNurDir().findNurse(username);
+        patientManager =organization.getpManagerDir().findPatientManager(username);
         SubmittedrequestsJTable.setRowHeight(25);
         SubmittedrequestsJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
         populateRequestTable();
     }
-     public class HeaderColor extends DefaultTableCellRenderer {
+    public class HeaderColor extends DefaultTableCellRenderer {
         public HeaderColor() {
             setOpaque(true);
         }
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-            setBackground(new java.awt.Color(18,102,153));
+            setBackground(new java.awt.Color(253,217,204));
             return this;
         }
     }
     public void populateRequestTable() {
         DefaultTableModel model = (DefaultTableModel) SubmittedrequestsJTable.getModel();
         model.setRowCount(0);
-            for(HealthRequest req : nurse.getRequestDirectory().getRequestList()){
-            Object[] row = new Object[6];
+           for(HealthRequest req : organization.getRequestDirectory().getRequestList()){
+            Object[] row = new Object[7];
             row[0] = req;
             row[1] = req.getUser().getName();
             row[2] = req.getPatientManager()==null?"Not Assigned":req.getPatientManager().getName();
             row[3] = req.getDoctor()==null?"Not Assigned":req.getDoctor().getName();
-            row[4] = req.getHospital()==null?"Not Assigned": req.getHospital().getName();
-            row[5] = req.getStatus();
+            row[4] = req.getNurse()==null?"Not Assigned":req.getNurse().getName();
+            row[5] = req.getHospital()==null?"Not Assigned": req.getHospital().getName();
+            row[6] = req.getStatus();
             model.addRow(row);
         }
    
@@ -87,26 +87,27 @@ public class NurseAssignedRequest extends javax.swing.JPanel {
         DoctorScrollPane = new javax.swing.JScrollPane();
         SubmittedrequestsJTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        BtnAssign = new javax.swing.JButton();
         viewDetails = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         SubmittedrequestsJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Request ID", "Requester's Name", "Patient Manager", "Doctor Assigned", "Hospital Assigned", "Request Status"
+                "Request ID", "Requester's Name", "Patient Manager", "Doctor Assigned", "Nurse Assigned", "Hospital Assigned", "Request Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, true
+                true, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -122,7 +123,26 @@ public class NurseAssignedRequest extends javax.swing.JPanel {
         DoctorScrollPane.setViewportView(SubmittedrequestsJTable);
 
         jLabel1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
-        jLabel1.setText("Assigned Requests");
+        jLabel1.setText("User's Requests");
+
+        BtnAssign.setBackground(new java.awt.Color(253, 135, 124));
+        BtnAssign.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
+        BtnAssign.setText("Assign to Me");
+        BtnAssign.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        BtnAssign.setContentAreaFilled(false);
+        BtnAssign.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BtnAssignMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnAssignMouseExited(evt);
+            }
+        });
+        BtnAssign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAssignActionPerformed(evt);
+            }
+        });
 
         viewDetails.setBackground(new java.awt.Color(253, 135, 124));
         viewDetails.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
@@ -153,10 +173,13 @@ public class NurseAssignedRequest extends javax.swing.JPanel {
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DoctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 939, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(viewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(460, 460, 460)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -166,14 +189,50 @@ public class NurseAssignedRequest extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(DoctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(viewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(310, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BtnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAssignActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = SubmittedrequestsJTable.getSelectedRow();
+        if (selectedRow < 0){
+              JOptionPane.showMessageDialog(null, "Please select a row!");
+            return;
+        }
+        else
+        {
+        req = (HealthRequest)SubmittedrequestsJTable.getValueAt(selectedRow, 0);
+        if(req.getPatientManager()==null){
+        req.setPatientManager(patientManager);
+        patientManager.getRequestDirectory().addRequestList(req);
+        populateRequestTable();
+        JOptionPane.showMessageDialog(null, "This Request has been assigned to you successfuuly");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "This Request is already assigned to: " +req.getPatientManager().getName());
+            }
+        }    
+    }//GEN-LAST:event_BtnAssignActionPerformed
+
     private void viewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsActionPerformed
         // TODO add your handling code here:
+        int selectedRow = SubmittedrequestsJTable.getSelectedRow();
+         if (selectedRow < 0){
+              JOptionPane.showMessageDialog(null, "Please select a row!");
+            return;
+        }
+        else{
+                req = (HealthRequest)SubmittedrequestsJTable.getValueAt(selectedRow, 0);
+                HealthRequestReport healthRequest=new HealthRequestReport(userProcessContainer,enterprise,useraccount,system, req, patientManager, "patManAllReq", organization);
+                userProcessContainer.add("PatientManagerProfileJPanel", healthRequest);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+        }
     }//GEN-LAST:event_viewDetailsActionPerformed
 
     private void viewDetailsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDetailsMouseEntered
@@ -192,8 +251,25 @@ public class NurseAssignedRequest extends javax.swing.JPanel {
         viewDetails.setBorderPainted(true);
     }//GEN-LAST:event_viewDetailsMouseExited
 
+    private void BtnAssignMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAssignMouseEntered
+        // TODO add your handling code here:
+        BtnAssign.setBackground(new java.awt.Color(253,135,124));
+        BtnAssign.setContentAreaFilled(true);
+        BtnAssign.setFocusPainted(true);
+        BtnAssign.setBorderPainted(false);
+        BtnAssign.setOpaque(true);
+    }//GEN-LAST:event_BtnAssignMouseEntered
+
+    private void BtnAssignMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAssignMouseExited
+        // TODO add your handling code here:
+        BtnAssign.setContentAreaFilled(false);
+        BtnAssign.setFocusPainted(false);
+        BtnAssign.setBorderPainted(true);
+    }//GEN-LAST:event_BtnAssignMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnAssign;
     private javax.swing.JScrollPane DoctorScrollPane;
     private javax.swing.JTable SubmittedrequestsJTable;
     private javax.swing.JLabel jLabel1;
