@@ -4,6 +4,18 @@
  */
 package UI.CabServiceRole;
 
+import Business.CabDriver.CabDriver;
+import Business.Doctor.Doctor;
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Nurse.Nurse;
+import Business.Organization.Organization;
+import Business.RegisteredUser.RegisteredUser;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.ServiceRequest;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author yuktachikate
@@ -13,8 +25,55 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CabServiceAssignedRequestJPanel
      */
+    private UserAccount useraccount;
+    private EcoSystem system;
+    private Enterprise enterprise;
+    private Organization organization;
+    private JPanel userProcessContainer;
     public CabServiceAssignedRequestJPanel() {
         initComponents();
+        populateRequestTable();
+
+    }
+    
+    public void populateRequestTable() {
+        DefaultTableModel model = (DefaultTableModel) SubmittedrequestsJTable.getModel();
+        model.setRowCount(0);
+       
+            CabDriver cabDriver = organization.getCabDriverDir().findCabProvider(useraccount.getUsername());
+           for(ServiceRequest serReq : cabDriver.getServiceRequestDirectory().getServiceRequestList()){
+            Object[] row = new Object[9];
+               RegisteredUser user = serReq.getUser();
+               if(serReq.getNurse()!=null){
+                   Nurse nurse = serReq.getNurse();
+                        row[0] = serReq;
+                        row[1] = nurse.getName();
+                        row[2] = nurse.getContactNumber();
+                        row[3] = nurse.getAddress();
+                        row[4] = nurse.getZipcode();
+                        row[5] = user.getName();
+                        row[6] = user.getAddress();
+                        row[7] = user.getZipcode();
+                        row[8] = serReq.getStatus();
+                        model.addRow(row);
+               } else{
+                    Doctor doc = serReq.getDoctor();
+                        row[0] = serReq;
+                        row[1] = doc.getName();
+                        row[2] = doc.getContactNumber();
+                        row[3] = doc.getAddress();
+                        row[4] = doc.getZipcode();
+                        row[5] = user.getName();
+                        row[6] = user.getAddress();
+                        row[7] = user.getZipcode();
+                        row[8] = serReq.getStatus();
+                        model.addRow(row);
+               }
+           
+
+       }
+           
+   
     }
 
     /**
@@ -26,19 +85,255 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        DoctorScrollPane = new javax.swing.JScrollPane();
+        SubmittedrequestsJTable = new javax.swing.JTable();
+        btnApproved = new javax.swing.JButton();
+        btnArrived = new javax.swing.JButton();
+        btnRiding = new javax.swing.JButton();
+        btnCompleted = new javax.swing.JButton();
+        btnDecline = new javax.swing.JButton();
+
+        jLabel1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
+        jLabel1.setText("User's Requests");
+
+        SubmittedrequestsJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Request ID", "Requester Name", "Contact Number", "Address", "Zipcode", "Patient's Name", "Patient's Address", "Patient's Zipcode", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, false, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        SubmittedrequestsJTable.setRequestFocusEnabled(false);
+        SubmittedrequestsJTable.setSelectionBackground(new java.awt.Color(235, 227, 126));
+        DoctorScrollPane.setViewportView(SubmittedrequestsJTable);
+
+        btnApproved.setBackground(new java.awt.Color(18, 102, 153));
+        btnApproved.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
+        btnApproved.setText("Accepted");
+        btnApproved.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnApproved.setContentAreaFilled(false);
+        btnApproved.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnApprovedMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnApprovedMouseExited(evt);
+            }
+        });
+        btnApproved.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApprovedActionPerformed(evt);
+            }
+        });
+
+        btnArrived.setBackground(new java.awt.Color(18, 102, 153));
+        btnArrived.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
+        btnArrived.setText("Arrived");
+        btnArrived.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnArrived.setContentAreaFilled(false);
+        btnArrived.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnArrivedMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnArrivedMouseExited(evt);
+            }
+        });
+        btnArrived.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArrivedActionPerformed(evt);
+            }
+        });
+
+        btnRiding.setBackground(new java.awt.Color(18, 102, 153));
+        btnRiding.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
+        btnRiding.setText("Riding");
+        btnRiding.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnRiding.setContentAreaFilled(false);
+        btnRiding.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRidingMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRidingMouseExited(evt);
+            }
+        });
+        btnRiding.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRidingActionPerformed(evt);
+            }
+        });
+
+        btnCompleted.setBackground(new java.awt.Color(18, 102, 153));
+        btnCompleted.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
+        btnCompleted.setText("Completed");
+        btnCompleted.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnCompleted.setContentAreaFilled(false);
+        btnCompleted.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCompletedMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCompletedMouseExited(evt);
+            }
+        });
+        btnCompleted.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompletedActionPerformed(evt);
+            }
+        });
+
+        btnDecline.setBackground(new java.awt.Color(18, 102, 153));
+        btnDecline.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
+        btnDecline.setText("Decline");
+        btnDecline.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnDecline.setContentAreaFilled(false);
+        btnDecline.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnDeclineMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnDeclineMouseExited(evt);
+            }
+        });
+        btnDecline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeclineActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(460, 460, 460)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 403, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(DoctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1019, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(btnApproved, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnArrived, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRiding, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCompleted, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(DoctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnApproved, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCompleted, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnArrived, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRiding, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(441, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnApprovedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApprovedMouseEntered
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnApprovedMouseEntered
+
+    private void btnApprovedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApprovedMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnApprovedMouseExited
+
+    private void btnApprovedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprovedActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnApprovedActionPerformed
+
+    private void btnArrivedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnArrivedMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnArrivedMouseEntered
+
+    private void btnArrivedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnArrivedMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnArrivedMouseExited
+
+    private void btnArrivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArrivedActionPerformed
+        // TODO add your handling code here:
+        
+
+    }//GEN-LAST:event_btnArrivedActionPerformed
+
+    private void btnRidingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRidingMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRidingMouseEntered
+
+    private void btnRidingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRidingMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRidingMouseExited
+
+    private void btnRidingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRidingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRidingActionPerformed
+
+    private void btnCompletedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompletedMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCompletedMouseEntered
+
+    private void btnCompletedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompletedMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCompletedMouseExited
+
+    private void btnCompletedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCompletedActionPerformed
+
+    private void btnDeclineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeclineMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeclineMouseEntered
+
+    private void btnDeclineMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeclineMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeclineMouseExited
+
+    private void btnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnDeclineActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane DoctorScrollPane;
+    private javax.swing.JTable SubmittedrequestsJTable;
+    private javax.swing.JButton btnApproved;
+    private javax.swing.JButton btnArrived;
+    private javax.swing.JButton btnCompleted;
+    private javax.swing.JButton btnDecline;
+    private javax.swing.JButton btnRiding;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
