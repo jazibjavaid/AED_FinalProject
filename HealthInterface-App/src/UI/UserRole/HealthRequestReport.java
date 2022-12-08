@@ -15,6 +15,7 @@ import Business.Person.PersonalNotification;
 import Business.RegisteredUser.RegisteredUser;
 import Business.UserAccount.UserAccount;
 import Business.WorkProcess.HealthRequest;
+import UI.DoctorRole.AssignHospitalToRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.text.DateFormat;
@@ -830,6 +831,11 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        RegisteredUser user = request.getUser();
+        UserReport userReport=new UserReport(userProcessContainer,system, user);
+        userProcessContainer.add("userReport", userReport);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void toggleButton(){
@@ -936,6 +942,10 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void btnBedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBedActionPerformed
         // TODO add your handling code here:
+        AssignHospitalToRequest assignHospital=new AssignHospitalToRequest(userProcessContainer,enterprise,useraccount,system,request, org);
+        userProcessContainer.add("userReport", assignHospital);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBedActionPerformed
 
     private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
