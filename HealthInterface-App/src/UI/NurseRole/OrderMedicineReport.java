@@ -5,11 +5,9 @@
  */
 package UI.NurseRole;
 
-
-
+import Business.City.City;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.City.City;
 import Business.Nurse.Nurse;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
@@ -53,34 +51,36 @@ public class OrderMedicineReport extends javax.swing.JPanel {
     String ifConsultationRequired;
     private ArrayList<Medicine> medicineList = new ArrayList<>();
     DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-       
-    public OrderMedicineReport(JPanel userProcessContainer,Enterprise ent, UserAccount userAccount, EcoSystem system, HealthRequest request, Organization organization) {
+
+    public OrderMedicineReport(JPanel userProcessContainer, Enterprise ent, UserAccount userAccount, EcoSystem system, HealthRequest request, Organization organization) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         this.system = system;
-        this.ent=ent;
+        this.ent = ent;
         this.request = request;
         this.organization = organization;
-        nurse=organization.getNurDir().findNurse(userAccount.getUsername());
+        nurse = organization.getNurDir().findNurse(userAccount.getUsername());
         populateDetails();
         populateOrderTable();
         populateComboBox();
-         completeOrderTable.setRowHeight(25);
+        completeOrderTable.setRowHeight(25);
         completeOrderTable.getTableHeader().setDefaultRenderer(new HeaderColor());
     }
-     public class HeaderColor extends DefaultTableCellRenderer {
+
+    public class HeaderColor extends DefaultTableCellRenderer {
+
         public HeaderColor() {
             setOpaque(true);
         }
+
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
-            super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-           setBackground(new java.awt.Color(18,102,153));
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+            setBackground(new java.awt.Color(18, 102, 153));
             return this;
         }
 
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -354,77 +354,69 @@ public class OrderMedicineReport extends javax.swing.JPanel {
 
         Date date = new Date();
         String nowDate = formatter.format(date);
-        OrderMedicine ordMed = new OrderMedicine(nowDate,"New", null, pharmacy);
-        for(Medicine med : medicineList){
+        OrderMedicine ordMed = new OrderMedicine(nowDate, "New", null, pharmacy);
+        for (Medicine med : medicineList) {
             ordMed.getMedicineDirectory().addMedicineList(med);
         }
         request.getOrderDirectoryMed().addOrder(ordMed);
         pharmacy.getRequestDirectory().addRequestList(request);
-        
-         JOptionPane.showMessageDialog(null, "Your order will be processed soon");
-       medicineList.clear();
-       populateOrderTable();
-        
+
+        JOptionPane.showMessageDialog(null, "Your order will be processed soon");
+        medicineList.clear();
+        populateOrderTable();
+
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void pharmacyComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pharmacyComboBoxActionPerformed
-        // TODO add your handling code here:
-            pharmacy = (Pharmacist)pharmacyComboBox.getSelectedItem();
-            populateAvailableMedicineTable();
-        
+        pharmacy = (Pharmacist) pharmacyComboBox.getSelectedItem();
+        populateAvailableMedicineTable();
+
     }//GEN-LAST:event_pharmacyComboBoxActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-        
-         int selectedRow = medicineAvailableTable.getSelectedRow();
-         if (selectedRow < 0){
-              JOptionPane.showMessageDialog(null, "Please select a row!");
+        int selectedRow = medicineAvailableTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row!");
             return;
-         }
-         else{
-         String quantity = txtQuantity.getText();
-         if(quantity.isEmpty()){
-              JOptionPane.showMessageDialog(null, "Please enter quantity firse");
-         
-         } else{
-         Medicine med = (Medicine)medicineAvailableTable.getValueAt(selectedRow, 0);
-         med.setQuantity(quantity);
-         medicineList.add(med);
-         populateCartMedicineTable();
-         }
-         }
-        
+        } else {
+            String quantity = txtQuantity.getText();
+            if (quantity.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter quantity firse");
+
+            } else {
+                Medicine med = (Medicine) medicineAvailableTable.getValueAt(selectedRow, 0);
+                med.setQuantity(quantity);
+                medicineList.add(med);
+                populateCartMedicineTable();
+            }
+        }
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
-        // TODO add your handling code here:
-         int selectedRow = completeOrderTable.getSelectedRow();
-         if (selectedRow < 0){
-              JOptionPane.showMessageDialog(null, "Please select a row!");
+        int selectedRow = completeOrderTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row!");
             return;
-         }
-         else{
-         OrderMedicine ordMed = (OrderMedicine)completeOrderTable.getValueAt(selectedRow, 0);
-         OrderDetailsJPanel orderDetails=new OrderDetailsJPanel(userProcessContainer,ent,userAccount,system,organization, request,ordMed);
+        } else {
+            OrderMedicine ordMed = (OrderMedicine) completeOrderTable.getValueAt(selectedRow, 0);
+            OrderDetailsJPanel orderDetails = new OrderDetailsJPanel(userProcessContainer, ent, userAccount, system, organization, request, ordMed);
             userProcessContainer.add("PatientManagerProfileJPanel", orderDetails);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
-         }
-            
+        }
+
     }//GEN-LAST:event_btnViewDetailsActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-       NurseReportActionPanel nurseActionPanel=new NurseReportActionPanel(userProcessContainer,ent,userAccount,system,request,organization);
-            userProcessContainer.add("PatientManagerProfileJPanel", nurseActionPanel);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
+        NurseReportActionPanel nurseActionPanel = new NurseReportActionPanel(userProcessContainer, ent, userAccount, system, request, organization);
+        userProcessContainer.add("PatientManagerProfileJPanel", nurseActionPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-        // TODO add your handling code here:
-                jButton3.setBackground(new java.awt.Color(18,102,153));
+        jButton3.setBackground(new java.awt.Color(18, 102, 153));
         jButton3.setContentAreaFilled(true);
         jButton3.setFocusPainted(true);
         jButton3.setBorderPainted(false);
@@ -432,15 +424,13 @@ public class OrderMedicineReport extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
-        // TODO add your handling code here:
-         jButton3.setContentAreaFilled(false);
+        jButton3.setContentAreaFilled(false);
         jButton3.setFocusPainted(false);
         jButton3.setBorderPainted(true);
     }//GEN-LAST:event_jButton3MouseExited
 
     private void btnViewDetailsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnViewDetailsMouseEntered
-        // TODO add your handling code here:
-                btnViewDetails.setBackground(new java.awt.Color(18,102,153));
+        btnViewDetails.setBackground(new java.awt.Color(18, 102, 153));
         btnViewDetails.setContentAreaFilled(true);
         btnViewDetails.setFocusPainted(true);
         btnViewDetails.setBorderPainted(false);
@@ -448,15 +438,13 @@ public class OrderMedicineReport extends javax.swing.JPanel {
     }//GEN-LAST:event_btnViewDetailsMouseEntered
 
     private void btnViewDetailsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnViewDetailsMouseExited
-        // TODO add your handling code here:
-         btnViewDetails.setContentAreaFilled(false);
+        btnViewDetails.setContentAreaFilled(false);
         btnViewDetails.setFocusPainted(false);
         btnViewDetails.setBorderPainted(true);
     }//GEN-LAST:event_btnViewDetailsMouseExited
 
     private void btnAddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseEntered
-        // TODO add your handling code here:
-                btnAdd.setBackground(new java.awt.Color(18,102,153));
+        btnAdd.setBackground(new java.awt.Color(18, 102, 153));
         btnAdd.setContentAreaFilled(true);
         btnAdd.setFocusPainted(true);
         btnAdd.setBorderPainted(false);
@@ -464,15 +452,13 @@ public class OrderMedicineReport extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAddMouseEntered
 
     private void btnAddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseExited
-        // TODO add your handling code here:
-         btnAdd.setContentAreaFilled(false);
+        btnAdd.setContentAreaFilled(false);
         btnAdd.setFocusPainted(false);
         btnAdd.setBorderPainted(true);
     }//GEN-LAST:event_btnAddMouseExited
 
     private void btnSubmitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseEntered
-        // TODO add your handling code here:
-                btnSubmit.setBackground(new java.awt.Color(18,102,153));
+        btnSubmit.setBackground(new java.awt.Color(18, 102, 153));
         btnSubmit.setContentAreaFilled(true);
         btnSubmit.setFocusPainted(true);
         btnSubmit.setBorderPainted(false);
@@ -480,8 +466,7 @@ public class OrderMedicineReport extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSubmitMouseEntered
 
     private void btnSubmitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseExited
-        // TODO add your handling code here:
-         btnSubmit.setContentAreaFilled(false);
+        btnSubmit.setContentAreaFilled(false);
         btnSubmit.setFocusPainted(false);
         btnSubmit.setBorderPainted(true);
     }//GEN-LAST:event_btnSubmitMouseExited
@@ -512,14 +497,15 @@ public class OrderMedicineReport extends javax.swing.JPanel {
     private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
 
-    private void populateDetails(){
+    private void populateDetails() {
         lblPatientName.setText(request.getUser().getName());
         lblRequestNumber.setText(request.getRequestNumber());
     }
+
     public void populateOrderTable() {
         DefaultTableModel model = (DefaultTableModel) completeOrderTable.getModel();
         model.setRowCount(0);
-           for(OrderMedicine om : request.getOrderDirectoryMed().getMedicineList()){
+        for (OrderMedicine om : request.getOrderDirectoryMed().getMedicineList()) {
             Object[] row = new Object[5];
             row[0] = om;
             row[1] = om.getPharmacyName();
@@ -528,50 +514,49 @@ public class OrderMedicineReport extends javax.swing.JPanel {
             row[4] = om.getDeliveryman();
             model.addRow(row);
         }
-   
+
     }
-       public void populateAvailableMedicineTable() {
-         DefaultTableModel model = (DefaultTableModel) medicineAvailableTable.getModel();
+
+    public void populateAvailableMedicineTable() {
+        DefaultTableModel model = (DefaultTableModel) medicineAvailableTable.getModel();
         model.setRowCount(0);
-        for(Medicine med : pharmacy.getMedicineDirectory().getMedicineList()){
+        for (Medicine med : pharmacy.getMedicineDirectory().getMedicineList()) {
             Object[] row = new Object[2];
             row[0] = med;
             row[1] = med.getExpiryDate();
             model.addRow(row);
         }
-        }
-       
-       public void populateCartMedicineTable() {
-         DefaultTableModel model = (DefaultTableModel) cartTable.getModel();
+    }
+
+    public void populateCartMedicineTable() {
+        DefaultTableModel model = (DefaultTableModel) cartTable.getModel();
         model.setRowCount(0);
-        for(Medicine med : medicineList){
+        for (Medicine med : medicineList) {
             Object[] row = new Object[3];
             row[0] = med;
             row[1] = med.getExpiryDate();
             row[2] = med.getQuantity();
             model.addRow(row);
         }
-        }
-    
-    public void populateComboBox(){
-//        testProviderComboBox.removeAllItems();
-          for(Network net: system.getNetworkList()){
-            if(net.getName().equalsIgnoreCase(request.getUser().getRegisteredUserNetwork().getName())){
-                   for(Enterprise ent: net.getEnterpriseDir().getEnterpriseList()){
-            if(ent.getEnterpriseType().getValue().equalsIgnoreCase("Necessities Provider")){
-                for(Organization org: ent.getOrganizationDirectory().getOrgList()){
-                    if(org.getType().getValue().equalsIgnoreCase("Pharmacy Organization")){
-                        for(Pharmacist pharmacy: org.getPharDir().getpharmacistDirectory()){
-                            pharmacyComboBox.addItem(pharmacy);
+    }
+
+    public void populateComboBox() {
+        for (City city : system.getCityList()) {
+            if (city.getName().equalsIgnoreCase(request.getUser().getRegisteredUserCity().getName())) {
+                for (Enterprise ent : city.getEnterpriseDir().getEnterpriseList()) {
+                    if (ent.getEnterpriseCategory().getValue().equalsIgnoreCase("Necessities Provider")) {
+                        for (Organization org : ent.getOrganizationDirectory().getOrgList()) {
+                            if (org.getOrgType().getValue().equalsIgnoreCase("Pharmacy Organization")) {
+                                for (Pharmacist pharmacy : org.getPharmacistDir().getpharmacistDirectory()) {
+                                    pharmacyComboBox.addItem(pharmacy);
+                                }
+                            }
+
                         }
                     }
-                    
-                    
                 }
             }
         }
-            }
-        }
-        
+
     }
 }

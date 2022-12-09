@@ -31,7 +31,6 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageProfileJPanel
      */
-
     private ArrayList<String> comorbid;
     private UserAccount useraccount;
     private EcoSystem system;
@@ -42,10 +41,10 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Organization organization;
     DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
- 
-    public NurseReportActionPanel(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, HealthRequest request, Organization organization) {
+
+    public NurseReportActionPanel(JPanel userProcessContainer, Enterprise enterprise, UserAccount account, EcoSystem system, HealthRequest request, Organization organization) {
         initComponents();
-        this.useraccount=account;
+        this.useraccount = account;
         this.system = system;
         this.request = request;
         this.enterprise = enterprise;
@@ -55,10 +54,8 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
         this.buttonFlag = buttonFlag;
         populateprofile();
         toggleButton();
-        this.comorbid=new ArrayList<>();   
+        this.comorbid = new ArrayList<>();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -676,21 +673,24 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-            RegisteredUser user = request.getUser();
-            UserReport userReport=new UserReport(userProcessContainer,system, user);
-            userProcessContainer.add("userReport", userReport);
-            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-            layout.next(userProcessContainer);
+        RegisteredUser user = request.getUser();
+        UserReport userReport = new UserReport(userProcessContainer, system, user);
+        userProcessContainer.add("userReport", userReport);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnDailyReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDailyReportActionPerformed
         // TODO add your handling code here:
-                 
+
     }//GEN-LAST:event_btnDailyReportActionPerformed
 
     private void btnOrderMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderMedicineActionPerformed
-        // TODO add your handling code here:
-       
+        OrderMedicineReport orderMedicine = new OrderMedicineReport(userProcessContainer, enterprise, useraccount, system, request, organization);
+        userProcessContainer.add("orderMedicine", orderMedicine);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+
     }//GEN-LAST:event_btnOrderMedicineActionPerformed
 
     private void viewAvailableTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAvailableTestActionPerformed
@@ -706,7 +706,7 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
 
     private void btnViewPrescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPrescActionPerformed
         // TODO add your handling code here:
-        ViewPrescriptionJPanel  viewPrescription=new ViewPrescriptionJPanel(userProcessContainer,enterprise,useraccount,system,request, organization);
+        ViewPrescriptionJPanel viewPrescription = new ViewPrescriptionJPanel(userProcessContainer, enterprise, useraccount, system, request, organization);
         userProcessContainer.add("viewPrescriptionPanel", viewPrescription);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -714,7 +714,7 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
         // TODO add your handling code here:
-        jButton3.setBackground(new java.awt.Color(253,135,124));
+        jButton3.setBackground(new java.awt.Color(253, 135, 124));
         jButton3.setContentAreaFilled(true);
         jButton3.setFocusPainted(true);
         jButton3.setBorderPainted(false);
@@ -730,7 +730,7 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
 
     private void viewAvailableTestMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewAvailableTestMouseEntered
         // TODO add your handling code here:
-        viewAvailableTest.setBackground(new java.awt.Color(253,135,124));
+        viewAvailableTest.setBackground(new java.awt.Color(253, 135, 124));
         viewAvailableTest.setContentAreaFilled(true);
         viewAvailableTest.setFocusPainted(true);
         viewAvailableTest.setBorderPainted(false);
@@ -746,7 +746,7 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
-        jButton1.setBackground(new java.awt.Color(253,135,124));
+        jButton1.setBackground(new java.awt.Color(253, 135, 124));
         jButton1.setContentAreaFilled(true);
         jButton1.setFocusPainted(true);
         jButton1.setBorderPainted(false);
@@ -762,7 +762,7 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
 
     private void btnDailyReportMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDailyReportMouseEntered
         // TODO add your handling code here:
-        btnDailyReport.setBackground(new java.awt.Color(253,135,124));
+        btnDailyReport.setBackground(new java.awt.Color(253, 135, 124));
         btnDailyReport.setContentAreaFilled(true);
         btnDailyReport.setFocusPainted(true);
         btnDailyReport.setBorderPainted(false);
@@ -778,7 +778,7 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
 
     private void btnOrderMedicineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOrderMedicineMouseEntered
         // TODO add your handling code here:
-        btnOrderMedicine.setBackground(new java.awt.Color(253,135,124));
+        btnOrderMedicine.setBackground(new java.awt.Color(253, 135, 124));
         btnOrderMedicine.setContentAreaFilled(true);
         btnOrderMedicine.setFocusPainted(true);
         btnOrderMedicine.setBorderPainted(false);
@@ -794,7 +794,7 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
 
     private void btnViewPrescMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnViewPrescMouseEntered
         // TODO add your handling code here:
-        btnViewPresc.setBackground(new java.awt.Color(253,135,124));
+        btnViewPresc.setBackground(new java.awt.Color(253, 135, 124));
         btnViewPresc.setContentAreaFilled(true);
         btnViewPresc.setFocusPainted(true);
         btnViewPresc.setBorderPainted(false);
@@ -810,7 +810,7 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
 
     private void btnMarkDischargedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMarkDischargedMouseEntered
         // TODO add your handling code here:
-        btnMarkDischarged.setBackground(new java.awt.Color(253,135,124));
+        btnMarkDischarged.setBackground(new java.awt.Color(253, 135, 124));
         btnMarkDischarged.setContentAreaFilled(true);
         btnMarkDischarged.setFocusPainted(true);
         btnMarkDischarged.setBorderPainted(false);
@@ -880,30 +880,30 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateprofile() {
-       lblRequestNumber.setText(request.getRequestNumber());
-       lblPatientsName.setText(request.getUser().getFullName());
-       lblContact.setText(request.getUser().getContactNumber());
-       lblGender.setText(request.getUser().getGender());
-       lblDob.setText(request.getUser().getDob());
-       lblPatientManagerName.setText(request.getPatientManager()==null?"Not Assigned":request.getPatientManager().getName());
-       lblDoctorsName.setText(request.getDoctor()==null?"Not Assigned":request.getDoctor().getName());
-       lblNursesName.setText(request.getNurse()==null?"Not Assigned":request.getNurse().getName());
-       lblHospitalsName.setText(request.getHospital()==null?"Not Assigned": request.getHospital().getName());
-       lblStatus.setText(request.getStatus());
-       lblFever.setText(request.getFever());
-       lblCough.setText(request.getCough());
-       lblBodyPain.setText(request.getBodyPain());
-       lblOtherSymptoms.setText(request.getOtherSymptoms());
-       
+        lblRequestNumber.setText(request.getRequestNumber());
+        lblPatientsName.setText(request.getUser().getFullName());
+        lblContact.setText(request.getUser().getContactNumber());
+        lblGender.setText(request.getUser().getGender());
+        lblDob.setText(request.getUser().getDob());
+        lblPatientManagerName.setText(request.getPatientManager() == null ? "Not Assigned" : request.getPatientManager().getName());
+        lblDoctorsName.setText(request.getDoctor() == null ? "Not Assigned" : request.getDoctor().getName());
+        lblNursesName.setText(request.getNurse() == null ? "Not Assigned" : request.getNurse().getName());
+        lblHospitalsName.setText(request.getHospital() == null ? "Not Assigned" : request.getHospital().getName());
+        lblStatus.setText(request.getStatus());
+        lblFever.setText(request.getFever());
+        lblCough.setText(request.getCough());
+        lblBodyPain.setText(request.getBodyPain());
+        lblOtherSymptoms.setText(request.getOtherSymptoms());
+
     }
-    
-    public void toggleButton(){
-            if(request.getStatus().equalsIgnoreCase("discharged")){
+
+    public void toggleButton() {
+        if (request.getStatus().equalsIgnoreCase("discharged")) {
             btnDailyReport.setVisible(false);
             btnOrderMedicine.setVisible(false);
             btnMarkDischarged.setVisible(false);
-            }
         }
+    }
 //    private void populateTable(){
 //         DefaultTableModel model = (DefaultTableModel) HospitalJTable.getModel();
 //         model.setRowCount(0);
@@ -923,5 +923,5 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
 //         }
 //    
 //    }
-    
+
 }

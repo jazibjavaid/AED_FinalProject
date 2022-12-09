@@ -36,6 +36,7 @@ public class HealthRequest {
     private TestsDirectory testDirectory;
     private TestsDirectory previousTestDirectory;
     private DailyReportDirectory dailyReportDirectory;
+    private OrderDirectory orderDirectoryMed;
         
 
     public HealthRequest(String status, RegisteredUser user, Doctor doctor, Nurse nurse, PatientManager patientManager, Organization organization, String fever, String cough, String bodyPain, String otherSymptoms, HospitalEnterprise hospital) {
@@ -175,6 +176,14 @@ public class HealthRequest {
 
     public void setPreviousTestDirectory(TestsDirectory previousTestDirectory) {
         this.previousTestDirectory = previousTestDirectory;
+    }
+
+    public OrderDirectory getOrderDirectoryMed() {
+        return orderDirectoryMed;
+    }
+
+    public void setOrderDirectoryMed(OrderDirectory orderDirectoryMed) {
+        this.orderDirectoryMed = orderDirectoryMed;
     }
     
     public DailyReportDirectory getDailyReportDirectory() {
