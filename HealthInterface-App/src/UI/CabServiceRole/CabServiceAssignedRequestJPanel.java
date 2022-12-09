@@ -31,7 +31,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Organization organization;
     private JPanel userProcessContainer;
-    public CabServiceAssignedRequestJPanel() {
+    public CabServiceAssignedRequestJPanel(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, Organization organizatio) {
         initComponents();
         populateRequestTable();
 

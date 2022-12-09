@@ -30,8 +30,21 @@ public class CabServiceWorkAreaJPanel extends javax.swing.JPanel {
     UserAccount useraccount;
     Organization org;
     EcoSystem system;
-    public CabServiceWorkAreaJPanel() {
+    public CabServiceWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
+        try{
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.enterprise=enterprise;
+        this.useraccount=useraccount;
+        this.org=org;
+        this.system=system;
+        ManageCabServiceProfileJPanel profileJPanel = new ManageCabServiceProfileJPanel(workAreaJPanel,enterprise,useraccount,system);
+             workAreaJPanel.add("cabServiceDashboard", profileJPanel);
+            CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+            layout.next(workAreaJPanel);
+        } catch (ParseException ex) {
+            Logger.getLogger(CabServiceWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     void setColor(JPanel panel){
@@ -222,6 +235,13 @@ public class CabServiceWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnassignedRequestsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnassignedRequestsMousePressed
         // TODO add your handling code here:
+        setColor(btnAssignedReq_JPanel);
+        resetColor(btnAddServices_JPanel);
+        resetColor(btnProfile_Panel);
+        CabServiceAssignedRequestJPanel cabAssignedRequest=new CabServiceAssignedRequestJPanel(workAreaJPanel,enterprise,useraccount,system, org);
+        workAreaJPanel.add("cabAssignedRequest", cabAssignedRequest);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
         
     }//GEN-LAST:event_btnassignedRequestsMousePressed
 
@@ -231,6 +251,13 @@ public class CabServiceWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnAddServicesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddServicesMousePressed
         // TODO add your handling code here:
+        setColor(btnAddServices_JPanel);
+        resetColor(btnAssignedReq_JPanel);
+        resetColor(btnProfile_Panel);
+        AddCabServicesJAreaPanel addCabService=new AddCabServicesJAreaPanel(workAreaJPanel,enterprise,useraccount,system,org);
+        workAreaJPanel.add("addCabService", addCabService);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
         
     }//GEN-LAST:event_btnAddServicesMousePressed
 
