@@ -15,6 +15,9 @@ import Business.Person.PersonalNotification;
 import Business.RegisteredUser.RegisteredUser;
 import Business.UserAccount.UserAccount;
 import Business.WorkProcess.HealthRequest;
+import UI.DoctorRole.AddPrescription;
+import UI.DoctorRole.AssignHospitalToRequest;
+import UI.DoctorRole.ViewPrescriptionJPanel;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.text.DateFormat;
@@ -36,7 +39,6 @@ public class HealthRequestReport extends javax.swing.JPanel {
     /**
      * Creates new form ManageProfileJPanel
      */
-
     private ArrayList<String> comorbid;
     private UserAccount useraccount;
     private EcoSystem system;
@@ -47,10 +49,10 @@ public class HealthRequestReport extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Organization org;
     DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
- 
-    public HealthRequestReport(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, HealthRequest request, PatientManager patientManager, String buttonFlag, Organization org) {
+
+    public HealthRequestReport(JPanel userProcessContainer, Enterprise enterprise, UserAccount account, EcoSystem system, HealthRequest request, PatientManager patientManager, String buttonFlag, Organization org) {
         initComponents();
-        this.useraccount=account;
+        this.useraccount = account;
         this.system = system;
         this.request = request;
         this.enterprise = enterprise;
@@ -69,25 +71,25 @@ public class HealthRequestReport extends javax.swing.JPanel {
         populateprofile();
         toggleAllButtons();
         toggleBTAMButtons();
-        this.comorbid=new ArrayList<>();
+        this.comorbid = new ArrayList<>();
         doctorJTable.setRowHeight(25);
         doctorJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
-        
+
     }
-    
-       public class HeaderColor extends DefaultTableCellRenderer {
+
+    public class HeaderColor extends DefaultTableCellRenderer {
+
         public HeaderColor() {
             setOpaque(true);
         }
+
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
-            super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-            setBackground(new java.awt.Color(253,217,208));
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+            setBackground(new java.awt.Color(253, 217, 208));
             return this;
         }
 
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -830,28 +832,32 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        RegisteredUser user = request.getUser();
+        UserReport userReport = new UserReport(userProcessContainer, system, user);
+        userProcessContainer.add("userReport", userReport);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public void toggleButton(){
-        if(buttonFlag.equalsIgnoreCase("patManAllReq")){
+    public void toggleButton() {
+        if (buttonFlag.equalsIgnoreCase("patManAllReq")) {
             btnAssignToDoctor.setVisible(false);
             btnReportBacktoAM.setVisible(false);
             btnViewPresc.setVisible(false);
             viewAvailableTest.setVisible(false);
-        }else if(buttonFlag.equalsIgnoreCase("patManAssignedReq")){
+        } else if (buttonFlag.equalsIgnoreCase("patManAssignedReq")) {
             btnAssignToMe.setVisible(false);
             btnReportBacktoAM.setVisible(false);
             btnViewPresc.setVisible(false);
             viewAvailableTest.setVisible(false);
-            
 
-        }else if(buttonFlag.equalsIgnoreCase("doctor")){
+        } else if (buttonFlag.equalsIgnoreCase("doctor")) {
             btnAssignToDoctor.setVisible(false);
             btnAssignToMe.setVisible(false);
             btnPres.setVisible(true);
             btnBed.setVisible(true);
             btnTest.setVisible(true);
-        }else if(buttonFlag.equalsIgnoreCase("hospital")){
+        } else if (buttonFlag.equalsIgnoreCase("hospital")) {
             btnAssignToDoctor.setVisible(false);
             btnAssignToMe.setVisible(false);
             btnPres.setVisible(false);
@@ -864,18 +870,18 @@ public class HealthRequestReport extends javax.swing.JPanel {
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
         // TODO add your handling code here:
 
-        if(request.getPatientManager()==null){
+        if (request.getPatientManager() == null) {
             request.setPatientManager(patientManager);
             request.setStatus("Assigned to Patient Manager" + patientManager.getName());
             patientManager.getRequestDirectory().addRequestList(request);
             populateprofile();
             JOptionPane.showMessageDialog(null, "This Request has been assigned to you successfuuly");
-            
-        }else{
-            JOptionPane.showMessageDialog(null, "This Request is already assigned to: " +request.getPatientManager().getName());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "This Request is already assigned to: " + request.getPatientManager().getName());
         }
-       
-            
+
+
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnAssignToDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToDoctorActionPerformed
@@ -883,67 +889,74 @@ public class HealthRequestReport extends javax.swing.JPanel {
         doctorJpanel.setVisible(true);
         DefaultTableModel model = (DefaultTableModel) doctorJTable.getModel();
         model.setRowCount(0);
-        for(City city: system.getCityList()){
-            if(city.getName().equalsIgnoreCase(request.getUser().getRegisteredUserCity().getName())){
-                   for(Enterprise ent: city.getEnterpriseDir().getEnterpriseList()){
-            if(ent.getEnterpriseCategory().getValue().equalsIgnoreCase("Hospital")){
-                for(Organization org: ent.getOrganizationDirectory().getOrgList()){
-                    if(org.getOrgType().getValue().equalsIgnoreCase("Doctor Organization")){
-                        for(Doctor doc: org.getDocDir().getdoctorDirectory()){
-                            Object[] row = new Object[4];
-                            row[0] = doc;
-                            row[1] = doc.getDegree();
-                            row[2] = doc.getYearsExperience();
-                            row[3] = doc.getZipcode();
-                            model.addRow(row);
-                            
+        for (City city : system.getCityList()) {
+            if (city.getName().equalsIgnoreCase(request.getUser().getRegisteredUserCity().getName())) {
+                for (Enterprise ent : city.getEnterpriseDir().getEnterpriseList()) {
+                    if (ent.getEnterpriseCategory().getValue().equalsIgnoreCase("Hospital")) {
+                        for (Organization org : ent.getOrganizationDirectory().getOrgList()) {
+                            if (org.getOrgType().getValue().equalsIgnoreCase("Doctor Organization")) {
+                                for (Doctor doc : org.getDocDir().getdoctorDirectory()) {
+                                    Object[] row = new Object[4];
+                                    row[0] = doc;
+                                    row[1] = doc.getDegree();
+                                    row[2] = doc.getYearsExperience();
+                                    row[3] = doc.getZipcode();
+                                    model.addRow(row);
+
+                                }
+
+                            }
+
                         }
-                        
                     }
-                    
-                    
                 }
             }
         }
-            }
-        }
-     
-       
-        
+
+
     }//GEN-LAST:event_btnAssignToDoctorActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-         int selectedRow = doctorJTable.getSelectedRow();
-         if (selectedRow < 0){
-                JOptionPane.showMessageDialog(null, "Please select a row!");
-                return;
-         }
-         else{
-            if(request.getDoctor()==null){
-                Doctor doc = (Doctor)doctorJTable.getValueAt(selectedRow, 0);
-                request.setStatus("Assigned to doctor-"+doc.getName());
+        int selectedRow = doctorJTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row!");
+            return;
+        } else {
+            if (request.getDoctor() == null) {
+                Doctor doc = (Doctor) doctorJTable.getValueAt(selectedRow, 0);
+                request.setStatus("Assigned to doctor-" + doc.getName());
                 request.setDoctor(doc);
                 doc.getRequestDirectory().addRequestList(request);
                 populateprofile();
-                JOptionPane.showMessageDialog(null, "This request assigned to doctor "+doc.getName()+" Successfully!");
+                JOptionPane.showMessageDialog(null, "This request assigned to doctor " + doc.getName() + " Successfully!");
                 doctorJpanel.setVisible(true);
-            }   else{
-                    JOptionPane.showMessageDialog(null, "This request is already assigned to doctor "+request.getDoctor().getName());
-                }
+            } else {
+                JOptionPane.showMessageDialog(null, "This request is already assigned to doctor " + request.getDoctor().getName());
+            }
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnBedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBedActionPerformed
         // TODO add your handling code here:
+        AssignHospitalToRequest assignHospital = new AssignHospitalToRequest(userProcessContainer, enterprise, useraccount, system, request, org);
+        userProcessContainer.add("userReport", assignHospital);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBedActionPerformed
 
     private void btnTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestActionPerformed
-        // TODO add your handling code here:
+         HealthRequestReportTest healthRequestReportTest=new HealthRequestReportTest(userProcessContainer,enterprise,useraccount,system, request, null, org);
+         userProcessContainer.add("PatientManagerProfileJPanel", healthRequestReportTest);
+         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnTestActionPerformed
 
     private void btnPresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPresActionPerformed
-        // TODO add your handling code here:
+        AddPrescription addPrescription = new AddPrescription(userProcessContainer, enterprise, useraccount, system, request);
+        userProcessContainer.add("PatientManagerProfileJPanel", addPrescription);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnPresActionPerformed
 
     private void btnReportBacktoAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportBacktoAMActionPerformed
@@ -952,7 +965,7 @@ public class HealthRequestReport extends javax.swing.JPanel {
         Date date = new Date();
         String nowDtae = formatter.format(date);
         PersonalNotification notification = new PersonalNotification(
-        "Doctor has assigned this request back to you", nowDtae, request);
+                "Doctor has assigned this request back to you", nowDtae, request);
         notification.setStatus("new");
         patMan.getNotificationDirectory().addNotification(notification);
         request.setStatus("quarantined");
@@ -963,10 +976,18 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void btnViewPrescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPrescActionPerformed
         // TODO add your handling code here:
+        ViewPrescriptionJPanel  viewPrescription=new ViewPrescriptionJPanel(userProcessContainer,enterprise,useraccount,system,request,org);
+        userProcessContainer.add("viewPrescriptionPanel", viewPrescription);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnViewPrescActionPerformed
 
     private void viewAvailableTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAvailableTestActionPerformed
         // TODO add your handling code here:
+        ViewPrescriptionJPanel  viewPrescription=new ViewPrescriptionJPanel(userProcessContainer,enterprise,useraccount,system,request,org);
+        userProcessContainer.add("viewPrescriptionPanel", viewPrescription);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_viewAvailableTestActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -978,7 +999,7 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
         // TODO add your handling code here:
-        jButton2.setBackground(new java.awt.Color(253,135,124));
+        jButton2.setBackground(new java.awt.Color(253, 135, 124));
         jButton2.setContentAreaFilled(true);
         jButton2.setFocusPainted(true);
         jButton2.setBorderPainted(false);
@@ -994,7 +1015,7 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void viewAvailableTestMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewAvailableTestMouseEntered
         // TODO add your handling code here:
-        viewAvailableTest.setBackground(new java.awt.Color(253,135,124));
+        viewAvailableTest.setBackground(new java.awt.Color(253, 135, 124));
         viewAvailableTest.setContentAreaFilled(true);
         viewAvailableTest.setFocusPainted(true);
         viewAvailableTest.setBorderPainted(false);
@@ -1010,7 +1031,7 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
-        jButton1.setBackground(new java.awt.Color(253,135,124));
+        jButton1.setBackground(new java.awt.Color(253, 135, 124));
         jButton1.setContentAreaFilled(true);
         jButton1.setFocusPainted(true);
         jButton1.setBorderPainted(false);
@@ -1026,7 +1047,7 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void btnAssignToMeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssignToMeMouseEntered
         // TODO add your handling code here:
-        btnAssignToMe.setBackground(new java.awt.Color(253,135,124));
+        btnAssignToMe.setBackground(new java.awt.Color(253, 135, 124));
         btnAssignToMe.setContentAreaFilled(true);
         btnAssignToMe.setFocusPainted(true);
         btnAssignToMe.setBorderPainted(false);
@@ -1042,7 +1063,7 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void btnAssignToDoctorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssignToDoctorMouseEntered
         // TODO add your handling code here:
-        btnAssignToDoctor.setBackground(new java.awt.Color(253,135,124));
+        btnAssignToDoctor.setBackground(new java.awt.Color(253, 135, 124));
         btnAssignToDoctor.setContentAreaFilled(true);
         btnAssignToDoctor.setFocusPainted(true);
         btnAssignToDoctor.setBorderPainted(false);
@@ -1058,7 +1079,7 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void btnReportBacktoAMMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportBacktoAMMouseEntered
         // TODO add your handling code here:
-        btnReportBacktoAM.setBackground(new java.awt.Color(253,135,124));
+        btnReportBacktoAM.setBackground(new java.awt.Color(253, 135, 124));
         btnReportBacktoAM.setContentAreaFilled(true);
         btnReportBacktoAM.setFocusPainted(true);
         btnReportBacktoAM.setBorderPainted(false);
@@ -1074,7 +1095,7 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void btnPresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPresMouseEntered
         // TODO add your handling code here:
-        btnPres.setBackground(new java.awt.Color(253,135,124));
+        btnPres.setBackground(new java.awt.Color(253, 135, 124));
         btnPres.setContentAreaFilled(true);
         btnPres.setFocusPainted(true);
         btnPres.setBorderPainted(false);
@@ -1090,7 +1111,7 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void btnBedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBedMouseEntered
         // TODO add your handling code here:
-        btnBed.setBackground(new java.awt.Color(253,135,124));
+        btnBed.setBackground(new java.awt.Color(253, 135, 124));
         btnBed.setContentAreaFilled(true);
         btnBed.setFocusPainted(true);
         btnBed.setBorderPainted(false);
@@ -1106,7 +1127,7 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void btnTestMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTestMouseEntered
         // TODO add your handling code here
-        btnTest.setBackground(new java.awt.Color(253,135,124));
+        btnTest.setBackground(new java.awt.Color(253, 135, 124));
         btnTest.setContentAreaFilled(true);
         btnTest.setFocusPainted(true);
         btnTest.setBorderPainted(false);
@@ -1122,7 +1143,7 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void btnSubmitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseEntered
         // TODO add your handling code here:
-        btnSubmit.setBackground(new java.awt.Color(253,135,124));
+        btnSubmit.setBackground(new java.awt.Color(253, 135, 124));
         btnSubmit.setContentAreaFilled(true);
         btnSubmit.setFocusPainted(true);
         btnSubmit.setBorderPainted(false);
@@ -1190,57 +1211,58 @@ public class HealthRequestReport extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateprofile() {
-       lblRequestNumber.setText(request.getRequestNumber());
-       lblPatientsName.setText(request.getUser().getFullName());
-       lblContact.setText(request.getUser().getContactNumber());
-       lblGender.setText(request.getUser().getGender());
-       lblDob.setText(request.getUser().getDob());
-       lblPatientManagerName.setText(request.getPatientManager()==null?"Not Assigned":request.getPatientManager().getName());
-       lblDoctorsName.setText(request.getDoctor()==null?"Not Assigned":request.getDoctor().getName());
-       lblNursesName.setText(request.getNurse()==null?"Not Assigned":request.getNurse().getName());
-       lblHospitalsName.setText(request.getHospital()==null?"Not Assigned": request.getHospital().getName());
-       lblStatus.setText(request.getStatus());
-       lblFever.setText(request.getFever());
-       lblCough.setText(request.getCough());
-       lblBodyPain.setText(request.getBodyPain());
-       lblOtherSymptoms.setText(request.getOtherSymptoms());
-       
+        lblRequestNumber.setText(request.getRequestNumber());
+        lblPatientsName.setText(request.getUser().getFullName());
+        lblContact.setText(request.getUser().getContactNumber());
+        lblGender.setText(request.getUser().getGender());
+        lblDob.setText(request.getUser().getDob());
+        lblPatientManagerName.setText(request.getPatientManager() == null ? "Not Assigned" : request.getPatientManager().getName());
+        lblDoctorsName.setText(request.getDoctor() == null ? "Not Assigned" : request.getDoctor().getName());
+        lblNursesName.setText(request.getNurse() == null ? "Not Assigned" : request.getNurse().getName());
+        lblHospitalsName.setText(request.getHospital() == null ? "Not Assigned" : request.getHospital().getName());
+        lblStatus.setText(request.getStatus());
+        lblFever.setText(request.getFever());
+        lblCough.setText(request.getCough());
+        lblBodyPain.setText(request.getBodyPain());
+        lblOtherSymptoms.setText(request.getOtherSymptoms());
+
     }
-    private void toggleActionButtons(){
-        if(request.getPatientManager()!=null){
+
+    private void toggleActionButtons() {
+        if (request.getPatientManager() != null) {
             btnAssignToMe.setVisible(false);
         }
     }
-    
+
 //    private void togglePrescriptionButton(){
 //        if(request.getPrescriptionDirectory().getPrescriptionList().isEmpty()){
 //            btnViewPresc.setVisible(false);
 //            btnReportBacktoAM.setVisible(false);
 //        }
 //    }
-    private void toggleDoctorButton(){
-        if(request.getDoctor()!= null){
+    private void toggleDoctorButton() {
+        if (request.getDoctor() != null) {
             btnAssignToDoctor.setVisible(false);
         }
     }
-    
-     private void toggleAllButtons(){
-        if(request.getStatus().equalsIgnoreCase("discharged") || request.getStatus().equalsIgnoreCase("Negative") || request.getHospital()!=null){
-        btnAssignToDoctor.setVisible(false);
-        btnAssignToMe.setVisible(false);
-        btnBed.setVisible(false);
-        btnReportBacktoAM.setVisible(false);
-        btnTest.setVisible(false);
+
+    private void toggleAllButtons() {
+        if (request.getStatus().equalsIgnoreCase("discharged") || request.getStatus().equalsIgnoreCase("Negative") || request.getHospital() != null) {
+            btnAssignToDoctor.setVisible(false);
+            btnAssignToMe.setVisible(false);
+            btnBed.setVisible(false);
+            btnReportBacktoAM.setVisible(false);
+            btnTest.setVisible(false);
         }
-    
+
     }
-     
-      private void toggleBTAMButtons(){
-        if(request.getStatus().equalsIgnoreCase("quarantined")){
-        btnAssignToDoctor.setVisible(false);
-        btnAssignToMe.setVisible(false);
-        btnReportBacktoAM.setVisible(false);
+
+    private void toggleBTAMButtons() {
+        if (request.getStatus().equalsIgnoreCase("quarantined")) {
+            btnAssignToDoctor.setVisible(false);
+            btnAssignToMe.setVisible(false);
+            btnReportBacktoAM.setVisible(false);
         }
-    
+
     }
 }
