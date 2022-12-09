@@ -26,4 +26,9 @@ public class HospitalEnterprise extends Enterprise {
     public void setNumberOfBeds(String numberOfBeds) {
         this.bedCount = bedCount;
     }
+    
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        return null;
+    }
 }
