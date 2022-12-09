@@ -10,6 +10,7 @@ import Business.Enterprise.HospitalEnterprise;
 import Business.Nurse.Nurse;
 import Business.Organization.Organization;
 import Business.PatientManager.PatientManager;
+import Business.RegisteredUser.DailyReportDirectory;
 import Business.RegisteredUser.RegisteredUser;
 import Business.Tester.TestsDirectory;
 import java.util.Random;
@@ -34,6 +35,8 @@ public class HealthRequest {
     private PrescriptionDirectory prescriptionDirectory;
     private TestsDirectory testDirectory;
     private TestsDirectory previousTestDirectory;
+    private DailyReportDirectory dailyReportDirectory;
+    private OrderDirectory orderDirectoryMed;
         
 
     public HealthRequest(String status, RegisteredUser user, Doctor doctor, Nurse nurse, PatientManager patientManager, Organization organization, String fever, String cough, String bodyPain, String otherSymptoms, HospitalEnterprise hospital) {
@@ -173,6 +176,24 @@ public class HealthRequest {
 
     public void setPreviousTestDirectory(TestsDirectory previousTestDirectory) {
         this.previousTestDirectory = previousTestDirectory;
+    }
+
+    public OrderDirectory getOrderDirectoryMed() {
+        if(orderDirectoryMed == null){
+            orderDirectoryMed = new OrderDirectory();
+        }
+        return orderDirectoryMed;
+    }
+
+    public void setOrderDirectoryMed(OrderDirectory orderDirectoryMed) {
+        this.orderDirectoryMed = orderDirectoryMed;
+    }
+    
+    public DailyReportDirectory getDailyReportDirectory() {
+        if(dailyReportDirectory == null){
+            dailyReportDirectory = new DailyReportDirectory();
+        }
+        return dailyReportDirectory;
     }
 
     @Override

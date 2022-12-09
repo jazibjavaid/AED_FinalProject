@@ -9,6 +9,7 @@ import Business.Doctor.DoctorDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Nurse.NurseDirectory;
 import Business.PatientManager.PatientManagerDirectory;
+import Business.Pharmacist.PharmacistDirectory;
 import Business.Tester.TesterDirectory;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkProcess.HealthRequestDirectory;
@@ -32,6 +33,7 @@ public class Organization {
     private PatientManagerDirectory patManagerDir;
     private AmbulanceDriverDirectory ambulanceDriverDir;
     private TesterDirectory testerDir;
+    private PharmacistDirectory pharmacistDir;
     private int orgID;
     private static int counter=0;
     private OrgType orgType;
@@ -227,6 +229,14 @@ public class Organization {
 
     public void setAmbulanceDriverDir(AmbulanceDriverDirectory ambulanceDriverDir) {
         this.ambulanceDriverDir = ambulanceDriverDir;
+    }
+
+    public PharmacistDirectory getPharmacistDir() {
+        return pharmacistDir;
+    }
+
+    public void setPharmacistDir(PharmacistDirectory pharmacistDir) {
+        this.pharmacistDir = pharmacistDir;
     }
     
     @Override

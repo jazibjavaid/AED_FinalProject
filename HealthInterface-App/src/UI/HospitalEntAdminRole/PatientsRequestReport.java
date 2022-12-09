@@ -148,7 +148,7 @@ public class PatientsRequestReport extends javax.swing.JPanel {
         lblDob.setMinimumSize(new java.awt.Dimension(6, 20));
         lblDob.setPreferredSize(new java.awt.Dimension(6, 20));
 
-        jButton1.setBackground(new java.awt.Color(18, 102, 153));
+        jButton1.setBackground(new java.awt.Color(253, 135, 124));
         jButton1.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         jButton1.setText("View complete Profile");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -292,7 +292,7 @@ public class PatientsRequestReport extends javax.swing.JPanel {
                 .addGap(40, 40, 40))
         );
 
-        btnTest.setBackground(new java.awt.Color(18, 102, 153));
+        btnTest.setBackground(new java.awt.Color(253, 135, 124));
         btnTest.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnTest.setText("Assign Test");
         btnTest.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -311,7 +311,7 @@ public class PatientsRequestReport extends javax.swing.JPanel {
             }
         });
 
-        btnDischarged.setBackground(new java.awt.Color(18, 102, 153));
+        btnDischarged.setBackground(new java.awt.Color(253, 135, 124));
         btnDischarged.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnDischarged.setText("Mark Patient Discharged from Hospital");
         btnDischarged.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -330,7 +330,7 @@ public class PatientsRequestReport extends javax.swing.JPanel {
             }
         });
 
-        btnCritical.setBackground(new java.awt.Color(18, 102, 153));
+        btnCritical.setBackground(new java.awt.Color(253, 135, 124));
         btnCritical.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnCritical.setText("Mark Critical");
         btnCritical.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -615,7 +615,7 @@ public class PatientsRequestReport extends javax.swing.JPanel {
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
-        jButton1.setBackground(new java.awt.Color(18, 102, 153));
+        jButton1.setBackground(new java.awt.Color(253, 135, 124));
         jButton1.setContentAreaFilled(true);
         jButton1.setFocusPainted(true);
         jButton1.setBorderPainted(false);
@@ -631,7 +631,7 @@ public class PatientsRequestReport extends javax.swing.JPanel {
 
     private void btnTestMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTestMouseEntered
         // TODO add your handling code here:
-        btnTest.setBackground(new java.awt.Color(18, 102, 153));
+        btnTest.setBackground(new java.awt.Color(253, 135, 124));
         btnTest.setContentAreaFilled(true);
         btnTest.setFocusPainted(true);
         btnTest.setBorderPainted(false);
@@ -647,7 +647,7 @@ public class PatientsRequestReport extends javax.swing.JPanel {
 
     private void btnCriticalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCriticalMouseEntered
         // TODO add your handling code here:
-        btnCritical.setBackground(new java.awt.Color(18, 102, 153));
+        btnCritical.setBackground(new java.awt.Color(253, 135, 124));
         btnCritical.setContentAreaFilled(true);
         btnCritical.setFocusPainted(true);
         btnCritical.setBorderPainted(false);
@@ -663,7 +663,7 @@ public class PatientsRequestReport extends javax.swing.JPanel {
 
     private void btnDischargedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDischargedMouseEntered
         // TODO add your handling code here:
-        btnDischarged.setBackground(new java.awt.Color(18, 102, 153));
+        btnDischarged.setBackground(new java.awt.Color(253, 135, 124));
         btnDischarged.setContentAreaFilled(true);
         btnDischarged.setFocusPainted(true);
         btnDischarged.setBorderPainted(false);

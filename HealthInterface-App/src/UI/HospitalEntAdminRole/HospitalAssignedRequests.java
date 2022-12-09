@@ -10,14 +10,18 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkProcess.HealthRequest;
+import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author amishagupta
+ * @author jazibjavaid
  */
 public class HospitalAssignedRequests extends javax.swing.JPanel {
 
@@ -29,6 +33,7 @@ public class HospitalAssignedRequests extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Organization organization;
     private JPanel userProcessContainer;
+    private HealthRequest request;
     
     public HospitalAssignedRequests(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, Organization organization) {
         initComponents();
@@ -52,7 +57,18 @@ public class HospitalAssignedRequests extends javax.swing.JPanel {
         }
     }
     public void populateRequestTable() {
-        
+        DefaultTableModel model = (DefaultTableModel) SubmittedrequestsJTable.getModel();
+        model.setRowCount(0);
+           for(HealthRequest req : enterprise.getRequestDirectory().getRequestList()){
+            Object[] row = new Object[6];
+            row[0] = req;
+            row[1] = req.getUser().getName();
+            row[2] = req.getPatientManager()==null?"Not Assigned":req.getPatientManager().getName();
+            row[3] = req.getDoctor()==null?"Not Assigned": req.getDoctor().getName();
+            row[4] = req.getNurse()==null?"Not Assigned":req.getNurse().getName();
+            row[5] = req.getStatus();
+            model.addRow(row);
+        }
    
     }
     /**
@@ -154,7 +170,18 @@ public class HospitalAssignedRequests extends javax.swing.JPanel {
 
     private void viewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsActionPerformed
         // TODO add your handling code here:
-        
+        int selectedRow = SubmittedrequestsJTable.getSelectedRow();
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null, "Please select a row!");
+            return;
+        }
+        else{
+                request = (HealthRequest)SubmittedrequestsJTable.getValueAt(selectedRow, 0);
+                PatientsRequestReport patientsRequests=new PatientsRequestReport(userProcessContainer,enterprise,useraccount,system, request, null, organization);
+                userProcessContainer.add("PatientManagerProfileJPanel", patientsRequests);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+        }
         
     }//GEN-LAST:event_viewDetailsActionPerformed
 
