@@ -49,7 +49,7 @@ public class AddPrescriptionDetailsJPanel extends javax.swing.JPanel {
     private Prescription presc;
     DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
        
-    public AddPrescriptionDetailsJPanel(JPanel userProcessContainer,Enterprise ent, UserAccount userAccount, EcoSystem system, HealthRequest request, Prescription presc,Organization org) {
+    public AddPrescriptionDetailsJPanel(JPanel userProcessContainer,Enterprise ent, UserAccount userAccount, EcoSystem system, HealthRequest request, Prescription presc) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
@@ -57,7 +57,6 @@ public class AddPrescriptionDetailsJPanel extends javax.swing.JPanel {
         this.ent=ent;
         this.request = request;
         this.presc = presc;
-        this.org=org;
         txtComment.setEditable(false);
         txtPrescription.setEditable(false);
         nextConsultationDate.setEnabled(false);

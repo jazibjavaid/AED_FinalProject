@@ -25,7 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import ui.HospitalEntAdminRole.PatientsRequestReport;
+import UI.HospitalEntAdminRole.PatientsRequestReport;
 
 /**
  *
@@ -710,12 +710,12 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
 
     public void populateComboBox(){
 //        testProviderComboBox.removeAllItems();
-          for(Network net: system.getNetworkList()){
-            if(net.getName().equalsIgnoreCase(request.getUser().getRegisteredUserNetwork().getName())){
-                   for(Enterprise ent: net.getEnterpriseDir().getEnterpriseList()){
-            if(ent.getEnterpriseType().getValue().equalsIgnoreCase("Testing Units")){
+          for(City city: system.getCityList()){
+            if(city.getName().equalsIgnoreCase(request.getUser().getRegisteredUserCity().getName())){
+                   for(Enterprise ent: city.getEnterpriseDir().getEnterpriseList()){
+            if(ent.getEnterpriseCategory().getValue().equalsIgnoreCase("Testing Units")){
                 for(Organization org: ent.getOrganizationDirectory().getOrgList()){
-                    if(org.getType().getValue().equalsIgnoreCase("Testing Provider Organization")){
+                    if(org.getOrgType().getValue().equalsIgnoreCase("Testing Provider Organization")){
                         for(Tester test: org.getTesterDir().gettesterDirectory()){
                             testProviderComboBox.addItem(test);
                         }

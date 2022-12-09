@@ -285,15 +285,17 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 
             }
             else if(enterprise.getEnterpriseCategory().toString().equals("Patient Support Services")){
-                 UserAccount account=new UserAccount(username, password, name,  new PatientSupportEntAdminRole());
+                UserAccount account=new UserAccount(username, password, name,  new PatientSupportEntAdminRole());
                 enterprise.getUserAccountDir().addUserAccount(account);
-                 JOptionPane.showMessageDialog(null, "User Account created successfully");
+                JOptionPane.showMessageDialog(null, "User Account created successfully");
                // UserAccount account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new PatientSupportEntAdminRole());
                 
             }
         }    
         populateTable();
-
+        usernameJTextField.setText("");
+        passwordJPasswordField.setText("");
+        nameJTextField.setText("");
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void enterpriseJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseJComboBoxActionPerformed

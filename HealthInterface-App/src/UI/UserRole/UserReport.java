@@ -191,7 +191,7 @@ public class UserReport extends javax.swing.JPanel {
         );
 
         lblProfilePicture.setBackground(new java.awt.Color(204, 204, 204));
-        lblProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/userbig.png"))); // NOI18N
+        lblProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/userbig.png"))); // NOI18N
         lblProfilePicture.setMaximumSize(new java.awt.Dimension(120, 120));
         lblProfilePicture.setMinimumSize(new java.awt.Dimension(120, 120));
 

@@ -149,6 +149,9 @@ public class HealthRequest {
     }
 
     public PrescriptionDirectory getPrescriptionDirectory() {
+        if(prescriptionDirectory==null){
+            prescriptionDirectory = new PrescriptionDirectory();
+        }
         return prescriptionDirectory;
     }
 
