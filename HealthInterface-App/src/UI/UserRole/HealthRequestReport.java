@@ -17,6 +17,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkProcess.HealthRequest;
 import UI.DoctorRole.AddPrescription;
 import UI.DoctorRole.AssignHospitalToRequest;
+import UI.DoctorRole.ViewPrescriptionJPanel;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.text.DateFormat;
@@ -975,10 +976,15 @@ public class HealthRequestReport extends javax.swing.JPanel {
 
     private void btnViewPrescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPrescActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnViewPrescActionPerformed
 
     private void viewAvailableTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAvailableTestActionPerformed
         // TODO add your handling code here:
+        ViewPrescriptionJPanel  viewPrescription=new ViewPrescriptionJPanel(userProcessContainer,enterprise,useraccount,system,request,org);
+        userProcessContainer.add("viewPrescriptionPanel", viewPrescription);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_viewAvailableTestActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
