@@ -324,6 +324,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         containerJPanel.removeAll();
+        dB4OUtil.storeSystem(system);
         containerJPanel.setVisible(false);
         mainScreenJPanel.setVisible(true);     
         exitJPanel.setVisible(false);
