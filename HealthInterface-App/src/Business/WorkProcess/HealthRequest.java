@@ -179,6 +179,9 @@ public class HealthRequest {
     }
 
     public OrderDirectory getOrderDirectoryMed() {
+        if(orderDirectoryMed == null){
+            orderDirectoryMed = new OrderDirectory();
+        }
         return orderDirectoryMed;
     }
 

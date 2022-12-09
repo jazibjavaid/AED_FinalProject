@@ -159,6 +159,20 @@ public class NotificationRequestJPanel extends javax.swing.JPanel {
 
     private void viewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsActionPerformed
         // TODO add your handling code here:  
+        int selectedRow = notificationJTable.getSelectedRow();
+        if (selectedRow < 0){
+                JOptionPane.showMessageDialog(null, "Please select a row!");
+                return;
+            }
+        else{
+                  req = (HealthRequest)notificationJTable.getValueAt(selectedRow, 2);
+                  PersonalNotification not = (PersonalNotification)notificationJTable.getValueAt(selectedRow, 0);
+                  HealthRequestReportQuarantineFlowJPanel healthQuarantine=new HealthRequestReportQuarantineFlowJPanel(userProcessContainer,enterprise,useraccount,system, req, patientManager, "patManAssignedReq");
+                  userProcessContainer.add("PatientManagerQuarantineJPanel", healthQuarantine);
+                  CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                  layout.next(userProcessContainer);
+                  not.setStatus("old");
+            }
     }//GEN-LAST:event_viewDetailsActionPerformed
 
     private void viewDetailsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewDetailsMouseEntered
