@@ -386,6 +386,10 @@ public class PatientManagerWorkAreaJPanel extends javax.swing.JPanel {
                 resetColor(btnAllRequest_JPanel);               
                 resetColor(btnProfile_Panel);
                 resetColor(btnAssignedRequest_JPanel);
+                NotificationRequestJPanel viewAssignedRequests=new NotificationRequestJPanel(workAreaJPanel,enterprise,useraccount,system, org);
+                workAreaJPanel.add("viewAllRequestJPanel", viewAssignedRequests);
+                CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+                layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnNotificationMousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
