@@ -57,6 +57,14 @@ public class PersonalNotification {
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
     }
+    
+    public HealthRequest getRequestNumber() {
+        return requestNumber;
+    }
+
+    public void setRequestNumber(HealthRequest requestNumber) {
+        this.requestNumber = requestNumber;
+    }
 
     @Override
     public String toString() {
