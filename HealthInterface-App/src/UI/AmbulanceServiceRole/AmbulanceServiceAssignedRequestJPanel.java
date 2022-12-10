@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.AmbulanceServiceRole;
+package UI.AmbulanceServiceRole;
 
 import Business.AmbulanceDriver.AmbulanceDriver;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.FoodSupplier.FoodSupplier;
 import Business.Organization.Organization;
 import Business.RegisteredUser.RegisteredUser;
 import Business.UserAccount.UserAccount;
@@ -36,7 +35,6 @@ public class AmbulanceServiceAssignedRequestJPanel extends javax.swing.JPanel {
        private Organization organization;
        private JPanel userProcessContainer;
        private HealthRequest req;
-       private FoodSupplier foodSupplier;
     public AmbulanceServiceAssignedRequestJPanel(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, Organization organization) {
         initComponents();
         this.useraccount=account;
