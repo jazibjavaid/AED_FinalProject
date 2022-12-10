@@ -8,6 +8,7 @@ import Business.Organization.Organization;
 import Business.RegisteredUser.RegisteredUser;
 import Business.Role.Role;
 import Business.WorkProcess.HealthRequestDirectory;
+import Business.WorkProcess.ServiceRequestDirectory;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -27,6 +28,7 @@ public class Nurse extends Business.Person.Person{
     private int patientNumber;
     private static final AtomicInteger count = new AtomicInteger(0);
     private HealthRequestDirectory requestDirectory;
+    private ServiceRequestDirectory servicerequestDirectoryAmb;
     
     ArrayList<RegisteredUser> patientAssigned;
 
@@ -107,6 +109,13 @@ public class Nurse extends Business.Person.Person{
             requestDirectory = new HealthRequestDirectory();
         }
         return requestDirectory;
+    }
+    
+    public ServiceRequestDirectory getServicerequestDirectoryAmb() {
+        if(servicerequestDirectoryAmb == null){
+            servicerequestDirectoryAmb = new ServiceRequestDirectory();
+        }
+        return servicerequestDirectoryAmb;
     }
     
     public Nurse(String degree, String hospital, String designation, String yearsExperience, Boolean availability, ArrayList<RegisteredUser> patientAssigned, String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username,String password, Role role,Organization orgCategory) {

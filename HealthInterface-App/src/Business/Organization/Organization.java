@@ -5,6 +5,7 @@
 package Business.Organization;
 
 import Business.AmbulanceDriver.AmbulanceDriverDirectory;
+import Business.CabDriver.CabDriverDirectory;
 import Business.Doctor.DoctorDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Nurse.NurseDirectory;
@@ -34,6 +35,11 @@ public class Organization {
     private AmbulanceDriverDirectory ambulanceDriverDir;
     private TesterDirectory testerDir;
     private PharmacistDirectory pharmacistDir;
+    private CabDriverDirectory cabDriverDir;
+    private EmployeeDirectory empDir;
+
+
+
     private int orgID;
     private static int counter=0;
     private OrgType orgType;
@@ -81,6 +87,24 @@ public class Organization {
         accountDirectory = new UserAccountDirectory();
         }
         return accountDirectory;
+    }
+    
+    public AmbulanceDriverDirectory getAmbulanceDriverDir() {
+         if(ambulanceDriverDir==null){
+            ambulanceDriverDir=new AmbulanceDriverDirectory();
+        }
+        return ambulanceDriverDir;
+    }
+
+    public void setAmbulanceDriverDir(AmbulanceDriverDirectory ambulanceDriverDir) {
+        this.ambulanceDriverDir = ambulanceDriverDir;
+    }
+    
+    public EmployeeDirectory getEmpDir() {
+        if(empDir == null){
+            empDir = new EmployeeDirectory();
+        }
+        return empDir;
     }
     
     public DoctorDirectory getDocDir() {
@@ -223,15 +247,15 @@ public class Organization {
         this.patManagerDir = patManagerDir;
     }
     
-    public AmbulanceDriverDirectory getAmbulanceDriverDir() {
-         if(ambulanceDriverDir==null){
-            ambulanceDriverDir=new AmbulanceDriverDirectory();
+    public CabDriverDirectory getCabDriverDir() {
+        if(cabDriverDir==null){
+            cabDriverDir=new CabDriverDirectory();
         }
-        return ambulanceDriverDir;
+        return cabDriverDir;
     }
 
-    public void setAmbulanceDriverDir(AmbulanceDriverDirectory ambulanceDriverDir) {
-        this.ambulanceDriverDir = ambulanceDriverDir;
+    public void setCabDriverDir(CabDriverDirectory cabDriverDir) {
+        this.cabDriverDir = cabDriverDir;
     }
 
     public PharmacistDirectory getPharmacistDir() {

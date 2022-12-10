@@ -64,9 +64,9 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
         populateComboBox();
         //populateTestsTable();
         this.comorbid=new ArrayList<>();
-          testJTable.setRowHeight(25);
+        testJTable.setRowHeight(25);
         testJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
-          testSelectedJTable.setRowHeight(25);
+        testSelectedJTable.setRowHeight(25);
         testSelectedJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
         
     }
@@ -77,7 +77,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
         }
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-           setBackground(new java.awt.Color(18,102,153));
+            setBackground(new java.awt.Color(253,217,208));
             return this;
         }
 
@@ -408,7 +408,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jButton3.setBackground(new java.awt.Color(18, 102, 153));
+        jButton3.setBackground(new java.awt.Color(253, 135, 124));
         jButton3.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         jButton3.setText("Back");
         jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -457,7 +457,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
             .addGroup(jPanelGenderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelGenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblGender1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                    .addComponent(lblGender1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
                     .addComponent(lblBodyPain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -491,7 +491,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
             .addGroup(jPanelGender1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelGender1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblGender2, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                    .addComponent(lblGender2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                     .addComponent(lblCough, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -526,7 +526,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(lblDob1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
+                        .addComponent(lblDob1, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblFever, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -539,7 +539,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
                 .addComponent(lblDob1)
                 .addGap(18, 18, 18)
                 .addComponent(lblFever, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         jPanelGender2.setBackground(new java.awt.Color(204, 204, 204));
@@ -575,7 +575,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
                 .addComponent(lblGender3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblOtherSymptoms, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         testJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -595,7 +595,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         jLabel9.setText("Available Tests");
 
-        jButton2.setBackground(new java.awt.Color(18, 102, 153));
+        jButton2.setBackground(new java.awt.Color(253, 135, 124));
         jButton2.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
         jButton2.setText("Add Test");
@@ -678,7 +678,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
                         .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(doctorJpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(382, 382, 382))
         );
 
@@ -695,7 +695,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 771, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -788,87 +788,87 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
          }
          else{
              {
-                 Tests test = (Tests)testJTable.getValueAt(selectedRow, 0);
-                 if(testSelectedList.contains(test)){
-                     JOptionPane.showMessageDialog(null, "Test already selected");
-                 }else{
-                     testSelectedList.add(test);
-                     JOptionPane.showMessageDialog(null, test.getTestName() +" added to the cart");
-                     populateSelectedTable();
-                     
-                 }  
-             }
+                Tests test = (Tests)testJTable.getValueAt(selectedRow, 0);
+                if(testSelectedList.contains(test)){
+                    JOptionPane.showMessageDialog(null, "Test already selected");
+                }
+                else{
+                    testSelectedList.add(test);
+                    JOptionPane.showMessageDialog(null, test.getTestName() +" added to the cart");
+                    populateSelectedTable();
+                }  
+            }
                               
-         }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         userProcessContainer.remove(this);
+        userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
         // TODO add your handling code here:
-         jButton3.setBackground(new java.awt.Color(18,102,153));
+        jButton3.setBackground(new java.awt.Color(253,135,124));
         jButton3.setContentAreaFilled(true);
         jButton3.setFocusPainted(true);
         jButton3.setBorderPainted(false);
-         jButton3.setOpaque(true);
+        jButton3.setOpaque(true);
     }//GEN-LAST:event_jButton3MouseEntered
 
     private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
         // TODO add your handling code here:
-          jButton3.setContentAreaFilled(false);
+        jButton3.setContentAreaFilled(false);
         jButton3.setFocusPainted(false);
         jButton3.setBorderPainted(true);
     }//GEN-LAST:event_jButton3MouseExited
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
-         jButton1.setBackground(new java.awt.Color(18,102,153));
+        jButton1.setBackground(new java.awt.Color(253,135,124));
         jButton1.setContentAreaFilled(true);
         jButton1.setFocusPainted(true);
         jButton1.setBorderPainted(false);
-         jButton1.setOpaque(true);
+        jButton1.setOpaque(true);
     }//GEN-LAST:event_jButton1MouseEntered
 
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
         // TODO add your handling code here:
-          jButton1.setContentAreaFilled(false);
+        jButton1.setContentAreaFilled(false);
         jButton1.setFocusPainted(false);
         jButton1.setBorderPainted(true);
     }//GEN-LAST:event_jButton1MouseExited
 
     private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
         // TODO add your handling code here:
-         jButton2.setBackground(new java.awt.Color(18,102,153));
+        jButton2.setBackground(new java.awt.Color(253,135,124));
         jButton2.setContentAreaFilled(true);
         jButton2.setFocusPainted(true);
         jButton2.setBorderPainted(false);
-         jButton2.setOpaque(true);
+        jButton2.setOpaque(true);
     }//GEN-LAST:event_jButton2MouseEntered
 
     private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
         // TODO add your handling code here:
-          jButton2.setContentAreaFilled(false);
+        jButton2.setContentAreaFilled(false);
         jButton2.setFocusPainted(false);
         jButton2.setBorderPainted(true);
     }//GEN-LAST:event_jButton2MouseExited
 
     private void btnSubmitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseEntered
         // TODO add your handling code here:
-         btnSubmit.setBackground(new java.awt.Color(18,102,153));
+        btnSubmit.setBackground(new java.awt.Color(253,135,124));
         btnSubmit.setContentAreaFilled(true);
         btnSubmit.setFocusPainted(true);
         btnSubmit.setBorderPainted(false);
-         btnSubmit.setOpaque(true);
+        btnSubmit.setOpaque(true);
     }//GEN-LAST:event_btnSubmitMouseEntered
 
     private void btnSubmitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseExited
         // TODO add your handling code here:
-          btnSubmit.setContentAreaFilled(false);
+        btnSubmit.setContentAreaFilled(false);
         btnSubmit.setFocusPainted(false);
         btnSubmit.setBorderPainted(true);
     }//GEN-LAST:event_btnSubmitMouseExited
