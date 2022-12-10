@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author amishagupta
+ * @author yukta
  */
 public class AmbulanceServiceAssignedRequestJPanel extends javax.swing.JPanel {
 

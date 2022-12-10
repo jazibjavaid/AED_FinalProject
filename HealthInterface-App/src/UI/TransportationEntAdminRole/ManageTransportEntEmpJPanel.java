@@ -14,7 +14,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Business.Role.AmbulanceServiceRole;
 import Business.Role.CabServiceRole;
+import java.awt.Component;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -44,6 +47,18 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
         organizationCabJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
          organizationAmbulanceJTable.setRowHeight(25);
         organizationAmbulanceJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
+    }
+    
+    public class HeaderColor extends DefaultTableCellRenderer {
+        public HeaderColor() {
+            setOpaque(true);
+        }
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
+           setBackground(new java.awt.Color(18,102,153));
+            return this;
+        }
+
     }
     
      public void populateOrganizationComboBox(){

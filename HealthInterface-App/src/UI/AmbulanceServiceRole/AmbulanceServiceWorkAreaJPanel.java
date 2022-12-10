@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author amishagupta
+ * @author yukta
  */
 
 public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {

@@ -16,8 +16,9 @@ import javax.swing.JPanel;
  *
  * @author jazibjavaid
  */
-public class CabServiceRole {
+public class CabServiceRole extends Role {
     
+    @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
         return new CabServiceWorkAreaJPanel(userProcessContainer,useraccount,org,enterprise,system);
     }

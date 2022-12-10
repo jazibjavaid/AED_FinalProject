@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.City.City;
 import Business.Role.HospitalEntAdminRole;
+import Business.Role.TransportationEntAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -283,6 +284,14 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "User Account created successfully");
                 
             }
+            else if(enterprise.getEnterpriseCategory().toString().equals("Transpotation")){
+                 UserAccount account=new UserAccount(username, password, name,  new TransportationEntAdminRole());
+                enterprise.getUserAccountDir().addUserAccount(account);
+                 JOptionPane.showMessageDialog(null, "User Account created successfully");
+               // UserAccount account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new TransportationEntAdminRole());
+                
+            }
+            
         }    
         populateTable();
 

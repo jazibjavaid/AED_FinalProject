@@ -4,10 +4,21 @@
  */
 package Business.Role;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.UserAccount.UserAccount;
+import UI.TransportationEntAdminRole.TransportationAdminWorkAreaJPanel;
+import javax.swing.JPanel;
 /**
  *
  * @author jazibjavaid
  */
-public class TransportationEntAdminRole {
+public class TransportationEntAdminRole extends Role{
+
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
+       return new TransportationAdminWorkAreaJPanel(userProcessContainer, useraccount, org, enterprise, system);
+    }
     
 }
