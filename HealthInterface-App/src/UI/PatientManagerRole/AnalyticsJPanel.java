@@ -102,7 +102,7 @@ public class AnalyticsJPanel extends javax.swing.JPanel {
         jLabel5.setText("Bar Graph");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 130, 40));
 
-        jButton3.setBackground(new java.awt.Color(18, 102, 153));
+        jButton3.setBackground(new java.awt.Color(253, 135, 124));
         jButton3.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         jButton3.setText("Back");
         jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -132,7 +132,7 @@ public class AnalyticsJPanel extends javax.swing.JPanel {
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
         // TODO add your handling code here:
-        jButton3.setBackground(new java.awt.Color(18, 102, 153));
+        jButton3.setBackground(new java.awt.Color(253, 135, 124));
         jButton3.setContentAreaFilled(true);
         jButton3.setFocusPainted(true);
         jButton3.setBorderPainted(false);

@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author amishagupta
+ * @author jazibjavaid
  */
 public class NurseAssignedRequest extends javax.swing.JPanel {
 

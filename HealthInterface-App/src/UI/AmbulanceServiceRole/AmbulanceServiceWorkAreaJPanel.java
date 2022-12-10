@@ -161,6 +161,8 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
         btnAddServices_JPanel.setBackground(new java.awt.Color(253, 217, 208));
         btnAddServices_JPanel.setToolTipText("");
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/icons8-add-30.png"))); // NOI18N
+
         btnAddServices.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnAddServices.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAddServices.setText("Add Services");

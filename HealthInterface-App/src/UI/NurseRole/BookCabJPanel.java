@@ -69,7 +69,7 @@ public class BookCabJPanel extends javax.swing.JPanel {
 
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);
-            setBackground(new java.awt.Color(18, 102, 153));
+            setBackground(new java.awt.Color(253, 217, 208));
             return this;
         }
 
@@ -119,7 +119,7 @@ public class BookCabJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         jLabel2.setText("Select a Service");
 
-        jButton1.setBackground(new java.awt.Color(18, 102, 153));
+        jButton1.setBackground(new java.awt.Color(253, 135, 124));
         jButton1.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         jButton1.setText("Book");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -209,7 +209,7 @@ public class BookCabJPanel extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, 480));
 
-        jButton3.setBackground(new java.awt.Color(18, 102, 153));
+        jButton3.setBackground(new java.awt.Color(253, 135, 124));
         jButton3.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         jButton3.setText("Back");
         jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -276,7 +276,7 @@ public class BookCabJPanel extends javax.swing.JPanel {
 
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
         // TODO add your handling code here:
-        jButton3.setBackground(new java.awt.Color(18, 102, 153));
+        jButton3.setBackground(new java.awt.Color(253, 135, 124));
         jButton3.setContentAreaFilled(true);
         jButton3.setFocusPainted(true);
         jButton3.setBorderPainted(false);
@@ -292,7 +292,7 @@ public class BookCabJPanel extends javax.swing.JPanel {
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
-        jButton1.setBackground(new java.awt.Color(18, 102, 153));
+        jButton1.setBackground(new java.awt.Color(253, 135, 124));
         jButton1.setContentAreaFilled(true);
         jButton1.setFocusPainted(true);
         jButton1.setBorderPainted(false);

@@ -29,7 +29,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author amishagupta
+ * @author jazibjavaid
  */
 public class BookAmbulanceJPanel extends javax.swing.JPanel {
 

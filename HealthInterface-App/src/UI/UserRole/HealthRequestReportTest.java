@@ -188,7 +188,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
         lblDob.setMinimumSize(new java.awt.Dimension(6, 20));
         lblDob.setPreferredSize(new java.awt.Dimension(6, 20));
 
-        jButton1.setBackground(new java.awt.Color(18, 102, 153));
+        jButton1.setBackground(new java.awt.Color(253, 135, 124));
         jButton1.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         jButton1.setText("View complete Profile");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -359,9 +359,9 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         jLabel8.setText("Selected Tests");
 
-        btnSubmit.setBackground(new java.awt.Color(18, 102, 153));
+        btnSubmit.setBackground(new java.awt.Color(253, 135, 124));
         btnSubmit.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnSubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/submit.png"))); // NOI18N
+        btnSubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/submit.png"))); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnSubmit.setContentAreaFilled(false);
@@ -597,7 +597,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
 
         jButton2.setBackground(new java.awt.Color(253, 135, 124));
         jButton2.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/add2.png"))); // NOI18N
         jButton2.setText("Add Test");
         jButton2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton2.setContentAreaFilled(false);

@@ -57,7 +57,7 @@ public class ManageCabBookingJPanel extends javax.swing.JPanel {
 
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);
-            setBackground(new java.awt.Color(18, 102, 153));
+            setBackground(new java.awt.Color(253, 217, 208));
             return this;
         }
     }
@@ -127,9 +127,9 @@ public class ManageCabBookingJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
         jLabel1.setText("Cab Requests");
 
-        Approved.setBackground(new java.awt.Color(18, 102, 153));
+        Approved.setBackground(new java.awt.Color(253, 135, 124));
         Approved.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        Approved.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
+        Approved.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/add2.png"))); // NOI18N
         Approved.setText("Add New");
         Approved.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Approved.setContentAreaFilled(false);
@@ -147,9 +147,9 @@ public class ManageCabBookingJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(18, 102, 153));
+        jButton1.setBackground(new java.awt.Color(253, 135, 124));
         jButton1.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/delete2.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/delete2.png"))); // NOI18N
         jButton1.setText("Remove request");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.setContentAreaFilled(false);
@@ -232,7 +232,7 @@ public class ManageCabBookingJPanel extends javax.swing.JPanel {
 
     private void ApprovedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApprovedMouseEntered
         // TODO add your handling code here:
-        Approved.setBackground(new java.awt.Color(18, 102, 153));
+        Approved.setBackground(new java.awt.Color(253, 135, 124));
         Approved.setContentAreaFilled(true);
         Approved.setFocusPainted(true);
         Approved.setBorderPainted(false);
@@ -248,7 +248,7 @@ public class ManageCabBookingJPanel extends javax.swing.JPanel {
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
-        jButton1.setBackground(new java.awt.Color(18, 102, 153));
+        jButton1.setBackground(new java.awt.Color(253, 135, 124));
         jButton1.setContentAreaFilled(true);
         jButton1.setFocusPainted(true);
         jButton1.setBorderPainted(false);
