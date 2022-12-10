@@ -713,7 +713,7 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
           for(City city: system.getCityList()){
             if(city.getName().equalsIgnoreCase(request.getUser().getRegisteredUserCity().getName())){
                    for(Enterprise ent: city.getEnterpriseDir().getEnterpriseList()){
-            if(ent.getEnterpriseCategory().getValue().equalsIgnoreCase("Testing Units")){
+            if(ent.getEnterpriseCategory().getValue().equalsIgnoreCase("Testing Centers")){
                 for(Organization org: ent.getOrganizationDirectory().getOrgList()){
                     if(org.getOrgType().getValue().equalsIgnoreCase("Testing Provider Organization")){
                         for(Tester test: org.getTesterDir().gettesterDirectory()){
@@ -749,18 +749,17 @@ public class HealthRequestReportTest extends javax.swing.JPanel {
                    for(Tests test: testSelectedList){
                        request.getTestDirectory().addTestsList(test);
                    }
-                  tester.getRequestDirectory().addRequestList(request);
-                  JOptionPane.showMessageDialog(null, "This request assigned to Test Provider: "+tester.getName()+" Successfully!");
-                  doctorJpanel.setVisible(true);
-                  if(org==null){
-                      
-                      PatientsRequestReport  reportActionJPanel=new PatientsRequestReport(userProcessContainer,enterprise,useraccount,system,request,null, org);
+                tester.getRequestDirectory().addRequestList(request);
+                JOptionPane.showMessageDialog(null, "This request assigned to Test Provider: "+tester.getName()+" Successfully!");
+                doctorJpanel.setVisible(true);
+                if(org==null){
+                PatientsRequestReport  reportActionJPanel=new PatientsRequestReport(userProcessContainer,enterprise,useraccount,system,request,null, org);
                 userProcessContainer.add("reportActionJPanel", reportActionJPanel);
                 CardLayout layout = (CardLayout) userProcessContainer.getLayout();
                 layout.next(userProcessContainer);
                     
-                  }else {
-                      HealthRequestReport  reportActionJPanel=new HealthRequestReport(userProcessContainer,enterprise,useraccount,system,request,null,"doctor", org);
+                }else {
+                    HealthRequestReport  reportActionJPanel=new HealthRequestReport(userProcessContainer,enterprise,useraccount,system,request,null,"doctor", org);
                     userProcessContainer.add("reportActionJPanel", reportActionJPanel);
                     CardLayout layout = (CardLayout) userProcessContainer.getLayout();
                     layout.next(userProcessContainer);
