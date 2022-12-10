@@ -13,6 +13,7 @@ import Business.Role.PatientSupportEntAdminRole;
 import Business.Role.TransportationEntAdminRole;
 import Business.Role.TestingEntAdminRole;
 import Business.UserAccount.UserAccount;
+import Business.Validation.Validations;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -277,6 +278,15 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
         String name = nameJTextField.getText();
+        Validations validation = new Validations();
+        if(!validation.isValidPassword(password)){
+            return;
+        }
+        Boolean unique=system.checkIfUserIsUnique(username);
+        if(!unique){
+            JOptionPane.showMessageDialog(null, "Username" + username + " already exists. Please try with different username", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         if(enterprise.getEnterpriseCategory()!=null){
             if(enterprise.getEnterpriseCategory().toString().equals("Hospital"))
