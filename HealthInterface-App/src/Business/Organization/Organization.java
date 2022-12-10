@@ -89,17 +89,6 @@ public class Organization {
         return accountDirectory;
     }
     
-    public CabDriverDirectory getCabDriverDir() {
-        if(cabDriverDir==null){
-            cabDriverDir=new CabDriverDirectory();
-        }
-        return cabDriverDir;
-    }
-
-    public void setCabDriverDir(CabDriverDirectory cabDriverDir) {
-        this.cabDriverDir = cabDriverDir;
-    }
-    
     public AmbulanceDriverDirectory getAmbulanceDriverDir() {
          if(ambulanceDriverDir==null){
             ambulanceDriverDir=new AmbulanceDriverDirectory();
@@ -253,6 +242,17 @@ public class Organization {
 
     public void setpManagerDir(PatientManagerDirectory patManagerDir) {
         this.patManagerDir = patManagerDir;
+    }
+    
+    public CabDriverDirectory getCabDriverDir() {
+        if(cabDriverDir==null){
+            cabDriverDir=new CabDriverDirectory();
+        }
+        return cabDriverDir;
+    }
+
+    public void setCabDriverDir(CabDriverDirectory cabDriverDir) {
+        this.cabDriverDir = cabDriverDir;
     }
 
     public PharmacistDirectory getPharmacistDir() {
