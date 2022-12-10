@@ -36,7 +36,6 @@ public class Organization {
     private TesterDirectory testerDir;
     private PharmacistDirectory pharmacistDir;
     private CabDriverDirectory cabDriverDir;
-    private AmbulanceDriverDirectory ambulanceDriverDir;
     private EmployeeDirectory empDir;
 
 
@@ -254,17 +253,6 @@ public class Organization {
 
     public void setpManagerDir(PatientManagerDirectory patManagerDir) {
         this.patManagerDir = patManagerDir;
-    }
-    
-    public AmbulanceDriverDirectory getAmbulanceDriverDir() {
-         if(ambulanceDriverDir==null){
-            ambulanceDriverDir=new AmbulanceDriverDirectory();
-        }
-        return ambulanceDriverDir;
-    }
-
-    public void setAmbulanceDriverDir(AmbulanceDriverDirectory ambulanceDriverDir) {
-        this.ambulanceDriverDir = ambulanceDriverDir;
     }
 
     public PharmacistDirectory getPharmacistDir() {

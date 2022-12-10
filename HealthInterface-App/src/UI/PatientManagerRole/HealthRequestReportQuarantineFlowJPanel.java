@@ -5,7 +5,7 @@
  */
 package UI.PatientManagerRole;
 
-import ui.UserRole.*;
+import UI.UserRole.*;
 import Business.Doctor.Doctor;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;

@@ -12,7 +12,7 @@ import Business.Nurse.Nurse;
 import Business.Organization.Organization;
 import Business.RegisteredUser.RegisteredUser;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.ServiceRequest;
+import Business.WorkProcess.ServiceRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;

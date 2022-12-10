@@ -64,13 +64,4 @@ public class UserAccountDirectory {
         }
         return true;
     }
-    
-    public void removeUserAccountByUserName(String name){
-         for(int i=0;i<uaList.size();i++){
-             if(uaList.get(i).getEmployee().getName().equalsIgnoreCase(name)){
-                 uaList.remove(uaList.get(i));
-             }
-         }
-        
-    }
 }
