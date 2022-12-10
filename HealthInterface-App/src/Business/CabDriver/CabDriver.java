@@ -2,17 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Business.AmbulanceDriver;
+package Business.CabDriver;
 
 import Business.Role.Role;
-import Business.WorkProcess.ServiceRequestDirectory;
 import java.util.concurrent.atomic.AtomicInteger;
+import Business.WorkProcess.ServiceRequestDirectory;
 
 /**
  *
- * @author jazibjavaid
+ * @author yuktachikate
  */
-public class AmbulanceDriver extends Business.Person.Person{
+public class CabDriver extends Business.Person.Person {
     
     private String licenseNumber;
     private String valStartDate;
@@ -20,16 +20,16 @@ public class AmbulanceDriver extends Business.Person.Person{
     private String driverType;
     private int id;
     private static final AtomicInteger count = new AtomicInteger(0); 
-    private AmbulanceServiceDirectory ambulanceServiceDirectory;
+    private CabServiceDirectory cabServiceDirectory;
     private ServiceRequestDirectory serviceRequestDirectory;
-
     
-    public AmbulanceDriver(String licenseNumber,String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username, String password, Role role) {
-        super(fullName, dob, gender, address, zipcode, contactNumber, email,username, password,role);
+    
+    public CabDriver(String licenseNumber,String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username,String password, Role role) {
+        super(fullName, dob, gender, address, zipcode, contactNumber, email,username,password, role);
         this.licenseNumber=licenseNumber;
-        this.id=count.incrementAndGet(); 
+       this.id=count.incrementAndGet(); 
     }
-
+    
     public String getLicenseNumber() {
         return licenseNumber;
     }
@@ -70,24 +70,23 @@ public class AmbulanceDriver extends Business.Person.Person{
         this.id = id;
     }
 
-    public AmbulanceServiceDirectory getAmbulanceServiceDirectory() {
-        if(ambulanceServiceDirectory == null){
-            ambulanceServiceDirectory = new AmbulanceServiceDirectory();
+    @Override
+    public String toString() {
+       return getName();
+    }
+    
+    public CabServiceDirectory getCabServiceDirectory() {
+        if(cabServiceDirectory == null){
+            cabServiceDirectory = new CabServiceDirectory();
         }
-        return ambulanceServiceDirectory;
+        return cabServiceDirectory;
     }
-
-    public void setAmbulanceServiceDirectory(AmbulanceServiceDirectory ambulanceServiceDirectory) {
-        this.ambulanceServiceDirectory = ambulanceServiceDirectory;
-    }
+    
      public ServiceRequestDirectory getServiceRequestDirectory() {
         if(serviceRequestDirectory == null){
             serviceRequestDirectory = new ServiceRequestDirectory();
         }
         return serviceRequestDirectory;
-    }  
-    @Override
-    public String toString() {
-       return getName();
     }
+    
 }
