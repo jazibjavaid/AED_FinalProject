@@ -29,6 +29,7 @@ public class Nurse extends Business.Person.Person{
     private static final AtomicInteger count = new AtomicInteger(0);
     private HealthRequestDirectory requestDirectory;
     private ServiceRequestDirectory servicerequestDirectoryAmb;
+    private ServiceRequestDirectory servicerequestDirectoryCab;
     
     ArrayList<RegisteredUser> patientAssigned;
 
@@ -116,6 +117,18 @@ public class Nurse extends Business.Person.Person{
             servicerequestDirectoryAmb = new ServiceRequestDirectory();
         }
         return servicerequestDirectoryAmb;
+    }
+
+    public ServiceRequestDirectory getServicerequestDirectoryCab() {
+        if(servicerequestDirectoryCab == null){
+            servicerequestDirectoryCab = new ServiceRequestDirectory();
+        }
+        return servicerequestDirectoryCab;
+        
+    }
+
+    public void setServicerequestDirectoryCab(ServiceRequestDirectory servicerequestDirectoryCab) {
+        this.servicerequestDirectoryCab = servicerequestDirectoryCab;
     }
     
     public Nurse(String degree, String hospital, String designation, String yearsExperience, Boolean availability, ArrayList<RegisteredUser> patientAssigned, String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username,String password, Role role,Organization orgCategory) {
