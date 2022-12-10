@@ -88,6 +88,9 @@ public class Tester extends Business.Person.Person {
     }
 
     public HealthRequestDirectory getRequestDirectory() {
+        if(requestDirectory == null){
+            requestDirectory= new HealthRequestDirectory();
+        }
         return requestDirectory;
     }
 

@@ -163,6 +163,9 @@ public class HealthRequest {
     }
 
     public TestsDirectory getTestDirectory() {
+        if(testDirectory == null){
+            testDirectory = new TestsDirectory();
+        }
         return testDirectory;
     }
 
@@ -171,6 +174,9 @@ public class HealthRequest {
     }
 
     public TestsDirectory getPreviousTestDirectory() {
+        if(previousTestDirectory == null){
+            previousTestDirectory = new TestsDirectory();
+        }
         return previousTestDirectory;
     }
 
