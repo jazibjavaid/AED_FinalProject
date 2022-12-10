@@ -6,10 +6,15 @@ package UI.TransportationEntAdminRole;
 
 import Business.AmbulanceDriver.AmbulanceDriver;
 import Business.CabDriver.CabDriver;
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import Business.Role.AmbulanceServiceRole;
+import Business.Role.CabServiceRole;
+import javax.swing.JPanel;
 
 /**
  *
@@ -21,11 +26,24 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
      * Creates new form ManageTransportEntEmpJPanel
      */
     private OrganizationDirectory organizationDir;
+    private JPanel userProcessContainer;
+    private Enterprise ent;
+    private EcoSystem system;
 
-    public ManageTransportEntEmpJPanel() {
+    public ManageTransportEntEmpJPanel(EcoSystem system,JPanel userProcessContainer,OrganizationDirectory organizationDir,Enterprise ent) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.organizationDir = organizationDir;
+        this.ent=ent;
+        this.system=system;
         populateOrganizationComboBox();
         populateOrganizationEmpComboBox();
+        populateCabServiceTable();
+        populateAmbulanceServiceTable();
+         organizationCabJTable.setRowHeight(25);
+        organizationCabJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
+         organizationAmbulanceJTable.setRowHeight(25);
+        organizationAmbulanceJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
     }
     
      public void populateOrganizationComboBox(){
@@ -563,7 +581,32 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_addJButtonMouseExited
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
-
+        Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
+        String name = nameJTextField.getText();
+        String license=txtlicenseno.getText();
+        String address=txtAddress.getText();
+        String zipcode=txtZipCode.getText();
+        String contactNumber=txtContactNo.getText();
+        String gender = (String) GenderCombobox.getSelectedItem();
+        String email=txtEmail.getText();
+        String username = txtuserName.getText();
+        char[] passwordCharArray = txtpassword.getPassword();
+        String password = String.valueOf(passwordCharArray);
+        
+        if(organization.getOrgType().getValue().equals("Cab Provider Organization")){
+          CabDriver cd=new CabDriver(license, name, null, gender, address, zipcode, contactNumber, email,username,password,new CabServiceRole());
+          organization.getCabDriverDir().addCabDriver(cd);
+          organization.getUserAccountDir().addUserAccount(cd);
+          //organization.getEmpDir().createEmp(name);
+          populateCabServiceTable();
+        }
+        if(organization.getOrgType().getValue().equals("Ambulance Provider Organization")){
+         AmbulanceDriver cd=new AmbulanceDriver(license, name, null, gender, address, zipcode, contactNumber, email,username,password,new AmbulanceServiceRole());
+          organization.getAmbulanceDriverDir().addambulanceDriver(cd);
+          organization.getUserAccountDir().addUserAccount(cd);
+          //organization.getEmpDir().createEmp(name);
+          populateAmbulanceServiceTable();
+        }
     }//GEN-LAST:event_addJButtonActionPerformed
 
 
