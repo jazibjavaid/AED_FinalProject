@@ -58,7 +58,7 @@ public class AddServicesJAreaPanel extends javax.swing.JPanel {
         }
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-           setBackground(new java.awt.Color(18,102,153));
+            setBackground(new java.awt.Color(253,217,208));
             return this;
         }
 
@@ -135,9 +135,9 @@ public class AddServicesJAreaPanel extends javax.swing.JPanel {
         lblDoctorslist1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
         lblDoctorslist1.setText("Ambulance Service");
 
-        btnRemoveFoodSuppplier.setBackground(new java.awt.Color(18, 102, 153));
+        btnRemoveFoodSuppplier.setBackground(new java.awt.Color(253, 135, 124));
         btnRemoveFoodSuppplier.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnRemoveFoodSuppplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/delete2.png"))); // NOI18N
+        btnRemoveFoodSuppplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/delete2.png"))); // NOI18N
         btnRemoveFoodSuppplier.setText("Remove Service");
         btnRemoveFoodSuppplier.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnRemoveFoodSuppplier.setContentAreaFilled(false);
@@ -190,9 +190,9 @@ public class AddServicesJAreaPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Service Name");
 
-        addJButton.setBackground(new java.awt.Color(18, 102, 153));
+        addJButton.setBackground(new java.awt.Color(253, 135, 124));
         addJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
+        addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/add2.png"))); // NOI18N
         addJButton.setText("Add Service");
         addJButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         addJButton.setContentAreaFilled(false);
@@ -285,7 +285,7 @@ public class AddServicesJAreaPanel extends javax.swing.JPanel {
 
     private void btnRemoveFoodSuppplierMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveFoodSuppplierMouseEntered
         // TODO add your handling code here:
-        btnRemoveFoodSuppplier.setBackground(new java.awt.Color(18,102,153));
+        btnRemoveFoodSuppplier.setBackground(new java.awt.Color(253,135,124));
         btnRemoveFoodSuppplier.setContentAreaFilled(true);
         btnRemoveFoodSuppplier.setFocusPainted(true);
         btnRemoveFoodSuppplier.setBorderPainted(false);
@@ -303,7 +303,7 @@ public class AddServicesJAreaPanel extends javax.swing.JPanel {
 
     private void addJButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addJButtonMouseEntered
         // TODO add your handling code here:
-         addJButton.setBackground(new java.awt.Color(18,102,153));
+         addJButton.setBackground(new java.awt.Color(253,135,124));
         addJButton.setContentAreaFilled(true);
         addJButton.setFocusPainted(true);
         addJButton.setBorderPainted(false);

@@ -33,16 +33,18 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.useraccount=useraccount;
         this.org=org;
         this.system=system;
+        ManageTransportEntOrgJPanel profileJPanel = new ManageTransportEntOrgJPanel(workAreaJPanel,enterprise.getOrganizationDirectory());
+        workAreaJPanel.add("foodSupplyDashboard", profileJPanel);
         CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
         layout.next(workAreaJPanel);
     }
     
      void setColor(JPanel panel){
-        panel.setBackground(new Color(130,175,203));
+        panel.setBackground(new Color(253,135,124));
     }
     
     void resetColor(JPanel panel){
-         panel.setBackground(new Color(18,102,153));
+         panel.setBackground(new Color(253,217,208));
     }
 
     /**
@@ -79,7 +81,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/org.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/org.png"))); // NOI18N
 
         javax.swing.GroupLayout btnOrganization_PanelLayout = new javax.swing.GroupLayout(btnOrganization_Panel);
         btnOrganization_Panel.setLayout(btnOrganization_PanelLayout);
@@ -101,7 +103,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        btnEmployee_Panel.setBackground(new java.awt.Color(253, 135, 124));
+        btnEmployee_Panel.setBackground(new java.awt.Color(253, 217, 208));
         btnEmployee_Panel.setToolTipText("");
         btnEmployee_Panel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -118,7 +120,7 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/userp.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/userp.png"))); // NOI18N
 
         javax.swing.GroupLayout btnEmployee_PanelLayout = new javax.swing.GroupLayout(btnEmployee_Panel);
         btnEmployee_Panel.setLayout(btnEmployee_PanelLayout);
@@ -168,14 +170,18 @@ public class TransportationAdminWorkAreaJPanel extends javax.swing.JPanel {
         // TODO add your handling code here
         setColor(btnOrganization_Panel);
         resetColor(btnEmployee_Panel);
+        ManageTransportEntOrgJPanel manageOrgJPanel=new ManageTransportEntOrgJPanel(workAreaJPanel,enterprise.getOrganizationDirectory());
+        workAreaJPanel.add("ManageOrgJPanel", manageOrgJPanel);
         CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
         layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnmgOrgMousePressed
 
     private void btnManageEmployeeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManageEmployeeMousePressed
         // TODO add your handling code here:
-         setColor(btnEmployee_Panel);
+        setColor(btnEmployee_Panel);
         resetColor(btnOrganization_Panel);
+        ManageTransportEntEmpJPanel manageEmpJPanel=new ManageTransportEntEmpJPanel(system,workAreaJPanel,enterprise.getOrganizationDirectory(),enterprise);
+        workAreaJPanel.add("ManageEmpJPanel", manageEmpJPanel);
         CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
         layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnManageEmployeeMousePressed

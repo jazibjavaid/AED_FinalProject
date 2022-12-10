@@ -51,12 +51,12 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
         }
     }
     
-              void setColor(JPanel panel){
-        panel.setBackground(new Color(130,175,203));
+    void setColor(JPanel panel){
+        panel.setBackground(new Color(253,135,124));
     }
     
     void resetColor(JPanel panel){
-         panel.setBackground(new Color(18,102,153));
+         panel.setBackground(new Color(253,217,208));
     }
 
     /**
@@ -82,13 +82,12 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(18, 102, 153));
+        jPanel1.setBackground(new java.awt.Color(253, 217, 208));
 
-        btnProfile_Panel.setBackground(new java.awt.Color(130, 175, 203));
+        btnProfile_Panel.setBackground(new java.awt.Color(253, 135, 124));
         btnProfile_Panel.setToolTipText("");
 
         btnProfile.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnProfile.setForeground(new java.awt.Color(255, 255, 255));
         btnProfile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnProfile.setText("Manage Profile");
         btnProfile.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -97,7 +96,7 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/userp.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/userp.png"))); // NOI18N
 
         javax.swing.GroupLayout btnProfile_PanelLayout = new javax.swing.GroupLayout(btnProfile_Panel);
         btnProfile_Panel.setLayout(btnProfile_PanelLayout);
@@ -108,7 +107,7 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         btnProfile_PanelLayout.setVerticalGroup(
             btnProfile_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +118,7 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
         );
 
-        btnAssignedReq_JPanel.setBackground(new java.awt.Color(18, 102, 153));
+        btnAssignedReq_JPanel.setBackground(new java.awt.Color(253, 217, 208));
         btnAssignedReq_JPanel.setToolTipText("");
         btnAssignedReq_JPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -128,7 +127,6 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnassignedRequests.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnassignedRequests.setForeground(new java.awt.Color(255, 255, 255));
         btnassignedRequests.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnassignedRequests.setText("Manage Requests");
         btnassignedRequests.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -137,7 +135,7 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/requests.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/requests.png"))); // NOI18N
 
         javax.swing.GroupLayout btnAssignedReq_JPanelLayout = new javax.swing.GroupLayout(btnAssignedReq_JPanel);
         btnAssignedReq_JPanel.setLayout(btnAssignedReq_JPanelLayout);
@@ -148,7 +146,7 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnassignedRequests, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         btnAssignedReq_JPanelLayout.setVerticalGroup(
             btnAssignedReq_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,13 +158,10 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        btnAddServices_JPanel.setBackground(new java.awt.Color(18, 102, 153));
+        btnAddServices_JPanel.setBackground(new java.awt.Color(253, 217, 208));
         btnAddServices_JPanel.setToolTipText("");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/medicine.png"))); // NOI18N
-
         btnAddServices.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnAddServices.setForeground(new java.awt.Color(255, 255, 255));
         btnAddServices.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAddServices.setText("Add Services");
         btnAddServices.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -200,11 +195,9 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(btnProfile_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(btnAddServices_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnAssignedReq_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnProfile_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,10 +205,10 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addComponent(btnProfile_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(btnAssignedReq_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAssignedReq_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnAddServices_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 732, Short.MAX_VALUE))
+                .addGap(0, 729, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 880));
@@ -230,13 +223,14 @@ public class AmbulanceServiceWorkAreaJPanel extends javax.swing.JPanel {
         setColor(btnProfile_Panel);
         resetColor(btnAddServices_JPanel);
         resetColor(btnAssignedReq_JPanel);
-       try {
+        try {
             // TODO add your handling code here:
             ManageAmbulanceServiceProfileJPanel manageAmbProfile=new ManageAmbulanceServiceProfileJPanel(workAreaJPanel,enterprise,useraccount,system);
             workAreaJPanel.add("manageAmbProfile", manageAmbProfile);
             CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
             layout.next(workAreaJPanel);
-        } catch (ParseException ex) {
+        } 
+        catch (ParseException ex) {
             Logger.getLogger(AmbulanceServiceWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnProfileMousePressed

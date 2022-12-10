@@ -43,9 +43,9 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
         populateOrganizationEmpComboBox();
         populateCabServiceTable();
         populateAmbulanceServiceTable();
-         organizationCabJTable.setRowHeight(25);
+        organizationCabJTable.setRowHeight(25);
         organizationCabJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
-         organizationAmbulanceJTable.setRowHeight(25);
+        organizationAmbulanceJTable.setRowHeight(25);
         organizationAmbulanceJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
     }
     
@@ -55,7 +55,7 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
         }
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-           setBackground(new java.awt.Color(18,102,153));
+            setBackground(new java.awt.Color(253,217,208));
             return this;
         }
 
@@ -220,9 +220,9 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
         organizationAmbulanceJTable.setSelectionBackground(new java.awt.Color(235, 227, 126));
         NurseScrollPane.setViewportView(organizationAmbulanceJTable);
 
-        btnRemoveAmbulanceService.setBackground(new java.awt.Color(18, 102, 153));
+        btnRemoveAmbulanceService.setBackground(new java.awt.Color(253, 135, 124));
         btnRemoveAmbulanceService.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnRemoveAmbulanceService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/delete2.png"))); // NOI18N
+        btnRemoveAmbulanceService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/delete2.png"))); // NOI18N
         btnRemoveAmbulanceService.setText("Remove Ambulance Provider");
         btnRemoveAmbulanceService.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnRemoveAmbulanceService.setContentAreaFilled(false);
@@ -243,9 +243,9 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
         lblDoctorslist1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
         lblDoctorslist1.setText("Cab Providers");
 
-        btnRemoveCabService.setBackground(new java.awt.Color(18, 102, 153));
+        btnRemoveCabService.setBackground(new java.awt.Color(253, 135, 124));
         btnRemoveCabService.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnRemoveCabService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/delete2.png"))); // NOI18N
+        btnRemoveCabService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/delete2.png"))); // NOI18N
         btnRemoveCabService.setText("Remove Cab Provider");
         btnRemoveCabService.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnRemoveCabService.setContentAreaFilled(false);
@@ -324,9 +324,9 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Password");
 
-        addJButton.setBackground(new java.awt.Color(18, 102, 153));
+        addJButton.setBackground(new java.awt.Color(253, 135, 124));
         addJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
+        addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/add2.png"))); // NOI18N
         addJButton.setText("Create Provider");
         addJButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         addJButton.setContentAreaFilled(false);
@@ -484,7 +484,7 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
 
     private void btnRemoveAmbulanceServiceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveAmbulanceServiceMouseEntered
         // TODO add your handling code here:
-        btnRemoveAmbulanceService.setBackground(new java.awt.Color(18,102,153));
+        btnRemoveAmbulanceService.setBackground(new java.awt.Color(253,135,124));
         btnRemoveAmbulanceService.setContentAreaFilled(true);
         btnRemoveAmbulanceService.setFocusPainted(true);
         btnRemoveAmbulanceService.setBorderPainted(false);
@@ -520,7 +520,7 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
 
     private void btnRemoveCabServiceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveCabServiceMouseEntered
         // TODO add your handling code here:
-        btnRemoveCabService.setBackground(new java.awt.Color(18,102,153));
+        btnRemoveCabService.setBackground(new java.awt.Color(253,135,124));
         btnRemoveCabService.setContentAreaFilled(true);
         btnRemoveCabService.setFocusPainted(true);
         btnRemoveCabService.setBorderPainted(false);

@@ -285,9 +285,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 
             }
             else if(enterprise.getEnterpriseCategory().toString().equals("Transpotation")){
-                 UserAccount account=new UserAccount(username, password, name,  new TransportationEntAdminRole());
+                UserAccount account=new UserAccount(username, password, name,  new TransportationEntAdminRole());
                 enterprise.getUserAccountDir().addUserAccount(account);
-                 JOptionPane.showMessageDialog(null, "User Account created successfully");
+                JOptionPane.showMessageDialog(null, "User Account created successfully");
                // UserAccount account = enterprise.getUserAccountDir().createUserAccount(username, password, employee, new TransportationEntAdminRole());
                 
             }

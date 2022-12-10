@@ -13,8 +13,11 @@ import Business.Organization.Organization;
 import Business.RegisteredUser.RegisteredUser;
 import Business.UserAccount.UserAccount;
 import Business.WorkProcess.ServiceRequest;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -33,8 +36,26 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     public CabServiceAssignedRequestJPanel(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, Organization organizatio) {
         initComponents();
+        this.useraccount=account;
+        this.system=system;
+        this.enterprise = enterprise;
+        this.organization = organization;
+        this.userProcessContainer = userProcessContainer;
+        SubmittedrequestsJTable.setRowHeight(25);
+        SubmittedrequestsJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
         populateRequestTable();
 
+    }
+    
+    public class HeaderColor extends DefaultTableCellRenderer {
+        public HeaderColor() {
+            setOpaque(true);
+        }
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
+            setBackground(new java.awt.Color(253,217,208));
+            return this;
+        }
     }
     
     public void populateRequestTable() {
@@ -42,7 +63,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
        
             CabDriver cabDriver = organization.getCabDriverDir().findCabProvider(useraccount.getUsername());
-           for(ServiceRequest serReq : cabDriver.getServiceRequestDirectory().getServiceRequestList()){
+            for(ServiceRequest serReq : cabDriver.getServiceRequestDirectory().getServiceRequestList()){
             Object[] row = new Object[9];
                RegisteredUser user = serReq.getUser();
                if(serReq.getNurse()!=null){
@@ -121,7 +142,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
         SubmittedrequestsJTable.setSelectionBackground(new java.awt.Color(235, 227, 126));
         DoctorScrollPane.setViewportView(SubmittedrequestsJTable);
 
-        btnApproved.setBackground(new java.awt.Color(18, 102, 153));
+        btnApproved.setBackground(new java.awt.Color(253, 135, 124));
         btnApproved.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnApproved.setText("Accepted");
         btnApproved.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -140,7 +161,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnArrived.setBackground(new java.awt.Color(18, 102, 153));
+        btnArrived.setBackground(new java.awt.Color(253, 135, 124));
         btnArrived.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnArrived.setText("Arrived");
         btnArrived.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -159,7 +180,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnRiding.setBackground(new java.awt.Color(18, 102, 153));
+        btnRiding.setBackground(new java.awt.Color(253, 135, 124));
         btnRiding.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnRiding.setText("Riding");
         btnRiding.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -178,7 +199,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnCompleted.setBackground(new java.awt.Color(18, 102, 153));
+        btnCompleted.setBackground(new java.awt.Color(253, 135, 124));
         btnCompleted.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnCompleted.setText("Completed");
         btnCompleted.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -197,7 +218,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnDecline.setBackground(new java.awt.Color(18, 102, 153));
+        btnDecline.setBackground(new java.awt.Color(253, 135, 124));
         btnDecline.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnDecline.setText("Decline");
         btnDecline.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -263,7 +284,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnApprovedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApprovedMouseEntered
         // TODO add your handling code here:
-        btnApproved.setBackground(new java.awt.Color(18,102,153));
+        btnApproved.setBackground(new java.awt.Color(253,135,124));
         btnApproved.setContentAreaFilled(true);
         btnApproved.setFocusPainted(true);
         btnApproved.setBorderPainted(false);
@@ -288,7 +309,8 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
         ServiceRequest serReq=(ServiceRequest)SubmittedrequestsJTable.getValueAt(row, 0);
         if(serReq.getStatus().equalsIgnoreCase("Accepted") || serReq.getStatus().equalsIgnoreCase("completed") || serReq.getStatus().equalsIgnoreCase("arrived") || serReq.getStatus().equalsIgnoreCase("riding") || serReq.getStatus().equalsIgnoreCase("declined") || serReq.getStatus().equalsIgnoreCase("cancelled")){
         JOptionPane.showMessageDialog(null, "Cab is already marked "+serReq.getStatus());
-        }else{
+        }
+        else{
         serReq.setStatus("Accepted");
         JOptionPane.showMessageDialog(null, "Cab marked accepted");
         populateRequestTable();
@@ -298,7 +320,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnArrivedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnArrivedMouseEntered
         // TODO add your handling code here:
-        btnArrived.setBackground(new java.awt.Color(18,102,153));
+        btnArrived.setBackground(new java.awt.Color(253,135,124));
         btnArrived.setContentAreaFilled(true);
         btnArrived.setFocusPainted(true);
         btnArrived.setBorderPainted(false);
@@ -322,7 +344,8 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
         ServiceRequest serReq=(ServiceRequest)SubmittedrequestsJTable.getValueAt(row, 0);
         if(serReq.getStatus().equalsIgnoreCase("declined") || serReq.getStatus().equalsIgnoreCase("completed") || serReq.getStatus().equalsIgnoreCase("arrived") || serReq.getStatus().equalsIgnoreCase("riding") || serReq.getStatus().equalsIgnoreCase("cancelled")){
         JOptionPane.showMessageDialog(null, "Cab is already marked "+serReq.getStatus());
-        }else{
+        }else
+        {
         serReq.setStatus("Arrived");
         JOptionPane.showMessageDialog(null, "Cab request marked Arrived");
         populateRequestTable();
@@ -332,7 +355,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnRidingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRidingMouseEntered
         // TODO add your handling code here:
-        btnRiding.setBackground(new java.awt.Color(18,102,153));
+        btnRiding.setBackground(new java.awt.Color(253,135,124));
         btnRiding.setContentAreaFilled(true);
         btnRiding.setFocusPainted(true);
         btnRiding.setBorderPainted(false);
@@ -356,8 +379,9 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
         ServiceRequest serReq=(ServiceRequest)SubmittedrequestsJTable.getValueAt(row, 0);
         if(serReq.getStatus().equalsIgnoreCase("declined") || serReq.getStatus().equalsIgnoreCase("completed") || serReq.getStatus().equalsIgnoreCase("accepted") || serReq.getStatus().equalsIgnoreCase("riding") || serReq.getStatus().equalsIgnoreCase("cancelled")){
         JOptionPane.showMessageDialog(null, "Cab is already marked "+serReq.getStatus());
-        } else{
-         serReq.setStatus("Riding");
+        } else
+        {
+        serReq.setStatus("Riding");
         JOptionPane.showMessageDialog(null, "Cab request marked riding");
         populateRequestTable();
         }
@@ -365,7 +389,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnCompletedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCompletedMouseEntered
         // TODO add your handling code here:
-        btnCompleted.setBackground(new java.awt.Color(18,102,153));
+        btnCompleted.setBackground(new java.awt.Color(253,135,124));
         btnCompleted.setContentAreaFilled(true);
         btnCompleted.setFocusPainted(true);
         btnCompleted.setBorderPainted(false);
@@ -389,7 +413,8 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
         ServiceRequest serReq=(ServiceRequest)SubmittedrequestsJTable.getValueAt(row, 0);
         if(serReq.getStatus().equalsIgnoreCase("Accepted") || serReq.getStatus().equalsIgnoreCase("completed") || serReq.getStatus().equalsIgnoreCase("arrived") || serReq.getStatus().equalsIgnoreCase("declined") || serReq.getStatus().equalsIgnoreCase("cancelled")){
         JOptionPane.showMessageDialog(null, "Cab is already marked "+serReq.getStatus());
-        }else{
+        }else
+        {
         serReq.setStatus("Completed");
         JOptionPane.showMessageDialog(null, "Cab request marked completed");
         populateRequestTable();
@@ -398,7 +423,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
 
     private void btnDeclineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeclineMouseEntered
         // TODO add your handling code here:
-        btnDecline.setBackground(new java.awt.Color(18,102,153));
+        btnDecline.setBackground(new java.awt.Color(253,135,124));
         btnDecline.setContentAreaFilled(true);
         btnDecline.setFocusPainted(true);
         btnDecline.setBorderPainted(false);
@@ -423,8 +448,9 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
         ServiceRequest serReq=(ServiceRequest)SubmittedrequestsJTable.getValueAt(row, 0);
         if(serReq.getStatus().equalsIgnoreCase("declined") ){
         JOptionPane.showMessageDialog(null, "Cab is already marked "+serReq.getStatus());
-        } else{
-            serReq.setStatus("Declined");
+        } else
+        {
+        serReq.setStatus("Declined");
         JOptionPane.showMessageDialog(null, "Cab request declined");
         populateRequestTable();
         }

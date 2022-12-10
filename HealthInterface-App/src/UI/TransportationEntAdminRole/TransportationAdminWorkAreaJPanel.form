@@ -97,7 +97,7 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/UI/Images/org.png"/>
+                  <Image iconType="3" name="/UI/images/org.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -106,7 +106,7 @@
         <Container class="javax.swing.JPanel" name="btnEmployee_Panel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="7c" green="87" red="fd" type="rgb"/>
+              <Color blue="d0" green="d9" red="fd" type="rgb"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
@@ -153,7 +153,7 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/UI/Images/userp.png"/>
+                  <Image iconType="3" name="/UI/images/userp.png"/>
                 </Property>
               </Properties>
             </Component>

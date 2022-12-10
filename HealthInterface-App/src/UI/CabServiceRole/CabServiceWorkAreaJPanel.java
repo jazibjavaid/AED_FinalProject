@@ -39,20 +39,21 @@ public class CabServiceWorkAreaJPanel extends javax.swing.JPanel {
         this.org=org;
         this.system=system;
         ManageCabServiceProfileJPanel profileJPanel = new ManageCabServiceProfileJPanel(workAreaJPanel,enterprise,useraccount,system);
-             workAreaJPanel.add("cabServiceDashboard", profileJPanel);
-            CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
-            layout.next(workAreaJPanel);
-        } catch (ParseException ex) {
+        workAreaJPanel.add("cabServiceDashboard", profileJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
+        } 
+        catch (ParseException ex) {
             Logger.getLogger(CabServiceWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     void setColor(JPanel panel){
-        panel.setBackground(new Color(130,175,203));
+        panel.setBackground(new Color(253,135,124));
     }
     
     void resetColor(JPanel panel){
-         panel.setBackground(new Color(18,102,153));
+         panel.setBackground(new Color(253,217,208));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,7 +96,7 @@ public class CabServiceWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/userp.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/userp.png"))); // NOI18N
 
         javax.swing.GroupLayout btnProfile_PanelLayout = new javax.swing.GroupLayout(btnProfile_Panel);
         btnProfile_Panel.setLayout(btnProfile_PanelLayout);
@@ -114,7 +115,7 @@ public class CabServiceWorkAreaJPanel extends javax.swing.JPanel {
             .addComponent(btnProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        btnAssignedReq_JPanel.setBackground(new java.awt.Color(253, 135, 124));
+        btnAssignedReq_JPanel.setBackground(new java.awt.Color(253, 217, 208));
         btnAssignedReq_JPanel.setToolTipText("");
         btnAssignedReq_JPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -131,7 +132,7 @@ public class CabServiceWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/requests.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/requests.png"))); // NOI18N
 
         javax.swing.GroupLayout btnAssignedReq_JPanelLayout = new javax.swing.GroupLayout(btnAssignedReq_JPanel);
         btnAssignedReq_JPanel.setLayout(btnAssignedReq_JPanelLayout);
@@ -156,7 +157,7 @@ public class CabServiceWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        btnAddServices_JPanel.setBackground(new java.awt.Color(253, 135, 124));
+        btnAddServices_JPanel.setBackground(new java.awt.Color(253, 217, 208));
         btnAddServices_JPanel.setToolTipText("");
 
         btnAddServices.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
@@ -168,7 +169,7 @@ public class CabServiceWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/cab2.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/cab2.png"))); // NOI18N
 
         javax.swing.GroupLayout btnAddServices_JPanelLayout = new javax.swing.GroupLayout(btnAddServices_JPanel);
         btnAddServices_JPanel.setLayout(btnAddServices_JPanelLayout);
@@ -228,7 +229,8 @@ public class CabServiceWorkAreaJPanel extends javax.swing.JPanel {
             workAreaJPanel.add("manageAmbulanceProfile", manageAmbulanceProfile);
             CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
             layout.next(workAreaJPanel);
-        } catch (ParseException ex) {
+        } 
+        catch (ParseException ex) {
             Logger.getLogger(CabServiceWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnProfileMousePressed

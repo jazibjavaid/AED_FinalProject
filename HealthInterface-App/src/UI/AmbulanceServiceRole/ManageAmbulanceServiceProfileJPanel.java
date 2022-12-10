@@ -119,7 +119,7 @@ public class ManageAmbulanceServiceProfileJPanel extends javax.swing.JPanel {
             }
         });
 
-        addJButton.setBackground(new java.awt.Color(18, 102, 153));
+        addJButton.setBackground(new java.awt.Color(253, 135, 124));
         addJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         addJButton.setText("Save");
         addJButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -235,7 +235,7 @@ public class ManageAmbulanceServiceProfileJPanel extends javax.swing.JPanel {
 
     private void addJButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addJButtonMouseEntered
         // TODO add your handling code here:
-        addJButton.setBackground(new java.awt.Color(18,102,153));
+        addJButton.setBackground(new java.awt.Color(253,135,124));
         addJButton.setContentAreaFilled(true);
         addJButton.setFocusPainted(true);
         addJButton.setBorderPainted(false);
@@ -264,7 +264,7 @@ public class ManageAmbulanceServiceProfileJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Did you miss any details? Please check again !", "Error!", JOptionPane.ERROR_MESSAGE);
           return;
         }
-       if(!validation.isValidZipCode(zipcode)){
+        if(!validation.isValidZipCode(zipcode)){
             return;
         }
         if(!validation.isValidPhoneNumber(contactNumber)){
@@ -278,7 +278,7 @@ public class ManageAmbulanceServiceProfileJPanel extends javax.swing.JPanel {
         String username = useraccount.getUsername();
         //        RegisteredUser registeredUser= system.getRegisteredUserDirectory().findRegisteredUser(username);
         CabDriver cabDriver=null;
-       for(Organization org : enterprise.getOrganizationDirectory().getOrgList()){
+        for(Organization org : enterprise.getOrganizationDirectory().getOrgList()){
            if(org.getCabDriverDir().findCabProvider(username)!= null){
                cabDriver = org.getCabDriverDir().findCabProvider(username);
         cabDriver.setFullName(name);
@@ -315,7 +315,7 @@ public class ManageAmbulanceServiceProfileJPanel extends javax.swing.JPanel {
         String username = useraccount.getUsername();
        // Doctor doctor1= enterprise.getDocDir().findDoctor(username);
         AmbulanceDriver ambulanceDriver=null;
-       for(Organization org : enterprise.getOrganizationDirectory().getOrgList()){
+        for(Organization org : enterprise.getOrganizationDirectory().getOrgList()){
            if(org.getAmbulanceDriverDir().findAmbulanceProvider(username)!= null){
                ambulanceDriver = org.getAmbulanceDriverDir().findAmbulanceProvider(username);
                nameJTextField.setText(ambulanceDriver.getFullName());
