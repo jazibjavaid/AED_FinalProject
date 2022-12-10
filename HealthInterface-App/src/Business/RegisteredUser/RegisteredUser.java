@@ -9,6 +9,7 @@ import Business.Role.Role;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import Business.WorkProcess.HealthRequestDirectory;
+import Business.WorkProcess.ServiceRequestDirectory;
 
 /**
  *
@@ -37,6 +38,7 @@ public class RegisteredUser extends Business.Person.Person {
     private String weight;
     private String height;
     private HealthRequestDirectory HealthRequestDirectory = new HealthRequestDirectory();
+    private ServiceRequestDirectory serviceRequestDirectoryAmb;
     private static final AtomicInteger count = new AtomicInteger(0);
     
     public RegisteredUser(City userCity, String bloodGroup, ArrayList<String> comorbid, String symptom, String foodpreference, String isVaccinated, String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username,String password, Role role) {
@@ -210,6 +212,13 @@ public class RegisteredUser extends Business.Person.Person {
             HealthRequestDirectory = new HealthRequestDirectory();
         }
         return HealthRequestDirectory;
+    }
+    
+    public ServiceRequestDirectory getServiceRequestDirectoryAmb() {
+        if(serviceRequestDirectoryAmb == null){
+            serviceRequestDirectoryAmb = new ServiceRequestDirectory();
+        }
+        return serviceRequestDirectoryAmb;
     }
  
     @Override
