@@ -265,11 +265,13 @@ public class NurseWorkAreaJPanel extends javax.swing.JPanel {
     private void btnAmbulanceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAmbulanceMousePressed
         // TODO add your handling code here:
         setColor(btnAmbulance_JPanel);
-   
         resetColor(btnAssignedRequest_JPanel);
         resetColor(btnProfile_Panel);
         resetColor(btnCabService_JPanel);
-        
+        ManageAmbulanceBookingJPanel bookAmbulanceJPanel=new ManageAmbulanceBookingJPanel(workAreaJPanel,enterprise,useraccount,system,org);
+        workAreaJPanel.add("bookAmbulanceForPatients", bookAmbulanceJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel); 
     }//GEN-LAST:event_btnAmbulanceMousePressed
 
     private void btnRequestsAssignedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRequestsAssignedMousePressed
