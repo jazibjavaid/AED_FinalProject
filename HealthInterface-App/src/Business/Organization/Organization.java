@@ -9,7 +9,11 @@ import Business.CabDriver.CabDriverDirectory;
 import Business.Doctor.DoctorDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Nurse.NurseDirectory;
+import Business.PatientManager.PatientManagerDirectory;
+import Business.Pharmacist.PharmacistDirectory;
+import Business.Tester.TesterDirectory;
 import Business.UserAccount.UserAccountDirectory;
+import Business.WorkProcess.HealthRequestDirectory;
 
 /**
  *
@@ -25,6 +29,12 @@ public class Organization {
     private UserAccountDirectory accountDirectory;
     private DoctorDirectory docDir;
     private NurseDirectory nurDir;
+    private PatientManagerDirectory patientManagerDirectory;
+    private EmployeeDirectory employeeDirectory;
+    private PatientManagerDirectory patManagerDir;
+    private AmbulanceDriverDirectory ambulanceDriverDir;
+    private TesterDirectory testerDir;
+    private PharmacistDirectory pharmacistDir;
     private CabDriverDirectory cabDriverDir;
     private AmbulanceDriverDirectory ambulanceDriverDir;
     private EmployeeDirectory empDir;
@@ -34,6 +44,8 @@ public class Organization {
     private int orgID;
     private static int counter=0;
     private OrgType orgType;
+    
+    private HealthRequestDirectory requestDirectory = new HealthRequestDirectory();
     
     public enum OrgType{
         Doctor("Doctor Organization"),
@@ -183,6 +195,84 @@ public class Organization {
 
     public void setOrgType(OrgType orgType) {
         this.orgType = orgType;
+    }
+
+    public UserAccountDirectory getAccountDirectory() {
+        return accountDirectory;
+    }
+
+    public void setAccountDirectory(UserAccountDirectory accountDirectory) {
+        this.accountDirectory = accountDirectory;
+    }
+
+    public EmployeeDirectory getEmployeeDirectory() {
+        return employeeDirectory;
+    }
+
+    public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
+        this.employeeDirectory = employeeDirectory;
+    }
+
+    public PatientManagerDirectory getPatientManagerDirectory() {
+        return patientManagerDirectory;
+    }
+
+    public void setPatientManagerDirectory(PatientManagerDirectory patientManagerDirectory) {
+        this.patientManagerDirectory = patientManagerDirectory;
+    }
+
+    public PatientManagerDirectory getPatManagerDir() {
+        return patManagerDir;
+    }
+
+    public void setPatManagerDir(PatientManagerDirectory patManagerDir) {
+        this.patManagerDir = patManagerDir;
+    }
+
+    public TesterDirectory getTesterDir() {
+        return testerDir;
+    }
+
+    public void setTesterDir(TesterDirectory testerDir) {
+        this.testerDir = testerDir;
+    }
+    
+    public HealthRequestDirectory getRequestDirectory() {
+        if(requestDirectory == null){
+            requestDirectory = new HealthRequestDirectory();
+        }
+        return requestDirectory;
+    }
+    
+    public PatientManagerDirectory getpManagerDir() {
+        if(patManagerDir==null){
+            patManagerDir=new PatientManagerDirectory();
+        }
+        
+        return patManagerDir;
+    }
+
+    public void setpManagerDir(PatientManagerDirectory patManagerDir) {
+        this.patManagerDir = patManagerDir;
+    }
+    
+    public AmbulanceDriverDirectory getAmbulanceDriverDir() {
+         if(ambulanceDriverDir==null){
+            ambulanceDriverDir=new AmbulanceDriverDirectory();
+        }
+        return ambulanceDriverDir;
+    }
+
+    public void setAmbulanceDriverDir(AmbulanceDriverDirectory ambulanceDriverDir) {
+        this.ambulanceDriverDir = ambulanceDriverDir;
+    }
+
+    public PharmacistDirectory getPharmacistDir() {
+        return pharmacistDir;
+    }
+
+    public void setPharmacistDir(PharmacistDirectory pharmacistDir) {
+        this.pharmacistDir = pharmacistDir;
     }
     
     @Override

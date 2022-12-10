@@ -324,13 +324,21 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         containerJPanel.removeAll();
+        dB4OUtil.storeSystem(system);
         containerJPanel.setVisible(false);
         mainScreenJPanel.setVisible(true);     
         exitJPanel.setVisible(false);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-      
+        UserRegistrationJPanel panel = new UserRegistrationJPanel(containerJPanel, system);
+        lblWelcome.setText("WELCOME TO PATIENT REGISTRATION!!!");
+        mainScreenJPanel.setVisible(false);
+        containerJPanel.setVisible(true);
+        exitJPanel.setVisible(true);
+        containerJPanel.add("workArea", panel);
+        CardLayout layout = (CardLayout) containerJPanel.getLayout();
+        layout.next(containerJPanel);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered

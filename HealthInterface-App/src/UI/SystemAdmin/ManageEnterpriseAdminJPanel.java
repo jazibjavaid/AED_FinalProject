@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.SystemAdmin;
+package UI.SystemAdmin;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -294,7 +294,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             
         }    
         populateTable();
-
+        usernameJTextField.setText("");
+        passwordJPasswordField.setText("");
+        nameJTextField.setText("");
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void enterpriseJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseJComboBoxActionPerformed

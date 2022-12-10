@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.HospitalEntAdminRole;
+package UI.HospitalEntAdminRole;
 
 
 import Business.Organization.Organization;
@@ -118,7 +118,7 @@ public class ManageHospEntOrgJPanel extends javax.swing.JPanel {
         organizationJTable.setSelectionBackground(new java.awt.Color(153, 153, 153));
         jScrollPane1.setViewportView(organizationJTable);
 
-        addJButton.setBackground(new java.awt.Color(18, 102, 153));
+        addJButton.setBackground(new java.awt.Color(253, 218, 207));
         addJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
         addJButton.setText("Add Organization");

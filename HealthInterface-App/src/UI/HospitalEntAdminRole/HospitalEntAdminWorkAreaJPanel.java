@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui.HospitalEntAdminRole;
+package UI.HospitalEntAdminRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
@@ -242,6 +242,10 @@ public class HospitalEntAdminWorkAreaJPanel extends javax.swing.JPanel {
         setColor(btnPatients_JPanel);
         resetColor(btnOrganization_Panel);
         resetColor(btnEmployee_Panel);
+        HospitalAssignedRequests managePatientJPanel=new HospitalAssignedRequests(workAreaJPanel,enterprise, useraccount,system, org);
+        workAreaJPanel.add("ManageEnterpriseAdminJPanel", managePatientJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnManagePatientMousePressed
 
 

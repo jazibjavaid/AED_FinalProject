@@ -5,7 +5,7 @@
 package Business.AmbulanceDriver;
 
 import Business.Role.Role;
-import Business.WorkQueue.ServiceRequestDirectory;
+import Business.WorkProcess.ServiceRequestDirectory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**

@@ -8,6 +8,7 @@ import Business.City.City;
 import Business.Role.Role;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
+import Business.WorkProcess.HealthRequestDirectory;
 
 /**
  *
@@ -35,6 +36,7 @@ public class RegisteredUser extends Business.Person.Person {
     private String Allergies;
     private String weight;
     private String height;
+    private HealthRequestDirectory HealthRequestDirectory = new HealthRequestDirectory();
     private static final AtomicInteger count = new AtomicInteger(0);
     
     public RegisteredUser(City userCity, String bloodGroup, ArrayList<String> comorbid, String symptom, String foodpreference, String isVaccinated, String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username,String password, Role role) {
@@ -201,6 +203,13 @@ public class RegisteredUser extends Business.Person.Person {
 
     public void setIsVaccinated(String isVaccinated) {
         this.isVaccinated = isVaccinated;
+    }
+    
+    public HealthRequestDirectory getHealthRequestDirectory() {
+        if(HealthRequestDirectory == null){
+            HealthRequestDirectory = new HealthRequestDirectory();
+        }
+        return HealthRequestDirectory;
     }
  
     @Override

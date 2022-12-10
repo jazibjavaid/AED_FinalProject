@@ -6,6 +6,7 @@
 package Business.Person;
 
 import Business.Nurse.Nurse;
+import Business.WorkProcess.HealthRequest;
 
 /**
  *
@@ -17,10 +18,12 @@ public class PersonalNotification {
     private String date;
     private String status;
     private Nurse nurse;
+    private HealthRequest requestNumber;
 
-    public PersonalNotification(String message, String date) {
+    public PersonalNotification(String message, String date, HealthRequest requestNumber) {
         this.message = message;
         this.date = date;
+        this.requestNumber = requestNumber;
     }
 
     public String getMessage() {
@@ -53,6 +56,14 @@ public class PersonalNotification {
 
     public void setNurse(Nurse nurse) {
         this.nurse = nurse;
+    }
+    
+    public HealthRequest getRequestNumber() {
+        return requestNumber;
+    }
+
+    public void setRequestNumber(HealthRequest requestNumber) {
+        this.requestNumber = requestNumber;
     }
 
     @Override
