@@ -218,6 +218,9 @@ public class Organization {
     }
 
     public TesterDirectory getTesterDir() {
+        if(testerDir == null){
+            testerDir = new TesterDirectory();
+        }
         return testerDir;
     }
 
