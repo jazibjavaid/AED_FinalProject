@@ -5,7 +5,6 @@
  */
 package UI.NurseRole;
 
-
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -21,7 +20,6 @@ import javax.swing.JPanel;
  *
  * @author jazibjavaid
  */
-
 public class NurseWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
@@ -32,33 +30,33 @@ public class NurseWorkAreaJPanel extends javax.swing.JPanel {
     UserAccount useraccount;
     Organization org;
     EcoSystem system;
+
     public NurseWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
-        
-        try{
-        initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.enterprise=enterprise;
-        this.useraccount=useraccount;
-        this.org=org;
-        this.system=system;
-        
-        ManageNurseProfile profileJPanel = new ManageNurseProfile(workAreaJPanel,enterprise,useraccount,system);
-        workAreaJPanel.add("cabServiceDashboard", profileJPanel);
-        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
-        layout.next(workAreaJPanel);
-        } 
-        catch (ParseException ex) {
+
+        try {
+            initComponents();
+            this.userProcessContainer = userProcessContainer;
+            this.enterprise = enterprise;
+            this.useraccount = useraccount;
+            this.org = org;
+            this.system = system;
+
+            ManageNurseProfile profileJPanel = new ManageNurseProfile(workAreaJPanel, enterprise, useraccount, system);
+            workAreaJPanel.add("cabServiceDashboard", profileJPanel);
+            CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+            layout.next(workAreaJPanel);
+        } catch (ParseException ex) {
             Logger.getLogger(NurseWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
-    void setColor(JPanel panel){
-        panel.setBackground(new Color(253,135,124));
+
+    void setColor(JPanel panel) {
+        panel.setBackground(new Color(253, 135, 124));
     }
-    
-    void resetColor(JPanel panel){
-         panel.setBackground(new Color(253,218,207));
+
+    void resetColor(JPanel panel) {
+        panel.setBackground(new Color(253, 218, 207));
     }
 
     /**
@@ -268,10 +266,10 @@ public class NurseWorkAreaJPanel extends javax.swing.JPanel {
         resetColor(btnAssignedRequest_JPanel);
         resetColor(btnProfile_Panel);
         resetColor(btnCabService_JPanel);
-        ManageAmbulanceBookingJPanel bookAmbulanceJPanel=new ManageAmbulanceBookingJPanel(workAreaJPanel,enterprise,useraccount,system,org);
+        ManageAmbulanceBookingJPanel bookAmbulanceJPanel = new ManageAmbulanceBookingJPanel(workAreaJPanel, enterprise, useraccount, system, org);
         workAreaJPanel.add("bookAmbulanceForPatients", bookAmbulanceJPanel);
         CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
-        layout.next(workAreaJPanel); 
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnAmbulanceMousePressed
 
     private void btnRequestsAssignedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRequestsAssignedMousePressed
@@ -280,7 +278,7 @@ public class NurseWorkAreaJPanel extends javax.swing.JPanel {
         resetColor(btnAmbulance_JPanel);
         resetColor(btnProfile_Panel);
         resetColor(btnCabService_JPanel);
-        NurseAssignedRequest nurseAssignedRequests=new NurseAssignedRequest(workAreaJPanel,enterprise,useraccount,system, org);
+        NurseAssignedRequest nurseAssignedRequests = new NurseAssignedRequest(workAreaJPanel, enterprise, useraccount, system, org);
         workAreaJPanel.add("viewAllRequestJPanel", nurseAssignedRequests);
         CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
         layout.next(workAreaJPanel);
@@ -298,26 +296,29 @@ public class NurseWorkAreaJPanel extends javax.swing.JPanel {
         resetColor(btnAssignedRequest_JPanel);
         resetColor(btnCabService_JPanel);
         try {
-            ManageNurseProfile managenurseProfileJPanel=new ManageNurseProfile(workAreaJPanel,enterprise,useraccount,system);
+            ManageNurseProfile managenurseProfileJPanel = new ManageNurseProfile(workAreaJPanel, enterprise, useraccount, system);
             workAreaJPanel.add("NurseProfileJPanel", managenurseProfileJPanel);
             CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
             layout.next(workAreaJPanel);
-        } 
-        catch (ParseException ex) {
+        } catch (ParseException ex) {
             Logger.getLogger(NurseWorkAreaJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
+
     }//GEN-LAST:event_btnProfileMousePressed
 
     private void btnCabServiceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCabServiceMousePressed
         // TODO add your handling code here:
         setColor(btnCabService_JPanel);
-        
+
         resetColor(btnAmbulance_JPanel);
-        
+
         resetColor(btnAssignedRequest_JPanel);
         resetColor(btnProfile_Panel);
-      
+        ManageCabBookingJPanel bookCabPanel = new ManageCabBookingJPanel(workAreaJPanel, enterprise, useraccount, system, org);
+        workAreaJPanel.add("bookCabForNurse", bookCabPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
+
     }//GEN-LAST:event_btnCabServiceMousePressed
 
 
