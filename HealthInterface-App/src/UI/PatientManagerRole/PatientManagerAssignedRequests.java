@@ -22,7 +22,7 @@ import UI.UserRole.HealthRequestReport;
 
 /**
  *
- * @author amishagupta
+ * @author jazibjavaid
  */
 public class PatientManagerAssignedRequests extends javax.swing.JPanel {
 

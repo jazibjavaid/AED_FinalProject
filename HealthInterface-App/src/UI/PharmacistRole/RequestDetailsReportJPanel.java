@@ -5,7 +5,7 @@
  */
 package UI.PharmacistRole;
 
-import Business.DeliveryMan.DeliveryMan;
+
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -39,7 +39,6 @@ public class RequestDetailsReportJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Pharmacist pharmacist;
     private Enterprise enterprise;
-    private DeliveryMan delMan;
     DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 
     public RequestDetailsReportJPanel(JPanel userProcessContainer, Enterprise enterprise, UserAccount account, EcoSystem system, HealthRequest request, Pharmacist pharmacist) {
@@ -328,15 +327,7 @@ public class RequestDetailsReportJPanel extends javax.swing.JPanel {
     }
 
     private void populateComboBox() {
-//        deliveryManComboBox.removeAllItems();
-//        for (Organization org : enterprise.getOrganizationDirectory().getOrgList()) {
-//            if (org.getOrgType().getValue().equals("Delivery Provider Organization")) {
-//                for (DeliveryMan dm : org.getDelManDir().getdeliveryManDirectory()) {
-//                    deliveryManComboBox.addItem(dm);
-//                }
-//            }
-//
-//        }
+
     }
 
     private void populateTable() {
@@ -347,7 +338,6 @@ public class RequestDetailsReportJPanel extends javax.swing.JPanel {
             row[0] = med;
             row[1] = med.getOrderDate();
             row[2] = med.getStatus();
-            row[3] = med.getDeliveryman();
             model.addRow(row);
         }
 

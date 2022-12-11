@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author amishagupta
+ * @author jazibjavaid
  */
 public class AssignHospitalToRequest extends javax.swing.JPanel {
 

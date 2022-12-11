@@ -195,7 +195,7 @@ public class OrderDetailsJPanel extends javax.swing.JPanel {
 
         Date date = new Date();
         String nowDate = formatter.format(date);
-        OrderMedicine ordMed = new OrderMedicine(nowDate,"New", null, pharmacy);
+        OrderMedicine ordMed = new OrderMedicine(nowDate,"New", pharmacy);
         for(Medicine med : medicineList){
             ordMed.getMedicineDirectory().addMedicineList(med);
         }

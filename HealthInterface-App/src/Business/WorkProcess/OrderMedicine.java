@@ -5,7 +5,6 @@
  */
 package Business.WorkProcess;
 
-import Business.DeliveryMan.DeliveryMan;
 import Business.Pharmacist.MedicineDirectory;
 import Business.Pharmacist.Pharmacist;
 import Business.RegisteredUser.RegisteredUser;
@@ -20,17 +19,15 @@ public class OrderMedicine {
     private String orderId;
     private String orderDate;
     private String status;
-    private DeliveryMan deliveryman;
     private Pharmacist pharmacyName;
     private MedicineDirectory medicineDirectory;
     private RegisteredUser user;
 
-    public OrderMedicine(String orderDate, String status, DeliveryMan deliveryman, Pharmacist pharmacyName) {
+    public OrderMedicine(String orderDate, String status, Pharmacist pharmacyName) {
         Random rnd = new Random();
         orderId = "Ord-" + rnd.nextInt(99999);
         this.orderDate = orderDate;
         this.status = status;
-        this.deliveryman = deliveryman;
         this.pharmacyName = pharmacyName;
     }
 
@@ -56,14 +53,6 @@ public class OrderMedicine {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public DeliveryMan getDeliveryman() {
-        return deliveryman;
-    }
-
-    public void setDeliveryman(DeliveryMan deliveryman) {
-        this.deliveryman = deliveryman;
     }
 
     public Pharmacist getPharmacyName() {
