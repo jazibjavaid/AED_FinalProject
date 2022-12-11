@@ -8,6 +8,8 @@ import Business.City.City;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.RegisteredUser.RegisteredUserDirectory;
+import Business.Role.Role;
+import Business.Role.SystemAdminRole;
 import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
@@ -35,6 +37,13 @@ public class EcoSystem extends Organization {
     private EcoSystem() {
         super(null);
         cityList = new ArrayList<>();
+    }
+    
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> listrole=new ArrayList<Role>();
+        listrole.add(new SystemAdminRole());
+        return listrole;
     }
 
     public City createAndAddCity(String name) {
