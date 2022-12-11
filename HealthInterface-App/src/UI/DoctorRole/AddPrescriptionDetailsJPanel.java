@@ -115,7 +115,7 @@ public class AddPrescriptionDetailsJPanel extends javax.swing.JPanel {
         lblAddress.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         lblAddress.setText("Request Number");
 
-        addJButton.setBackground(new java.awt.Color(18, 102, 153));
+        addJButton.setBackground(new java.awt.Color(253, 135, 124));
         addJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         addJButton.setText("Close");
         addJButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
