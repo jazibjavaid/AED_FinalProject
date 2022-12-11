@@ -49,11 +49,11 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
     }
 
     void setColor(JPanel panel) {
-        panel.setBackground(new Color(130, 175, 203));
+        panel.setBackground(new Color(253, 135, 124));
     }
 
     void resetColor(JPanel panel) {
-        panel.setBackground(new Color(18, 102, 153));
+        panel.setBackground(new Color(253, 217, 208));
     }
 
     /**
@@ -79,9 +79,9 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(253, 135, 124));
+        jPanel1.setBackground(new java.awt.Color(253, 217, 208));
 
-        btnAddMedicines_JPanel.setBackground(new java.awt.Color(18, 102, 153));
+        btnAddMedicines_JPanel.setBackground(new java.awt.Color(253, 217, 208));
         btnAddMedicines_JPanel.setToolTipText("");
         btnAddMedicines_JPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -90,7 +90,6 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnMedicines.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnMedicines.setForeground(new java.awt.Color(255, 255, 255));
         btnMedicines.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnMedicines.setText("Add Medicines");
         btnMedicines.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,7 +98,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/medicine.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/medicine.png"))); // NOI18N
 
         javax.swing.GroupLayout btnAddMedicines_JPanelLayout = new javax.swing.GroupLayout(btnAddMedicines_JPanel);
         btnAddMedicines_JPanel.setLayout(btnAddMedicines_JPanelLayout);
@@ -118,17 +117,16 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(btnAddMedicines_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMedicines, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                    .addComponent(btnMedicines, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        btnOrders_JPanel.setBackground(new java.awt.Color(18, 102, 153));
+        btnOrders_JPanel.setBackground(new java.awt.Color(253, 217, 208));
         btnOrders_JPanel.setToolTipText("");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/rest.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/icons8-add-30.png"))); // NOI18N
 
         btnOrders.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnOrders.setForeground(new java.awt.Color(255, 255, 255));
         btnOrders.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnOrders.setText("Manage Orders");
         btnOrders.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -158,11 +156,10 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnProfile_Panel.setBackground(new java.awt.Color(130, 175, 203));
+        btnProfile_Panel.setBackground(new java.awt.Color(253, 135, 124));
         btnProfile_Panel.setToolTipText("");
 
         btnProfile.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnProfile.setForeground(new java.awt.Color(255, 255, 255));
         btnProfile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnProfile.setText("Manage Profile");
         btnProfile.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -171,7 +168,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/userp.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/userp.png"))); // NOI18N
 
         javax.swing.GroupLayout btnProfile_PanelLayout = new javax.swing.GroupLayout(btnProfile_Panel);
         btnProfile_Panel.setLayout(btnProfile_PanelLayout);
@@ -210,7 +207,7 @@ public class PharmacistWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnOrders_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnAddMedicines_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(721, Short.MAX_VALUE))
+                .addContainerGap(718, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 880));

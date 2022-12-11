@@ -76,7 +76,7 @@ public class OrderMedicineReport extends javax.swing.JPanel {
 
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);
-            setBackground(new java.awt.Color(18, 102, 153));
+            setBackground(new java.awt.Color(253, 217, 208));
             return this;
         }
 
@@ -123,9 +123,9 @@ public class OrderMedicineReport extends javax.swing.JPanel {
 
         lblAddress.setText("Request Number:");
 
-        btnSubmit.setBackground(new java.awt.Color(18, 102, 153));
+        btnSubmit.setBackground(new java.awt.Color(253, 135, 124));
         btnSubmit.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnSubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/submit.png"))); // NOI18N
+        btnSubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/submit.png"))); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnSubmit.setContentAreaFilled(false);
@@ -149,13 +149,13 @@ public class OrderMedicineReport extends javax.swing.JPanel {
 
         completeOrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "OrderId", "Pharmacy Name", "Order Date", "Status", "DeliveryMan Name"
+                "OrderId", "Pharmacy Name", "Order Date", "Status"
             }
         ));
         jScrollPane1.setViewportView(completeOrderTable);
@@ -195,9 +195,9 @@ public class OrderMedicineReport extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         jLabel11.setText("Cart");
 
-        btnAdd.setBackground(new java.awt.Color(18, 102, 153));
+        btnAdd.setBackground(new java.awt.Color(253, 135, 124));
         btnAdd.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/add2.png"))); // NOI18N
         btnAdd.setText("Add");
         btnAdd.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnAdd.setContentAreaFilled(false);
@@ -224,7 +224,7 @@ public class OrderMedicineReport extends javax.swing.JPanel {
             }
         });
 
-        btnViewDetails.setBackground(new java.awt.Color(18, 102, 153));
+        btnViewDetails.setBackground(new java.awt.Color(253, 135, 124));
         btnViewDetails.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnViewDetails.setText("View Details");
         btnViewDetails.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -329,7 +329,7 @@ public class OrderMedicineReport extends javax.swing.JPanel {
         jLabel5.setText("Manage Order");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 270, 20));
 
-        jButton3.setBackground(new java.awt.Color(18, 102, 153));
+        jButton3.setBackground(new java.awt.Color(253, 135, 124));
         jButton3.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         jButton3.setText("Back");
         jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -547,7 +547,7 @@ public class OrderMedicineReport extends javax.swing.JPanel {
                     if (ent.getEnterpriseCategory().getValue().equalsIgnoreCase("Necessities Provider")) {
                         for (Organization org : ent.getOrganizationDirectory().getOrgList()) {
                             if (org.getOrgType().getValue().equalsIgnoreCase("Pharmacy Organization")) {
-                                for (Pharmacist pharmacy : org.getPharmacistDir().getpharmacistDirectory()) {
+                                for (Pharmacist pharmacy : org.getPharDir().getpharmacistDirectory()) {
                                     pharmacyComboBox.addItem(pharmacy);
                                 }
                             }
