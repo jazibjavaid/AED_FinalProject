@@ -43,6 +43,10 @@ public class EnterpriseDirectory {
             enterprise=new TransportationEnterprise(name, contactNumber, email, address, zipcode);
             enterpriseList.add(enterprise);
         }
+        else if(type==Enterprise.EnterpriseCategory.NecessitiesProvider){
+            enterprise=new NecessitiesProviderEnterprise(name, contactNumber, email, address, zipcode);
+            enterpriseList.add(enterprise);
+        }
         return enterprise;
     }
 }
