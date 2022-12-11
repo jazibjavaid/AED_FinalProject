@@ -313,7 +313,7 @@ public class AddCabServicesJAreaPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Cab Service added successfully!");
         }
         populateTestTable();
-
+        txtName.setText("");
     }//GEN-LAST:event_addJButtonActionPerformed
 
 

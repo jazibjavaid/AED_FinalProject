@@ -263,6 +263,8 @@ public class AddServicesJAreaPanel extends javax.swing.JPanel {
         ambulanceProvider.getAmbulanceServiceDirectory().addService(ambServce);
         JOptionPane.showMessageDialog(null, "Ambulance Service added successfully!");
         }
+        
+        txtName.setText("");
           populateTestTable();
         
        

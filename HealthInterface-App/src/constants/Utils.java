@@ -92,8 +92,8 @@ public class Utils extends EmailConstants {
     }
 
     public void sendEmail(String recepient, String subject, String emailMessage) {
-        String user = "einfo.healthinterface@gmail.com"; //change as per testing
-        String password = "health@123";  // change as per testing
+        String user = "toursicle@gmail.com"; //change as per testing
+        String password = "izpfgvkxurbtnmjd";  // change as per testing
         //Get the session object  
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -114,7 +114,6 @@ public class Utils extends EmailConstants {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            // message.addRecipient(Message.RecipientType.TO, new InternetAddress("thakurkhushbu14@gmail.com"));
             message.setSubject(subject);
 
             message.setText(emailMessage);

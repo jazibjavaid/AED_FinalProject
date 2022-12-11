@@ -10,6 +10,7 @@ import Business.City.City;
 import Business.RegisteredUser.RegisteredUser;
 import Business.Role.PatientRole;
 import Business.Validation.Validations;
+import constants.Utils;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -334,6 +335,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         RegisteredUser p=new RegisteredUser(network,null, null, null, null, null, name, birthDate, selectedgender, address, zipcode, contactNumber, email,username,password,new PatientRole());
         system.getRegisteredUserDirectory().addRegisteredUser(p);
         system.getUserAccountDir().addUserAccount(p);
+        Utils utils = new Utils();
             
             String subject = "New user registration";
             String msg = "Welcome to HealthInterface, Thank you for registering with us!";
@@ -349,6 +351,9 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
             txtusername.setText("");
             pwdfield.setText("");
             pwdfieldconfirm.setText(""); 
+            
+        utils.sendEmail(email, subject, msg);
+        utils.setDatabase(system);
           
     }//GEN-LAST:event_addJButtonActionPerformed
 

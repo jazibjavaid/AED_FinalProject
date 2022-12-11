@@ -92,7 +92,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Enterprise Name", "Type", "Contact Number", "Email", "Address", "Zipcode", "City"
+                "Enterprise Name", "Type", "Address", "Zipcode", "Contact Number", "Email", "City"
             }
         ) {
             boolean[] canEdit = new boolean [] {

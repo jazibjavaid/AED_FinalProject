@@ -297,7 +297,7 @@ public class AddMedicinesJPanel extends javax.swing.JPanel {
         Medicine med = new Medicine(name, orderDate);
         pharmacist.getMedicineDirectory().addMedicineList(med);
         populateTestTable();
-
+        txtName.setText("");
     }//GEN-LAST:event_addJButtonActionPerformed
 
     private void btnRemovemedicineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemovemedicineMouseEntered
