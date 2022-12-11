@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import UI.DoctorRole.ViewPrescriptionJPanel;
+import UI.TestingServiceRole.CompletedTestReport;
 import UI.UserRole.UserReport;
 
 /**
@@ -698,6 +699,10 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
 
     private void viewAvailableTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAvailableTestActionPerformed
         // TODO add your handling code here:
+        CompletedTestReport completedTestResult=new CompletedTestReport(userProcessContainer,enterprise,useraccount,system, request);
+        userProcessContainer.add("userReport", completedTestResult);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_viewAvailableTestActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

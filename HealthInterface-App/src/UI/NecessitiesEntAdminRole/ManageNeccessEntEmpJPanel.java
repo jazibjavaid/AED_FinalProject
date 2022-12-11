@@ -418,6 +418,13 @@ public class ManageNeccessEntEmpJPanel extends javax.swing.JPanel {
             organization.getPharDir().addpharmacist(ph);
             organization.getUserAccountDir().addUserAccount(ph);
             populatePharmacistTable();
+            nameJTextField.setText("");
+            txtAddress.setText("");
+            txtZipCode.setText("");
+            txtContactNo.setText("");
+            txtEmail.setText("");
+            txtuserName.setText("");
+            txtpassword.setText("");
         }
 
     }//GEN-LAST:event_addJButtonActionPerformed

@@ -636,12 +636,28 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
             organization.getCabDriverDir().addCabDriver(cd);
             organization.getUserAccountDir().addUserAccount(cd);
             populateCabServiceTable();
+            nameJTextField.setText("");
+            txtlicenseno.setText("");
+            txtAddress.setText("");
+            txtZipCode.setText("");
+            txtContactNo.setText("");
+            txtEmail.setText("");
+            txtuserName.setText("");
+            txtpassword.setText("");
         }
         if(organization.getOrgType().getValue().equals("Ambulance Provider Organization")){
             AmbulanceDriver cd=new AmbulanceDriver(license, name, null, gender, address, zipcode, contactNumber, email,username,password,new AmbulanceServiceRole());
             organization.getAmbulanceDriverDir().addambulanceDriver(cd);
             organization.getUserAccountDir().addUserAccount(cd);
             populateAmbulanceServiceTable();
+            nameJTextField.setText("");
+            txtlicenseno.setText("");
+            txtAddress.setText("");
+            txtZipCode.setText("");
+            txtContactNo.setText("");
+            txtEmail.setText("");
+            txtuserName.setText("");
+            txtpassword.setText("");
         }
     }//GEN-LAST:event_addJButtonActionPerformed
 

@@ -116,6 +116,8 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
         btnCompleted = new javax.swing.JButton();
         btnDecline = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
         jLabel1.setText("User's Requests");
 
@@ -278,7 +280,7 @@ public class CabServiceAssignedRequestJPanel extends javax.swing.JPanel {
                     .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnArrived, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRiding, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(503, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

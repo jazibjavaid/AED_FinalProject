@@ -153,10 +153,10 @@
               <Table columnCount="7" rowCount="4">
                 <Column editable="false" title="Enterprise Name" type="java.lang.Object"/>
                 <Column editable="true" title="Type" type="java.lang.Object"/>
-                <Column editable="true" title="Contact Number" type="java.lang.Object"/>
-                <Column editable="true" title="Email" type="java.lang.Object"/>
                 <Column editable="true" title="Address" type="java.lang.Object"/>
                 <Column editable="true" title="Zipcode" type="java.lang.Object"/>
+                <Column editable="true" title="Contact Number" type="java.lang.Object"/>
+                <Column editable="true" title="Email" type="java.lang.Object"/>
                 <Column editable="true" title="City" type="java.lang.Object"/>
               </Table>
             </Property>
