@@ -682,7 +682,10 @@ public class NurseReportActionPanel extends javax.swing.JPanel {
 
     private void btnDailyReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDailyReportActionPerformed
         // TODO add your handling code here:
-
+        AddDailyReport dailyPatientReport=new AddDailyReport(userProcessContainer,enterprise,useraccount,system,request);
+        userProcessContainer.add("dailyPatientReport", dailyPatientReport);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnDailyReportActionPerformed
 
     private void btnOrderMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderMedicineActionPerformed

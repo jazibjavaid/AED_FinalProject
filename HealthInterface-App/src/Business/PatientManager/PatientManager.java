@@ -63,6 +63,9 @@ public class PatientManager extends Business.Person.Person {
     }
 
     public ServiceRequestDirectory getServicerequestDirectoryAmb() {
+        if(servicerequestDirectoryAmb == null){
+            servicerequestDirectoryAmb = new ServiceRequestDirectory();
+        }
         return servicerequestDirectoryAmb;
     }
 
@@ -79,6 +82,9 @@ public class PatientManager extends Business.Person.Person {
     }
 
     public ServiceRequestDirectory getServicerequestDirectoryCab() {
+        if(servicerequestDirectoryCab == null){
+            servicerequestDirectoryCab = new ServiceRequestDirectory();
+        }
         return servicerequestDirectoryCab;
     }
 
