@@ -5,7 +5,6 @@
  */
 package UI.PatientManagerRole;
 
-
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -28,7 +27,6 @@ import UI.NurseRole.NurseWorkAreaJPanel;
  *
  * @author shantanutyagi
  */
-
 public class PatientManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
@@ -39,27 +37,28 @@ public class PatientManagerWorkAreaJPanel extends javax.swing.JPanel {
     UserAccount useraccount;
     Organization org;
     EcoSystem system;
+
     public PatientManagerWorkAreaJPanel(JPanel userProcessContainer, UserAccount useraccount, Organization org, Enterprise enterprise, EcoSystem system) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.enterprise=enterprise;
-        this.useraccount=useraccount;
-        this.org=org;
-        this.system=system;
-        ManagePatientManagerProfileJPanel profileJPanel = new ManagePatientManagerProfileJPanel(workAreaJPanel,enterprise,useraccount,system);
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.useraccount = useraccount;
+        this.org = org;
+        this.system = system;
+        ManagePatientManagerProfileJPanel profileJPanel = new ManagePatientManagerProfileJPanel(workAreaJPanel, enterprise, useraccount, system);
         workAreaJPanel.add("cabServiceDashboard", profileJPanel);
         CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
         layout.next(workAreaJPanel);
     }
 
-    
-     void setColor(JPanel panel){
-        panel.setBackground(new Color(253,135,124));
+    void setColor(JPanel panel) {
+        panel.setBackground(new Color(253, 135, 124));
     }
-    
-    void resetColor(JPanel panel){
-         panel.setBackground(new Color(253,217,204));
+
+    void resetColor(JPanel panel) {
+        panel.setBackground(new Color(253, 217, 204));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -324,13 +323,13 @@ public class PatientManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnAmbulanceMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAmbulanceMousePressed
         // TODO add your handling code here:
-                setColor(btnAmbulance_JPanel);
-                resetColor(btnAllRequest_JPanel);
-                resetColor(btnProfile_Panel);
-                resetColor(btnNotifications_JPanel);
-                resetColor(btnAssignedRequest_JPanel);
-                
-        ManageAmbulanceBookingPMJPanel viewAssignedRequests=new ManageAmbulanceBookingPMJPanel(workAreaJPanel,enterprise,useraccount,system, org);
+        setColor(btnAmbulance_JPanel);
+        resetColor(btnAllRequest_JPanel);
+        resetColor(btnProfile_Panel);
+        resetColor(btnNotifications_JPanel);
+        resetColor(btnAssignedRequest_JPanel);
+
+        ManageAmbulanceBookingPMJPanel viewAssignedRequests = new ManageAmbulanceBookingPMJPanel(workAreaJPanel, enterprise, useraccount, system, org);
         workAreaJPanel.add("viewAllRequestJPanel", viewAssignedRequests);
         CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
         layout.next(workAreaJPanel);
@@ -338,28 +337,28 @@ public class PatientManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnProfileMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProfileMousePressed
         // TODO add your handling code here:
-                setColor(btnProfile_Panel);
-                resetColor(btnAmbulance_JPanel);
-                resetColor(btnAllRequest_JPanel);
-                resetColor(btnNotifications_JPanel);
-                resetColor(btnAssignedRequest_JPanel);
-                ManagePatientManagerProfileJPanel managepManagerProfileJPanel=new ManagePatientManagerProfileJPanel(workAreaJPanel,enterprise,useraccount,system);
-                workAreaJPanel.add("PatientManagerProfileJPanel", managepManagerProfileJPanel);
-                CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
-                layout.next(workAreaJPanel);
+        setColor(btnProfile_Panel);
+        resetColor(btnAmbulance_JPanel);
+        resetColor(btnAllRequest_JPanel);
+        resetColor(btnNotifications_JPanel);
+        resetColor(btnAssignedRequest_JPanel);
+        ManagePatientManagerProfileJPanel managepManagerProfileJPanel = new ManagePatientManagerProfileJPanel(workAreaJPanel, enterprise, useraccount, system);
+        workAreaJPanel.add("PatientManagerProfileJPanel", managepManagerProfileJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnProfileMousePressed
 
     private void btnAllRequestsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAllRequestsMousePressed
         // TODO add your handling code here:
-                setColor(btnAllRequest_JPanel);
-                resetColor(btnAmbulance_JPanel);
-                resetColor(btnProfile_Panel);
-                resetColor(btnNotifications_JPanel);
-                resetColor(btnAssignedRequest_JPanel);
-                PatientManagerAssignDocJPanel viewAllRequestJPanel=new PatientManagerAssignDocJPanel(workAreaJPanel,enterprise,useraccount,system, org);
-                workAreaJPanel.add("viewAllRequestJPanel", viewAllRequestJPanel);
-                CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
-                layout.next(workAreaJPanel);
+        setColor(btnAllRequest_JPanel);
+        resetColor(btnAmbulance_JPanel);
+        resetColor(btnProfile_Panel);
+        resetColor(btnNotifications_JPanel);
+        resetColor(btnAssignedRequest_JPanel);
+        PatientManagerAssignDocJPanel viewAllRequestJPanel = new PatientManagerAssignDocJPanel(workAreaJPanel, enterprise, useraccount, system, org);
+        workAreaJPanel.add("viewAllRequestJPanel", viewAllRequestJPanel);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnAllRequestsMousePressed
 
     private void btnAllRequest_JPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAllRequest_JPanelMousePressed
@@ -368,35 +367,35 @@ public class PatientManagerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnAssignedRequestMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAssignedRequestMousePressed
         // TODO add your handling code here:
-                setColor(btnAssignedRequest_JPanel);
-                resetColor(btnAmbulance_JPanel);
-                resetColor(btnAllRequest_JPanel);
-                resetColor(btnProfile_Panel);
-                resetColor(btnNotifications_JPanel);
-                PatientManagerAssignedRequests viewAssignedRequests=new PatientManagerAssignedRequests(workAreaJPanel,enterprise,useraccount,system, org);
-                workAreaJPanel.add("viewAllRequestJPanel", viewAssignedRequests);
-                CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
-                layout.next(workAreaJPanel);
+        setColor(btnAssignedRequest_JPanel);
+        resetColor(btnAmbulance_JPanel);
+        resetColor(btnAllRequest_JPanel);
+        resetColor(btnProfile_Panel);
+        resetColor(btnNotifications_JPanel);
+        PatientManagerAssignedRequests viewAssignedRequests = new PatientManagerAssignedRequests(workAreaJPanel, enterprise, useraccount, system, org);
+        workAreaJPanel.add("viewAllRequestJPanel", viewAssignedRequests);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnAssignedRequestMousePressed
 
     private void btnNotificationMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotificationMousePressed
         // TODO add your handling code here:
-                setColor(btnNotifications_JPanel);
-                resetColor(btnAmbulance_JPanel);
-                resetColor(btnAllRequest_JPanel);               
-                resetColor(btnProfile_Panel);
-                resetColor(btnAssignedRequest_JPanel);
-                NotificationRequestJPanel viewAssignedRequests=new NotificationRequestJPanel(workAreaJPanel,enterprise,useraccount,system, org);
-                workAreaJPanel.add("viewAllRequestJPanel", viewAssignedRequests);
-                CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
-                layout.next(workAreaJPanel);
+        setColor(btnNotifications_JPanel);
+        resetColor(btnAmbulance_JPanel);
+        resetColor(btnAllRequest_JPanel);
+        resetColor(btnProfile_Panel);
+        resetColor(btnAssignedRequest_JPanel);
+        NotificationRequestJPanel viewAssignedRequests = new NotificationRequestJPanel(workAreaJPanel, enterprise, useraccount, system, org);
+        workAreaJPanel.add("viewAllRequestJPanel", viewAssignedRequests);
+        CardLayout layout = (CardLayout) workAreaJPanel.getLayout();
+        layout.next(workAreaJPanel);
     }//GEN-LAST:event_btnNotificationMousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-
-        
-     
+        AnalyticsJPanel healthRequest = new AnalyticsJPanel(userProcessContainer, enterprise, useraccount, system, org);
+        userProcessContainer.add("PatientManagerProfileJPanel", healthRequest);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

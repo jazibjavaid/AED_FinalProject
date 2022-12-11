@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.City.City;
 import Business.RegisteredUser.RegisteredUser;
 import Business.Role.PatientRole;
+import Business.Validation.Validations;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -300,6 +301,7 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
         birthDate  = formatter.format(jDateChooser1.getDate());}
         String password = String.valueOf(this.pwdfield.getPassword());
         String comfirmpassword = String.valueOf(this.pwdfieldconfirm.getPassword()); 
+        Validations validation=new Validations();
 
         if (!password.equals(comfirmpassword)) {
             JOptionPane.showMessageDialog(null, "Passwords does not match. Please try again.", "Error!", JOptionPane.ERROR_MESSAGE);
@@ -311,18 +313,30 @@ public class UserRegistrationJPanel extends javax.swing.JPanel {
              return;
         }
         
-          
-       
+        Boolean unique=system.checkIfUserIsUnique(username);
+        if(!unique){
+            JOptionPane.showMessageDialog(null, "Username " + username + " already exists. Please try with different username", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(!validation.isValidPassword(password)){
+            return;
+        }
+        if(!validation.isValidZipCode(zipcode)){
+            return;
+        }
+        if(!validation.isValidPhoneNumber(contactNumber)){
+            return;
+        }
+        if(!validation.isValidEmail(email)){
+            return;
+        }
         
-       
-            RegisteredUser p=new RegisteredUser(network,null, null, null, null, null, name, birthDate, selectedgender, address, zipcode, contactNumber, email,username,password,new PatientRole());
-           
-            system.getRegisteredUserDirectory().addRegisteredUser(p);
-            
-            system.getUserAccountDir().addUserAccount(p);
+        RegisteredUser p=new RegisteredUser(network,null, null, null, null, null, name, birthDate, selectedgender, address, zipcode, contactNumber, email,username,password,new PatientRole());
+        system.getRegisteredUserDirectory().addRegisteredUser(p);
+        system.getUserAccountDir().addUserAccount(p);
             
             String subject = "New user registration";
-            String msg = "Welcome to digicare, Thank you for registering with us!";
+            String msg = "Welcome to HealthInterface, Thank you for registering with us!";
             JOptionPane.showMessageDialog(null, new JLabel("<html><h2><I><font color='green'> Registered Successfully </font><></h2></html>"));
 
           

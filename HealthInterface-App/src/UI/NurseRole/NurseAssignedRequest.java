@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author amishagupta
+ * @author jazibjavaid
  */
 public class NurseAssignedRequest extends javax.swing.JPanel {
 
@@ -56,7 +56,7 @@ public class NurseAssignedRequest extends javax.swing.JPanel {
         }
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
             super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-            setBackground(new java.awt.Color(18,102,153));
+            setBackground(new java.awt.Color(253,217,208));
             return this;
         }
     }

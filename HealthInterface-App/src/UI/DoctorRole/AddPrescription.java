@@ -112,9 +112,9 @@ public class AddPrescription extends javax.swing.JPanel {
         lblAddress.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         lblAddress.setText("Request Number");
 
-        addJButton.setBackground(new java.awt.Color(18, 102, 153));
+        addJButton.setBackground(new java.awt.Color(253, 135, 124));
         addJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/submit.png"))); // NOI18N
+        addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/submit.png"))); // NOI18N
         addJButton.setText("Submit");
         addJButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         addJButton.setContentAreaFilled(false);
@@ -242,7 +242,7 @@ public class AddPrescription extends javax.swing.JPanel {
         jLabel5.setText("                      Add Prescription");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 270, 40));
 
-        jButton3.setBackground(new java.awt.Color(18, 102, 153));
+        jButton3.setBackground(new java.awt.Color(253, 135, 124));
         jButton3.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         jButton3.setText("Back");
         jButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder());

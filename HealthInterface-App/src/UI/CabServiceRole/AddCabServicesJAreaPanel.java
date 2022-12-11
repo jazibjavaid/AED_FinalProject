@@ -137,6 +137,7 @@ public class AddCabServicesJAreaPanel extends javax.swing.JPanel {
 
         btnRemoveFoodSuppplier.setBackground(new java.awt.Color(253, 135, 124));
         btnRemoveFoodSuppplier.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
+        btnRemoveFoodSuppplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/delete2.png"))); // NOI18N
         btnRemoveFoodSuppplier.setText("Remove Service");
         btnRemoveFoodSuppplier.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnRemoveFoodSuppplier.setContentAreaFilled(false);
@@ -191,6 +192,7 @@ public class AddCabServicesJAreaPanel extends javax.swing.JPanel {
 
         addJButton.setBackground(new java.awt.Color(253, 135, 124));
         addJButton.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
+        addJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/add2.png"))); // NOI18N
         addJButton.setText("Add Service");
         addJButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         addJButton.setContentAreaFilled(false);

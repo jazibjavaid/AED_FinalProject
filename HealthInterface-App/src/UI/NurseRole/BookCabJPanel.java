@@ -5,9 +5,8 @@
  */
 package UI.NurseRole;
 
-
-import Business.AmbulanceDriver.AmbulanceDriver;
-import Business.AmbulanceDriver.AmbulanceService;
+import Business.CabDriver.CabDriver;
+import Business.CabDriver.CabService;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.City.City;
@@ -29,9 +28,9 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author jazibjavaid
+ * @author shantanutyagi
  */
-public class BookAmbulanceJPanel extends javax.swing.JPanel {
+public class BookCabJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageEmpJPanel
@@ -42,46 +41,48 @@ public class BookAmbulanceJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private EcoSystem system;
     private Organization org;
-    private AmbulanceDriver ambulance;
+    private CabDriver cab;
     private RegisteredUser user;
     private Nurse nurse;
-       
-    public BookAmbulanceJPanel(JPanel userProcessContainer,Enterprise ent, UserAccount userAccount, EcoSystem system, Organization org) {
+
+    public BookCabJPanel(JPanel userProcessContainer, Enterprise ent, UserAccount userAccount, EcoSystem system, Organization org) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.organizationDir = organizationDir;
         this.userAccount = userAccount;
         this.system = system;
-        this.ent=ent;
+        this.ent = ent;
         this.org = org;
-        nurse=org.getNurDir().findNurse(userAccount.getUsername());
+        nurse = org.getNurDir().findNurse(userAccount.getUsername());
         UserComboBox();
         populateComboBox();
         serviceTable.setRowHeight(25);
         serviceTable.getTableHeader().setDefaultRenderer(new HeaderColor());
-        
-        
+
     }
-     public class HeaderColor extends DefaultTableCellRenderer {
+
+    public class HeaderColor extends DefaultTableCellRenderer {
+
         public HeaderColor() {
             setOpaque(true);
         }
+
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
-            super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-            setBackground(new java.awt.Color(253,217,208));
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+            setBackground(new java.awt.Color(253, 217, 208));
             return this;
         }
 
     }
 
-    private void populateServiceTable(){
+    private void populateServiceTable() {
         DefaultTableModel model = (DefaultTableModel) serviceTable.getModel();
-        
+
         model.setRowCount(0);
-        for (AmbulanceService ambService : ambulance.getAmbulanceServiceDirectory().getAmbulanceServiceList()){          
+        for (CabService cabService : cab.getCabServiceDirectory().getCabServiceList()) {
             Object[] row = new Object[2];
-            row[0] = ambService;
-            row[1] = ambService.getServiceType();
+            row[0] = cabService;
+            row[1] = cabService.getServiceType();
             model.addRow(row);
         }
     }
@@ -113,7 +114,7 @@ public class BookAmbulanceJPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
-        jLabel1.setText("Select an Ambulance Provider");
+        jLabel1.setText("Select an Cab Provider");
 
         jLabel2.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         jLabel2.setText("Select a Service");
@@ -172,49 +173,41 @@ public class BookAmbulanceJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(userComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(userComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(ambulanceProviderComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ambulanceProviderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)))
+                        .addGap(183, 183, 183)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(userComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(userComboBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ambulanceProviderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ambulanceProviderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(167, 167, 167))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(161, 161, 161))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, 440));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, 480));
 
         jButton3.setBackground(new java.awt.Color(253, 135, 124));
         jButton3.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
@@ -234,43 +227,40 @@ public class BookAmbulanceJPanel extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 110, 29));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 40));
 
         lblDoctorslist1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
-        lblDoctorslist1.setText("Ambulance Service");
-        add(lblDoctorslist1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 185, -1));
+        lblDoctorslist1.setText("Cab Service");
+        add(lblDoctorslist1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 139, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ambulanceProviderComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ambulanceProviderComboBoxActionPerformed
         // TODO add your handling code here:
-        ambulance = (AmbulanceDriver)ambulanceProviderComboBox.getSelectedItem();
+        cab = (CabDriver) ambulanceProviderComboBox.getSelectedItem();
         populateServiceTable();
+
     }//GEN-LAST:event_ambulanceProviderComboBoxActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int row = serviceTable.getSelectedRow();
-        if(row<0) {
+        if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        AmbulanceService ambService=(AmbulanceService)serviceTable.getValueAt(row, 0);
-        ServiceRequest serReq = new ServiceRequest(ambService.getServiceName(), ambService.getServiceType(), user, null, null,"New");
-        ambulance.getServiceRequestDirectory().addRequest(serReq);
-        nurse.getServicerequestDirectoryAmb().addRequest(serReq);
-        user.getServiceRequestDirectoryAmb().addRequest(serReq);
-        JOptionPane.showMessageDialog(null, "Ambulance Service booked Successfully");
-        ManageAmbulanceBookingJPanel manageAmbulance=new ManageAmbulanceBookingJPanel(userProcessContainer,ent,userAccount,system,org);
-        userProcessContainer.add("manageAmbulance", manageAmbulance);
+        Nurse nurse = org.getNurDir().findNurse(userAccount.getUsername());
+        CabService ambService = (CabService) serviceTable.getValueAt(row, 0);
+        ServiceRequest serReq = new ServiceRequest(ambService.getServiceName(), ambService.getServiceType(), user, null, nurse, "New");
+        cab.getServiceRequestDirectory().addRequest(serReq);
+        nurse.getServicerequestDirectoryCab().addRequest(serReq);
+        JOptionPane.showMessageDialog(null, "Cab Service booked Successfully");
+        ManageCabBookingJPanel manageCab = new ManageCabBookingJPanel(userProcessContainer, ent, userAccount, system, org);
+        userProcessContainer.add("manageCab", manageCab);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void userComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userComboBoxActionPerformed
-        // TODO add your handling code here:
-        user = (RegisteredUser)userComboBox.getSelectedItem();
-    }//GEN-LAST:event_userComboBoxActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -279,9 +269,14 @@ public class BookAmbulanceJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void userComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userComboBoxActionPerformed
+        // TODO add your handling code here:
+        user = (RegisteredUser) userComboBox.getSelectedItem();
+    }//GEN-LAST:event_userComboBoxActionPerformed
+
     private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
         // TODO add your handling code here:
-        jButton3.setBackground(new java.awt.Color(253,135,124));
+        jButton3.setBackground(new java.awt.Color(253, 135, 124));
         jButton3.setContentAreaFilled(true);
         jButton3.setFocusPainted(true);
         jButton3.setBorderPainted(false);
@@ -297,7 +292,7 @@ public class BookAmbulanceJPanel extends javax.swing.JPanel {
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
-        jButton1.setBackground(new java.awt.Color(253,135,124));
+        jButton1.setBackground(new java.awt.Color(253, 135, 124));
         jButton1.setContentAreaFilled(true);
         jButton1.setFocusPainted(true);
         jButton1.setBorderPainted(false);
@@ -325,46 +320,36 @@ public class BookAmbulanceJPanel extends javax.swing.JPanel {
     private javax.swing.JTable serviceTable;
     private javax.swing.JComboBox userComboBox;
     // End of variables declaration//GEN-END:variables
-    public void populateComboBox(){
-        
-//        Organization orgnization = null;
-        for(City city: system.getCityList()){
-            if(city.getName().equalsIgnoreCase(user.getRegisteredUserCity().getName())){
-            for(Enterprise ent: city.getEnterpriseDir().getEnterpriseList()){
-             for(Organization org: ent.getOrganizationDirectory().getOrgList()){
-                if(org.getOrgType().getValue().equalsIgnoreCase("Ambulance Provider Organization")){
-                    if(org.getAmbulanceDriverDir().getambulanceDriverDirectory()!=null){
-                        for(AmbulanceDriver ad: org.getAmbulanceDriverDir().getambulanceDriverDirectory()){
-                            ambulanceProviderComboBox.addItem(ad);
+    public void populateComboBox() {
+
+        for (City city : system.getCityList()) {
+            if (city.getName().equalsIgnoreCase(user.getRegisteredUserCity().getName())) {
+                for (Enterprise ent : city.getEnterpriseDir().getEnterpriseList()) {
+                    for (Organization org : ent.getOrganizationDirectory().getOrgList()) {
+                        if (org.getOrgType().getValue().equalsIgnoreCase("Cab Provider Organization")) {
+                            for (CabDriver ad : org.getCabDriverDir().getCabDriverDirectory()) {
+                                ambulanceProviderComboBox.addItem(ad);
+                            }
                         }
-                    }   
+                    }
                 }
             }
+
         }
-        }
-         
+
     }
-        
-        
-                 
-    }
-    
-     public void UserComboBox(){
-         
-              ArrayList<HealthRequest> requestList = nurse.getRequestDirectory().getRequestList();
-         ArrayList<RegisteredUser> uniqueuser = new ArrayList<>();
-           for(HealthRequest req: requestList){
-            if(!uniqueuser.contains(req.getUser())){
-                 uniqueuser.add(req.getUser());
+
+    public void UserComboBox() {
+
+        ArrayList<HealthRequest> requestList = nurse.getRequestDirectory().getRequestList();
+        ArrayList<RegisteredUser> uniqueuser = new ArrayList<>();
+        for (HealthRequest req : requestList) {
+            if (!uniqueuser.contains(req.getUser())) {
+                uniqueuser.add(req.getUser());
             }
         }
-         for(RegisteredUser user: uniqueuser){
-                userComboBox.addItem(user);
-            }
-         
-//         ArrayList<HealthRequest> requestList = nurse.getRequestDirectory().getRequestList();
-//         for(HealthRequest req: requestList){
-//                userComboBox.addItem(req.getUser());
-//            }
+        for (RegisteredUser user : uniqueuser) {
+            userComboBox.addItem(user);
+        }
     }
 }

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Business.Role.AmbulanceServiceRole;
 import Business.Role.CabServiceRole;
+import Business.Validation.Validations;
 import java.awt.Component;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -597,6 +598,7 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
         Organization organization = (Organization) organizationEmpJComboBox.getSelectedItem();
+        Validations validation=new Validations();
         String name = nameJTextField.getText();
         String license=txtlicenseno.getText();
         String address=txtAddress.getText();
@@ -607,20 +609,39 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
         String username = txtuserName.getText();
         char[] passwordCharArray = txtpassword.getPassword();
         String password = String.valueOf(passwordCharArray);
+        if(name.equals("")||address.equals("")||email.equals("")||zipcode.equals("")||contactNumber.equals("")||username.equals("")||password.equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter all the fields.", "Error!", JOptionPane.ERROR_MESSAGE);
+             return;
+        }
+        Boolean unique=system.checkIfUserIsUnique(username);
+        if(!unique){
+            JOptionPane.showMessageDialog(null, "Username " + username + " already exists. Please try with different username", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(!validation.isValidPassword(password)){
+            return;
+        }
+        if(!validation.isValidZipCode(zipcode)){
+            return;
+        }
+        if(!validation.isValidPhoneNumber(contactNumber)){
+            return;
+        }
+        if(!validation.isValidEmail(email)){
+            return;
+        } 
         
         if(organization.getOrgType().getValue().equals("Cab Provider Organization")){
-          CabDriver cd=new CabDriver(license, name, null, gender, address, zipcode, contactNumber, email,username,password,new CabServiceRole());
-          organization.getCabDriverDir().addCabDriver(cd);
-          organization.getUserAccountDir().addUserAccount(cd);
-          //organization.getEmpDir().createEmp(name);
-          populateCabServiceTable();
+            CabDriver cd=new CabDriver(license, name, null, gender, address, zipcode, contactNumber, email,username,password,new CabServiceRole());
+            organization.getCabDriverDir().addCabDriver(cd);
+            organization.getUserAccountDir().addUserAccount(cd);
+            populateCabServiceTable();
         }
         if(organization.getOrgType().getValue().equals("Ambulance Provider Organization")){
-         AmbulanceDriver cd=new AmbulanceDriver(license, name, null, gender, address, zipcode, contactNumber, email,username,password,new AmbulanceServiceRole());
-          organization.getAmbulanceDriverDir().addambulanceDriver(cd);
-          organization.getUserAccountDir().addUserAccount(cd);
-          //organization.getEmpDir().createEmp(name);
-          populateAmbulanceServiceTable();
+            AmbulanceDriver cd=new AmbulanceDriver(license, name, null, gender, address, zipcode, contactNumber, email,username,password,new AmbulanceServiceRole());
+            organization.getAmbulanceDriverDir().addambulanceDriver(cd);
+            organization.getUserAccountDir().addUserAccount(cd);
+            populateAmbulanceServiceTable();
         }
     }//GEN-LAST:event_addJButtonActionPerformed
 

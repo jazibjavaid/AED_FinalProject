@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI.PatientManagerRole;
-
+package UI.NurseRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Nurse.Nurse;
 import Business.Organization.Organization;
-import Business.PatientManager.PatientManager;
 import Business.RegisteredUser.RegisteredUser;
 import Business.UserAccount.UserAccount;
 import Business.WorkProcess.HealthRequest;
@@ -26,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author shantanutyagi
  */
-public class ManageAmbulanceBookingPMJPanel extends javax.swing.JPanel {
+public class ManageCabBookingJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form PatientManagerAssignDocJPanel
@@ -38,10 +37,10 @@ public class ManageAmbulanceBookingPMJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private HealthRequest req;
 
-    public ManageAmbulanceBookingPMJPanel(JPanel userProcessContainer,Enterprise enterprise, UserAccount account, EcoSystem system, Organization organization) {
+    public ManageCabBookingJPanel(JPanel userProcessContainer, Enterprise enterprise, UserAccount account, EcoSystem system, Organization organization) {
         initComponents();
-        this.useraccount=account;
-        this.system=system;
+        this.useraccount = account;
+        this.system = system;
         this.enterprise = enterprise;
         this.organization = organization;
         this.userProcessContainer = userProcessContainer;
@@ -49,35 +48,42 @@ public class ManageAmbulanceBookingPMJPanel extends javax.swing.JPanel {
         SubmittedrequestsJTable.getTableHeader().setDefaultRenderer(new HeaderColor());
         populateRequestTable();
     }
+
     public class HeaderColor extends DefaultTableCellRenderer {
+
         public HeaderColor() {
             setOpaque(true);
         }
+
         public Component getTableCellRendererComponent(JTable table, Object value, boolean selected, boolean focused, int row, int column) {
-            super.getTableCellRendererComponent(table, value, selected, focused, row, column);         
-            setBackground(new java.awt.Color(253,217,208));
+            super.getTableCellRendererComponent(table, value, selected, focused, row, column);
+            setBackground(new java.awt.Color(253, 217, 208));
             return this;
         }
     }
-  public void populateRequestTable() {
+
+    public void populateRequestTable() {
         DefaultTableModel model = (DefaultTableModel) SubmittedrequestsJTable.getModel();
         model.setRowCount(0);
-            PatientManager pMan = organization.getpManagerDir().findPatientManager(useraccount.getUsername());
-            for(ServiceRequest serReq : pMan.getServicerequestDirectoryAmb().getServiceRequestList()){
-            Object[] row = new Object[6];
+
+        Nurse nurse = organization.getNurDir().findNurse(useraccount.getUsername());
+        for (ServiceRequest serReq : nurse.getServicerequestDirectoryCab().getServiceRequestList()) {
+            Object[] row = new Object[9];
             RegisteredUser user = serReq.getUser();
             row[0] = serReq;
-            row[1] = user.getName();
-            row[2] = user.getContactNumber();
-            row[3] = user.getAddress();
-            row[4] = user.getZipcode();
-            row[5] = serReq.getStatus();
+            row[1] = nurse.getName();
+            row[2] = nurse.getContactNumber();
+            row[3] = nurse.getAddress();
+            row[4] = nurse.getZipcode();
+            row[5] = user.getName();
+            row[6] = user.getAddress();
+            row[7] = user.getZipcode();
+            row[8] = serReq.getStatus();
             model.addRow(row);
+        }
 
-       }
-           
-   
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,17 +103,17 @@ public class ManageAmbulanceBookingPMJPanel extends javax.swing.JPanel {
 
         SubmittedrequestsJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Request ID", "Patient's Name", "Contact Number", "Address", "Zipcode", "Status"
+                "Request ID", "Doctor/Nurse Name", "Contact Number", "Address", "Zipcode", "Patients Name", "Address", "Zipcode", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, true, true, true
+                true, false, false, true, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -119,11 +125,11 @@ public class ManageAmbulanceBookingPMJPanel extends javax.swing.JPanel {
         DoctorScrollPane.setViewportView(SubmittedrequestsJTable);
 
         jLabel1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
-        jLabel1.setText("Ambulance Requests");
+        jLabel1.setText("Cab Requests");
 
         Approved.setBackground(new java.awt.Color(253, 135, 124));
         Approved.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        Approved.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/add2.png"))); // NOI18N
+        Approved.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/add2.png"))); // NOI18N
         Approved.setText("Add New");
         Approved.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Approved.setContentAreaFilled(false);
@@ -168,16 +174,16 @@ public class ManageAmbulanceBookingPMJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(460, 460, 460)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(DoctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 939, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Approved, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Approved, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(460, 460, 460)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -187,20 +193,18 @@ public class ManageAmbulanceBookingPMJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(DoctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Approved, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(7, 7, 7)))
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Approved, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void ApprovedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApprovedActionPerformed
         // TODO add your handling code here:
-        BookAmbulancePMJPanel bookAmbulanceJPanel=new BookAmbulancePMJPanel(userProcessContainer,enterprise,useraccount,system,organization);
-        userProcessContainer.add("bookAmbulanceForPatients", bookAmbulanceJPanel);
+        BookCabJPanel bookCabPanel = new BookCabJPanel(userProcessContainer, enterprise, useraccount, system, organization);
+        userProcessContainer.add("bookCabForNurse", bookCabPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
 
@@ -208,22 +212,27 @@ public class ManageAmbulanceBookingPMJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        PatientManager pMan = organization.getpManagerDir().findPatientManager(useraccount.getUsername());
+        Nurse nurse = organization.getNurDir().findNurse(useraccount.getUsername());
         int row = SubmittedrequestsJTable.getSelectedRow();
-        if(row<0) {
+        if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        ServiceRequest serviceSheet=(ServiceRequest)SubmittedrequestsJTable.getValueAt(row, 0);
-        serviceSheet.setStatus("Cancelled");
-        pMan.getServicerequestDirectoryAmb().removeRequest(serviceSheet);
-        JOptionPane.showMessageDialog(null, "Request removed successfully");
-        populateRequestTable();
+        ServiceRequest serviceSheet = (ServiceRequest) SubmittedrequestsJTable.getValueAt(row, 0);
+        if (serviceSheet.getStatus().equalsIgnoreCase("riding") || serviceSheet.getStatus().equalsIgnoreCase("completed") || serviceSheet.getStatus().equalsIgnoreCase("declined")) {
+            JOptionPane.showMessageDialog(null, "You cannot cancelled the request since status: " + serviceSheet.getStatus());
+        } else {
+            serviceSheet.setStatus("Cancelled");
+            nurse.getServicerequestDirectoryCab().removeRequest(serviceSheet);
+            JOptionPane.showMessageDialog(null, "Request removed successfully");
+            populateRequestTable();
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ApprovedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApprovedMouseEntered
         // TODO add your handling code here:
-        Approved.setBackground(new java.awt.Color(253,135,124));
+        Approved.setBackground(new java.awt.Color(253, 135, 124));
         Approved.setContentAreaFilled(true);
         Approved.setFocusPainted(true);
         Approved.setBorderPainted(false);
@@ -239,7 +248,7 @@ public class ManageAmbulanceBookingPMJPanel extends javax.swing.JPanel {
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         // TODO add your handling code here:
-        jButton1.setBackground(new java.awt.Color(253,135,124));
+        jButton1.setBackground(new java.awt.Color(253, 135, 124));
         jButton1.setContentAreaFilled(true);
         jButton1.setFocusPainted(true);
         jButton1.setBorderPainted(false);
