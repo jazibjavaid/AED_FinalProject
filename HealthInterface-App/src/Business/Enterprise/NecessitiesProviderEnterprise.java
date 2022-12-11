@@ -11,12 +11,11 @@ import java.util.ArrayList;
  *
  * @author jazibjavaid
  */
-public class TestingEnterprise extends Enterprise {
-    
-    public TestingEnterprise(String name, String contactNumber, String email, String address, String zipcode) {
-        super(EnterpriseCategory.TestingCenters, name, contactNumber, email, address, zipcode);
+public class NecessitiesProviderEnterprise extends Enterprise {
+    public NecessitiesProviderEnterprise(String name, String contactNumber, String email, String address, String zipcode) {
+        super(EnterpriseCategory.NecessitiesProvider, name, contactNumber, email, address, zipcode);
     }
-    
+
     @Override
     public ArrayList<Role> getSupportedRole() {
         return null;

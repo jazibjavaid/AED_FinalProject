@@ -18,6 +18,11 @@ public class HospitalEnterprise extends Enterprise {
         super(EnterpriseCategory.Hospital, name, contactNumber, email, address, zipcode);
         this.bedCount = bedCount;
     }
+    
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        return null;
+    }
 
     public String getNumberOfBeds() {
         return bedCount;

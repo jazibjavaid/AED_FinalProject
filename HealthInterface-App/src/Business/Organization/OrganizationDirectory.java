@@ -48,6 +48,10 @@ public class OrganizationDirectory {
             organization = new TestingProviderOrganization(name);
             orgList.add(organization);
         }
+        else if (orgType.getValue().equals(Organization.OrgType.Pharmacy.getValue())){
+            organization = new PharmacyOrganization(name);
+            orgList.add(organization);
+        }
         return organization;
     }
     public Organization getOrganization(String name){

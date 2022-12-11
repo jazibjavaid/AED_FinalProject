@@ -11,7 +11,7 @@ import Business.Organization.OrganizationDirectory;
  *
  * @author jazibjavaid
  */
-public class Enterprise extends Organization {
+public abstract class Enterprise extends Organization {
     private EnterpriseCategory enterpriseCategory;
     private OrganizationDirectory orgDir = new OrganizationDirectory();
     
@@ -31,7 +31,8 @@ public class Enterprise extends Organization {
         Hospital("Hospital"),
         Transportation("Transpotation"),
         TestingCenters("Testing Centers"),
-        PatientSupportServices("Patient Support Services");
+        PatientSupportServices("Patient Support Services"),
+        NecessitiesProvider("Necessities Provider");
         
         private String value;
         

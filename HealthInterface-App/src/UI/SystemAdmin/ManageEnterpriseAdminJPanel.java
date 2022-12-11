@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.City.City;
 import Business.Role.HospitalEntAdminRole;
+import Business.Role.NecessitiesEntAdminRole;
 import Business.Role.PatientSupportEntAdminRole;
 import Business.Role.TransportationEntAdminRole;
 import Business.Role.TestingEntAdminRole;
@@ -309,6 +310,11 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 UserAccount account=new UserAccount(username, password, name,  new TestingEntAdminRole());
                 enterprise.getUserAccountDir().addUserAccount(account);
                 JOptionPane.showMessageDialog(null, "User Account created successfully");
+            }
+            else if(enterprise.getEnterpriseCategory().toString().equals("Necessities Provider")){
+                UserAccount account=new UserAccount(username, password, name,  new NecessitiesEntAdminRole());
+                enterprise.getUserAccountDir().addUserAccount(account);
+                JOptionPane.showMessageDialog(null, "User Account created successfully"); 
             }
             
         }    
