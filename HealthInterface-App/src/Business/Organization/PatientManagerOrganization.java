@@ -4,6 +4,10 @@
  */
 package Business.Organization;
 
+import Business.Role.PatientManagerRole;
+import Business.Role.Role;
+import java.util.ArrayList;
+
 /**
  *
  * @author jazibjavaid
@@ -12,6 +16,13 @@ public class PatientManagerOrganization extends Organization {
     
     public PatientManagerOrganization(String name) {
         super(name);
+    }
+    
+    @Override
+    public ArrayList<Role> getSupportedRole() {
+        ArrayList<Role> roles=new ArrayList();
+        roles.add(new PatientManagerRole());
+        return roles;
     }
     
     @Override

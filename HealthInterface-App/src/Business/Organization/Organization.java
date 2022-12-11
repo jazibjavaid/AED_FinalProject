@@ -11,15 +11,17 @@ import Business.Employee.EmployeeDirectory;
 import Business.Nurse.NurseDirectory;
 import Business.PatientManager.PatientManagerDirectory;
 import Business.Pharmacist.PharmacistDirectory;
+import Business.Role.Role;
 import Business.Tester.TesterDirectory;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkProcess.HealthRequestDirectory;
+import java.util.ArrayList;
 
 /**
  *
  * @author jazibjavaid
  */
-public class Organization {
+public abstract class Organization {
     private String name;
     private String address;
     private String zipcode;
@@ -34,7 +36,7 @@ public class Organization {
     private PatientManagerDirectory patManagerDir;
     private AmbulanceDriverDirectory ambulanceDriverDir;
     private TesterDirectory testerDir;
-    private PharmacistDirectory pharmacistDir;
+    private PharmacistDirectory pharDir;
     private CabDriverDirectory cabDriverDir;
     private EmployeeDirectory empDir;
 
@@ -43,6 +45,7 @@ public class Organization {
     private int orgID;
     private static int counter=0;
     private OrgType orgType;
+    public abstract ArrayList<Role> getSupportedRole();
     
     private HealthRequestDirectory requestDirectory = new HealthRequestDirectory();
     
@@ -52,7 +55,8 @@ public class Organization {
         CabProvider("Cab Provider Organization"),
         AmbulanceProvider("Ambulance Provider Organization"),
         TestingProvider("Testing Provider Organization"),
-        PatientManager("Patient Manager Organization");
+        PatientManager("Patient Manager Organization"),
+        Pharmacy("Pharmacy Organization");
 
         
         private String value;
@@ -258,12 +262,15 @@ public class Organization {
         this.cabDriverDir = cabDriverDir;
     }
 
-    public PharmacistDirectory getPharmacistDir() {
-        return pharmacistDir;
+    public PharmacistDirectory getPharDir() {
+        if(pharDir==null){
+           pharDir=new PharmacistDirectory();
+        }
+        return pharDir;
     }
 
-    public void setPharmacistDir(PharmacistDirectory pharmacistDir) {
-        this.pharmacistDir = pharmacistDir;
+    public void setPharDir(PharmacistDirectory pharDir) {
+        this.pharDir = pharDir;
     }
     
     @Override
