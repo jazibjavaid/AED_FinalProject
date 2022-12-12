@@ -9,7 +9,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
-import Business.PatientManager.PatientManager;
+import Business.PatientAdvisor.PatientManager;
 import Business.Role.PatientManagerRole;
 import Business.Validation.Validations;
 import java.awt.Component;

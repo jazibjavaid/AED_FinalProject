@@ -9,7 +9,7 @@ import UI.UserRole.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-import Business.PatientManager.PatientManager;
+import Business.PatientAdvisor.PatientManager;
 import Business.RegisteredUser.RegisteredUser;
 import Business.UserAccount.UserAccount;
 import Business.WorkProcess.HealthRequest;

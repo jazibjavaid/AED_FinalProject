@@ -9,7 +9,7 @@ import Business.TaxiDriver.CabDriverDirectory;
 import Business.Doctor.DoctorDirectory;
 import Business.Employee.EmployeeDirectory;
 import Business.Nurse.NurseDirectory;
-import Business.PatientManager.PatientManagerDirectory;
+import Business.PatientAdvisor.PatientManagerDirectory;
 import Business.Pharmacist.PharmacistDirectory;
 import Business.Role.Role;
 import Business.Tester.TesterDirectory;

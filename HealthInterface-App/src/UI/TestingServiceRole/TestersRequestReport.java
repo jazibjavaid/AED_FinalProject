@@ -8,7 +8,7 @@ package UI.TestingServiceRole;
 import UI.UserRole.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.PatientManager.PatientManager;
+import Business.PatientAdvisor.PatientManager;
 import Business.RegisteredUser.RegisteredUser;
 import Business.Tester.Tester;
 import Business.Tester.Tests;

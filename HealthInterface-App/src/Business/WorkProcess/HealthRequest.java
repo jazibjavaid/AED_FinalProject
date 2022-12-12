@@ -9,7 +9,7 @@ import Business.Employee.PrescriptionDirectory;
 import Business.Enterprise.HospitalEnterprise;
 import Business.Nurse.Nurse;
 import Business.Organization.Organization;
-import Business.PatientManager.PatientManager;
+import Business.PatientAdvisor.PatientManager;
 import Business.RegisteredUser.DailyReportDirectory;
 import Business.RegisteredUser.RegisteredUser;
 import Business.Tester.TestsDirectory;

@@ -8,7 +8,7 @@ package UI.PatientManagerRole;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-import Business.PatientManager.PatientManager;
+import Business.PatientAdvisor.PatientManager;
 import Business.Person.PersonalNotification;
 import Business.UserAccount.UserAccount;
 import Business.WorkProcess.HealthRequest;
