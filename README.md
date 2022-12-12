@@ -17,7 +17,9 @@
 
 ![AED_New-Sequence Diagram drawio](https://user-images.githubusercontent.com/113114087/206941363-417b1d41-8071-4066-a6f0-81f18555a9c9.png)
 
+### Class Diagram
 
+![ClassDiagram](https://user-images.githubusercontent.com/114361980/206946666-bef3a17b-c93b-4c85-afe2-b3211bd2e27c.jpg)
 
 #### Project By
 1. Jazib Javaid
