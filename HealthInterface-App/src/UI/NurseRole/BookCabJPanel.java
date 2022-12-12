@@ -114,7 +114,7 @@ public class BookCabJPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
-        jLabel1.setText("Select an Cab Provider");
+        jLabel1.setText("Select an Taxi Provider");
 
         jLabel2.setFont(new java.awt.Font(".SF NS Text", 1, 13)); // NOI18N
         jLabel2.setText("Select a Service");
@@ -230,7 +230,7 @@ public class BookCabJPanel extends javax.swing.JPanel {
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 40));
 
         lblDoctorslist1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
-        lblDoctorslist1.setText("Cab Service");
+        lblDoctorslist1.setText("Taxi Service");
         add(lblDoctorslist1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 139, -1));
     }// </editor-fold>//GEN-END:initComponents
 

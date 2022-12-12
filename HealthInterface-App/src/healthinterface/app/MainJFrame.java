@@ -189,7 +189,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ui/images/mainpage.gif"))); // NOI18N
 
-        jLabel3.setBackground(new java.awt.Color(18, 102, 153));
+        jLabel3.setBackground(new java.awt.Color(0, 25, 128));
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 18, 102));
         jLabel3.setText("      WELCOME TO HEALTHCARE SYSTEM");

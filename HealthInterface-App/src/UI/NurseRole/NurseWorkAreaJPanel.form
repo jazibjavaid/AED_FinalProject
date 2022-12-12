@@ -268,7 +268,7 @@
                   <Font name=".SF NS Text" size="14" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Manage Cab"/>
+                <Property name="text" type="java.lang.String" value="Manage Taxi"/>
               </Properties>
               <Events>
                 <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCabServiceMousePressed"/>

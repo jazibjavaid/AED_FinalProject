@@ -133,7 +133,7 @@ public class AddCabServicesJAreaPanel extends javax.swing.JPanel {
         DoctorScrollPane.setViewportView(ServiceTable);
 
         lblDoctorslist1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
-        lblDoctorslist1.setText("Cab Service");
+        lblDoctorslist1.setText("Taxi Service");
 
         btnRemoveFoodSuppplier.setBackground(new java.awt.Color(253, 135, 124));
         btnRemoveFoodSuppplier.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
@@ -278,7 +278,7 @@ public class AddCabServicesJAreaPanel extends javax.swing.JPanel {
         }
         CabService cabService=(CabService)ServiceTable.getValueAt(row, 0);;
         cabProvider.getCabServiceDirectory().removeService(cabService);
-        JOptionPane.showMessageDialog(null, "Cab Service removed successfully!");
+        JOptionPane.showMessageDialog(null, "Taxi Service removed successfully!");
         populateTestTable();
     }//GEN-LAST:event_btnRemoveFoodSuppplierActionPerformed
 
@@ -310,7 +310,7 @@ public class AddCabServicesJAreaPanel extends javax.swing.JPanel {
 
             CabService cabServce=new CabService(packageName,serviceType);
             cabProvider.getCabServiceDirectory().addService(cabServce);
-            JOptionPane.showMessageDialog(null, "Cab Service added successfully!");
+            JOptionPane.showMessageDialog(null, "Taxi Service added successfully!");
         }
         populateTestTable();
         txtName.setText("");

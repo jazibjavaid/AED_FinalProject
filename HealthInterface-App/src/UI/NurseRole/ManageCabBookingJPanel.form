@@ -148,7 +148,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name=".SF NS Text" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cab Requests"/>
+        <Property name="text" type="java.lang.String" value="Taxi Requests"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Approved">

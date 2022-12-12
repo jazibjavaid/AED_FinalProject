@@ -125,7 +125,7 @@ public class ManageCabBookingJPanel extends javax.swing.JPanel {
         DoctorScrollPane.setViewportView(SubmittedrequestsJTable);
 
         jLabel1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
-        jLabel1.setText("Cab Requests");
+        jLabel1.setText("Taxi Requests");
 
         Approved.setBackground(new java.awt.Color(253, 135, 124));
         Approved.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N

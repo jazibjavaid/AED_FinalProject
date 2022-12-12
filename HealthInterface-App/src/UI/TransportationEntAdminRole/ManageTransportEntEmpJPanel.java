@@ -242,12 +242,12 @@ public class ManageTransportEntEmpJPanel extends javax.swing.JPanel {
         });
 
         lblDoctorslist1.setFont(new java.awt.Font(".SF NS Text", 1, 18)); // NOI18N
-        lblDoctorslist1.setText("Cab Providers");
+        lblDoctorslist1.setText("Taxi Providers");
 
         btnRemoveCabService.setBackground(new java.awt.Color(253, 135, 124));
         btnRemoveCabService.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
         btnRemoveCabService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/images/delete2.png"))); // NOI18N
-        btnRemoveCabService.setText("Remove Cab Provider");
+        btnRemoveCabService.setText("Remove Taxi Provider");
         btnRemoveCabService.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnRemoveCabService.setContentAreaFilled(false);
         btnRemoveCabService.addMouseListener(new java.awt.event.MouseAdapter() {
