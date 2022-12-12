@@ -2,6 +2,12 @@
 
 #### Health Interface is a unified portal that is designed to help healthcare providers streamline their operations and improve quality of care they provide to patients. This tool will facilitate tasks such as scheduling appointments, ordering medicines and emergency response services. This system can help healthcare providers to better manage patient data, reduce administrative tasks and improve communication and collaboration among staff members.
 
+### STEPS TO RUN:
+
+1. Clone the project
+2. Open in Netbeans IDE
+3. Run the application
+
 
 ### Object Diagram
 
@@ -11,7 +17,9 @@
 
 ![AED_New-Sequence Diagram drawio](https://user-images.githubusercontent.com/113114087/206941363-417b1d41-8071-4066-a6f0-81f18555a9c9.png)
 
+### Class Diagram
 
+![ClassDiagram](https://user-images.githubusercontent.com/114361980/206946666-bef3a17b-c93b-4c85-afe2-b3211bd2e27c.jpg)
 
 #### Project By
 1. Jazib Javaid
