@@ -8,7 +8,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import UI.CabServiceRole.CabServiceWorkAreaJPanel;
+import UI.TaxiServiceRole.CabServiceWorkAreaJPanel;
 import javax.swing.JPanel;
 
 

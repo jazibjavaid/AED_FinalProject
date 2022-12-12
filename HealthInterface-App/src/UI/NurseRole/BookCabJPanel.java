@@ -5,8 +5,8 @@
  */
 package UI.NurseRole;
 
-import Business.CabDriver.CabDriver;
-import Business.CabDriver.CabService;
+import Business.TaxiDriver.CabDriver;
+import Business.TaxiDriver.CabService;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.City.City;

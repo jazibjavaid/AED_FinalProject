@@ -3,17 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.TaxiDriver;
+import Business.AmbulanceDriver.*;
 
 /**
  *
- * @author shantanutyagi
+ * @author yuktachikate
  */
-public class TaxiService {
-
+public class CabService {
     private String serviceName;
     private String serviceType;
 
-    public TaxiService(String serviceName, String serviceType) {
+    public CabService(String serviceName, String serviceType) {
         this.serviceName = serviceName;
         this.serviceType = serviceType;
     }
@@ -33,9 +33,10 @@ public class TaxiService {
     public void setServiceType(String serviceType) {
         this.serviceType = serviceType;
     }
-
-    @Override
+    
+           @Override
     public String toString() {
         return serviceName;
     }
+    
 }

@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UI.CabServiceRole;
+package UI.TaxiServiceRole;
 
-import Business.CabDriver.CabDriver;
-import Business.CabDriver.CabService;
+import Business.TaxiDriver.CabDriver;
+import Business.TaxiDriver.CabService;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;

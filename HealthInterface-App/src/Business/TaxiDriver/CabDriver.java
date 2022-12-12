@@ -6,27 +6,30 @@ package Business.TaxiDriver;
 
 import Business.Role.Role;
 import java.util.concurrent.atomic.AtomicInteger;
+import Business.WorkProcess.ServiceRequestDirectory;
 
 /**
  *
- * @author shantanutyagi
+ * @author yuktachikate
  */
-public class TaxiDriver extends Business.Person.Person {
-
+public class CabDriver extends Business.Person.Person {
+    
     private String licenseNumber;
     private String valStartDate;
     private String valEndDate;
     private String driverType;
     private int id;
-    private static final AtomicInteger count = new AtomicInteger(0);
-    private TaxiServiceDirectory taxiServiceDirectory;
-
-    public TaxiDriver(String licenseNumber, String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email, String username, String password, Role role) {
-        super(fullName, dob, gender, address, zipcode, contactNumber, email, username, password, role);
-        this.licenseNumber = licenseNumber;
-        this.id = count.incrementAndGet();
+    private static final AtomicInteger count = new AtomicInteger(0); 
+    private CabServiceDirectory cabServiceDirectory;
+    private ServiceRequestDirectory serviceRequestDirectory;
+    
+    
+    public CabDriver(String licenseNumber,String fullName, String dob, String gender, String address, String zipcode, String contactNumber, String email,String username,String password, Role role) {
+        super(fullName, dob, gender, address, zipcode, contactNumber, email,username,password, role);
+        this.licenseNumber=licenseNumber;
+       this.id=count.incrementAndGet(); 
     }
-
+    
     public String getLicenseNumber() {
         return licenseNumber;
     }
@@ -67,20 +70,23 @@ public class TaxiDriver extends Business.Person.Person {
         this.id = id;
     }
 
-    public void setTaxiServiceDirectory(TaxiServiceDirectory taxiServiceDirectory) {
-        this.taxiServiceDirectory = taxiServiceDirectory;
-    }
-    
     @Override
     public String toString() {
        return getName();
     }
-
-    public TaxiServiceDirectory getTaxiServiceDirectory() {
-        if(taxiServiceDirectory == null){
-            taxiServiceDirectory = new TaxiServiceDirectory();
+    
+    public CabServiceDirectory getCabServiceDirectory() {
+        if(cabServiceDirectory == null){
+            cabServiceDirectory = new CabServiceDirectory();
         }
-        return taxiServiceDirectory;
+        return cabServiceDirectory;
     }
-
+    
+     public ServiceRequestDirectory getServiceRequestDirectory() {
+        if(serviceRequestDirectory == null){
+            serviceRequestDirectory = new ServiceRequestDirectory();
+        }
+        return serviceRequestDirectory;
+    }
+    
 }

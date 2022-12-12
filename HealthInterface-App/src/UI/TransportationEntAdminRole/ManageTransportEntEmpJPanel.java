@@ -5,7 +5,7 @@
 package UI.TransportationEntAdminRole;
 
 import Business.AmbulanceDriver.AmbulanceDriver;
-import Business.CabDriver.CabDriver;
+import Business.TaxiDriver.CabDriver;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
