@@ -137,7 +137,6 @@ public class HealthRequestReportQuarantineFlowJPanel extends javax.swing.JPanel 
         jPanelGender2 = new javax.swing.JPanel();
         lblGender3 = new javax.swing.JLabel();
         lblOtherSymptoms = new javax.swing.JLabel();
-        btnMarkNegative = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -592,25 +591,6 @@ public class HealthRequestReportQuarantineFlowJPanel extends javax.swing.JPanel 
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        btnMarkNegative.setBackground(new java.awt.Color(253, 135, 124));
-        btnMarkNegative.setFont(new java.awt.Font(".SF NS Text", 1, 14)); // NOI18N
-        btnMarkNegative.setText("Mark Negative");
-        btnMarkNegative.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnMarkNegative.setContentAreaFilled(false);
-        btnMarkNegative.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMarkNegativeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMarkNegativeMouseExited(evt);
-            }
-        });
-        btnMarkNegative.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMarkNegativeActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -635,9 +615,7 @@ public class HealthRequestReportQuarantineFlowJPanel extends javax.swing.JPanel 
                                         .addComponent(jPanelGender2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addGap(54, 54, 54)
-                                .addComponent(btnAssignToNurse, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnMarkNegative, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnAssignToNurse, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(227, Short.MAX_VALUE))
         );
@@ -654,9 +632,7 @@ public class HealthRequestReportQuarantineFlowJPanel extends javax.swing.JPanel 
                             .addComponent(jPanelGender1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanelGender2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAssignToNurse, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMarkNegative, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAssignToNurse, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(doctorJpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -844,30 +820,6 @@ public class HealthRequestReportQuarantineFlowJPanel extends javax.swing.JPanel 
         btnSubmit.setBorderPainted(true);
     }//GEN-LAST:event_btnSubmitMouseExited
 
-    private void btnMarkNegativeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMarkNegativeMouseEntered
-        // TODO add your handling code here:
-        btnMarkNegative.setBackground(new java.awt.Color(253,135,124));
-        btnMarkNegative.setContentAreaFilled(true);
-        btnMarkNegative.setFocusPainted(true);
-        btnMarkNegative.setBorderPainted(false);
-        btnMarkNegative.setOpaque(true);
-        
-    }//GEN-LAST:event_btnMarkNegativeMouseEntered
-
-    private void btnMarkNegativeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMarkNegativeMouseExited
-        // TODO add your handling code here:
-        btnMarkNegative.setContentAreaFilled(false);
-        btnMarkNegative.setFocusPainted(false);
-        btnMarkNegative.setBorderPainted(true);
-        
-    }//GEN-LAST:event_btnMarkNegativeMouseExited
-
-    private void btnMarkNegativeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMarkNegativeActionPerformed
-        // TODO add your handling code here:        
-        request.setStatus("Negative");
-        populateprofile();
-    }//GEN-LAST:event_btnMarkNegativeActionPerformed
-
     private void viewAvailableTestMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewAvailableTestMouseEntered
         // TODO add your handling code here:
         viewAvailableTest.setBackground(new java.awt.Color(253,135,124));
@@ -895,7 +847,6 @@ public class HealthRequestReportQuarantineFlowJPanel extends javax.swing.JPanel 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToNurse;
-    private javax.swing.JButton btnMarkNegative;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JTable doctorJTable;
     private javax.swing.JPanel doctorJpanel;
@@ -966,14 +917,12 @@ public class HealthRequestReportQuarantineFlowJPanel extends javax.swing.JPanel 
     public void toggleAllButtons(){
         if(request.getStatus().equalsIgnoreCase("Discharged") || request.getStatus().equalsIgnoreCase("Negative")){
             btnAssignToNurse.setVisible(false);
-            btnMarkNegative.setVisible(false);
         }
     }
     
     public void toggleNegativeButton(){
         for(Tests test:request.getPreviousTestDirectory().getTestList()){
             if(test.getStatus().equalsIgnoreCase("positive")){
-            btnMarkNegative.setVisible(false);
             }
         }
     }

@@ -969,9 +969,9 @@ public class HealthRequestReport extends javax.swing.JPanel {
                 "Doctor has assigned this request back to you", nowDtae, request);
         notification.setStatus("new");
         patMan.getNotificationDirectory().addNotification(notification);
-        request.setStatus("quarantined");
+        request.setStatus("home care");
         populateprofile();
-        JOptionPane.showMessageDialog(null, "This patient has been marked as quarantined ");
+        JOptionPane.showMessageDialog(null, "This patient has been marked as home care ");
         toggleBTAMButtons();
     }//GEN-LAST:event_btnReportBacktoAMActionPerformed
 
@@ -1259,7 +1259,7 @@ public class HealthRequestReport extends javax.swing.JPanel {
     }
 
     private void toggleBTAMButtons() {
-        if (request.getStatus().equalsIgnoreCase("quarantined")) {
+        if (request.getStatus().equalsIgnoreCase("home care")) {
             btnAssignToDoctor.setVisible(false);
             btnAssignToMe.setVisible(false);
             btnReportBacktoAM.setVisible(false);

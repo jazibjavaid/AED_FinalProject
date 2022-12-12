@@ -385,7 +385,7 @@ public class ManageNurseProfile extends javax.swing.JPanel {
     private void populateprofile() throws ParseException {
         String username = useraccount.getUsername();
        // Doctor doctor1= enterprise.getDocDir().findDoctor(username);
-        Nurse nurse=enterprise.getOrganizationDirectory().getOrgList().get(1).getNurDir().findNurse(username);
+        Nurse nurse=enterprise.getOrganizationDirectory().getOrgList().get(2).getNurDir().findNurse(username);
         nameJTextField.setText(nurse.getFullName());
         txtAddress.setText(nurse.getAddress());
         txtZipCode.setText(nurse.getZipcode());
